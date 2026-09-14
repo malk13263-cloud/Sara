@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="سارة">
+<meta name="application-name" content="سارة">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoCAIAAAD1h/aCAAAG8ElEQVR42u3dzW3bShSAUTtwOSkjJaUMl+Qy3Id3XniVhQDBgBRZpDgz9+ecxVs8BIlFcj5d0hT1/PX58QSwxS+bABAOQDgA4QCEAxAOAOEAhAMQDkA4AOEAEA5AOADhAIQDEA4A4QCEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AIQDEA5AOADhAIQDQDgA4QCEAxAOQDgAhAMQDkA4AOEAhAMQDgDhAIQDEA5AOADhABAOQDgA4QCEAxAOAOEAhAMQDkA4AOEAEA5AOADhAIQDEA5AOACEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AIQDEA5AOADhAIQDQDgA4QCEAxAOQDgA4QAQDkA4AOEAhAMQDgDhAIQDEA5AOADhABAOQDgA4QCEAxAOQDgAhAMQDkA4AOEAhANAOADhAIQDEA5AOACEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AOEAEA5AOADhAIQDEA4A4QCEAxAOQDgA4QAQDkA4AOEAhAMo6cUmgCX+/v5z+T9f399S/PDPX58fdiGs7UW6gjhVgXDV2PQnhQNUI0c7hAMiViN4O1zjgIjJ+C7g9Q4TB4SuRsy5QzigS4CEA6x24QDVEA5QjdolEg4wawgHrK5Gls+bCAcEmjU6tEM4wNmKcIBYCAeohnCAauwU6rqJcIBZQzhANYQDVOMp3ifrPawYog8anscBFcxcyTHvJRMOMGsIBwyuxum/E5Z05PvWhQM2zxoT2hH80y4ujsKeM5RBn2TL8uk4EwdsrsbQdggH6dcGt7fMse1IlCHfq2JJVDiOC8Q019Z2jcN6+OFPvr6/dZvJzV8mDg5bCR3aMT8ZSbssHNaAfKycMpJuT+GwALRDNYRDLBz0qiEcRDvcK7Vj4TbMvumEw7HedA2ohnCIhXak2Z41TvGEw8Hda0mohnDohXZIhnCIRRWhFsn59qrl27lSO4RDLCovlfN2XtuOene++KyKXkxat5NvrI6zqUvea2viEItSy+nG1j7FSzKEQyy6F2Trdp7ZjtqfCXSqohfrN9qO9Rx8WZb/JLFwiIWdpRrCQadTFa9lFc8cfejty7hBz/HTxOH4wLhh4lCNHps02l7o9mBnE4dqIBkmDtWwVSf2whcygeKYNZyqeGNEL4QDJMOpinED1TBxgGSYOADVMHGAZJg4sCSGbZnmN2gIhzRg6wkHs477nsvmPGsgHN6CdOGurWGbCIdyoRrD+a3KhoNs4W1gHrHrNQpHSm4e1QuEI2U15n+tkV4gHBVmjfuXwY4FE+Q7Vg85ndQL4ZCM45fB979w3zebmC86801uCU5Pmg9ZwiEcqpFyGaTriHwIR9N1EvPQv71lQp3vaMdQbgBTjWN+sGg/s6/LGsrFUcnY/xPGX5l+e+1URTWiL86wHdEOE0fNaqQ+si1LE4dqWHjHb9IIF03V7VjdL46OO6DvOVKrPgPi8nUtf5kulArHYUfS0IPpx7+8/HugD60Lh0HjyKGjz8OmQr1MQ4dw5DiArv4u0DswBbT7rcrCt53myTi//LXPQxJuE0eCapyPVMdrwzM14VCNhwYK6+R/20REhKP7rHE5BlsVzt2qanED2MwzFE/3C76b7BoTR7hqODRtN+FQjRz/YrF2yIdwVK7G1ePbcR989LB3hGPxO//VS6GOJ6NHEzUvjs783jOXQrPsSrvJxBHoKoPD0eghHKoR+p/rnA99d6qSbxlffRSNYzHLLranTBxr3vxdCs07ethTJo7Fpwwuheba6faUcIS40OBAzLL37SnhiFINRySc5X6Qz+RPrzlc4CTxxVHVABNH0GpIBhSZOFQDhEM1QDhUA4RDNYCs4VANEA7VAOEoQTWgTjg8NR+EQzVAOFQDhEM1gKzhUA0QDtUA4VANEA7VALKGQzVAOCJSDSgVjgnjhmpAqXCoBgiH0xAobvH3qhw7a1z9hldNARPHDxm6bIRqQKlwjLi0cWqHWEDNcIy7IHr6m0/tUBBwqrKnHYBw3EUyoGA4ht64oRpg4lANEA7VAOEAhMO4AbQJh2qAcADCMXhAMG6AiQMQDkA4op1fOE+BXhPH42teNaDjqcojK181oGk4dq9/1YDW4dhRAdUA4djWAtWA5RY/5fwqTyoH4QCcqgDCYRMAwgEIByAcgHAAwgEgHIBwAMIBCAcgHADCAQgHIByAcADCASAcgHAAwgEIByAcgHAACAcgHIBwAMIBCAeAcADCAQgHIByAcAAIByAcgHAAwgEIB4BwAMIBCAcgHIBwAMIBIByAcADCAQgHIBwAwgEIByAcgHAAwgEgHIBwAMIBCAcgHADCAQgHIByAcADCAQgHgHAAwgEIByAcgHAACAcgHIBwAMIBCAeAcADCAUz2Dwj/IlBSTR5CAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoCAIAAAD1h/aCAAAG8ElEQVR42u3dzW3bShSAUTtwOSkjJaUMl+Qy3Id3XniVhQDBgBRZpDgz9+ecxVs8BIlFcj5d0hT1/PX58QSwxS+bABAOQDgA4QCEAxAOAOEAhAMQDkA4AOEAEA5AOADhAIQDEA4A4QCEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AIQDEA5AOADhAIQDQDgA4QCEAxAOQDgAhAMQDkA4AOEAhAMQDgDhAIQDEA5AOADhABAOQDgA4QCEAxAOAOEAhAMQDkA4AOEAEA5AOADhAIQDEA5AOACEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AIQDEA5AOADhAIQDQDgA4QCEAxAOQDgA4QAQDkA4AOEAhAMQDgDhAIQDEA5AOADhABAOQDgA4QCEAxAOQDgAhAMQDkA4AOEAhANAOADhAIQDEA5AOACEAxAOQDgA4QCEA0A4AOEAhAMQDkA4AOEAEA5AOADhAIQDEA4A4QCEAxAOQDgA4QAQDkA4AOEAhAMo6cUmgCX+/v5z+T9f399S/PDPX58fdiGs7UW6gjhVgXDV2PQnhQNUI0c7hAMiViN4O1zjgIjJ+C7g9Q4TB4SuRsy5QzigS4CEA6x24QDVEA5QjdolEg4wawgHrK5Gls+bCAcEmjU6tEM4wNmKcIBYCAeohnCAauwU6rqJcIBZQzhANYQDVOMp3ifrPawYog8anscBFcxcyTHvJRMOMGsIBwyuxum/E5Z05PvWhQM2zxoT2hH80y4ujsKeM5RBn2TL8uk4EwdsrsbQdggH6dcGt7fMse1IlCHfq2JJVDiOC8Q019Z2jcN6+OFPvr6/dZvJzV8mDg5bCR3aMT8ZSbssHNaAfKycMpJuT+GwALRDNYRDLBz0qiEcRDvcK7Vj4TbMvumEw7HedA2ohnCIhXak2Z41TvGEw8Hda0mohnDohXZIhnCIRRWhFsn59qrl27lSO4RDLCovlfN2XtuOene++KyKXkxat5NvrI6zqUvea2viEItSy+nG1j7FSzKEQyy6F2Trdp7ZjtqfCXSqohfrN9qO9Rx8WZb/JLFwiIWdpRrCQadTFa9lFc8cfejty7hBz/HTxOH4wLhh4lCNHps02l7o9mBnE4dqIBkmDtWwVSf2whcygeKYNZyqeGNEL4QDJMOpinED1TBxgGSYOADVMHGAZJg4sCSGbZnmN2gIhzRg6wkHs477nsvmPGsgHN6CdOGurWGbCIdyoRrD+a3KhoNs4W1gHrHrNQpHSm4e1QuEI2U15n+tkV4gHBVmjfuXwY4FE+Q7Vg85ndQL4ZCM45fB979w3zebmC86801uCU5Pmg9ZwiEcqpFyGaTriHwIR9N1EvPQv71lQp3vaMdQbgBTjWN+sGg/s6/LGsrFUcnY/xPGX5l+e+1URTWiL86wHdEOE0fNaqQ+si1LE4dqWHjHb9IIF03V7VjdL46OO6DvOVKrPgPi8nUtf5kulArHYUfS0IPpx7+8/HugD60Lh0HjyKGjz8OmQr1MQ4dw5DiArv4u0DswBbT7rcrCt53myTi//LXPQxJuE0eCapyPVMdrwzM14VCNhwYK6+R/20REhKP7rHE5BlsVzt2qanED2MwzFE/3C76b7BoTR7hqODRtN+FQjRz/YrF2yIdwVK7G1ePbcR989LB3hGPxO//VS6GOJ6NHEzUvjs783jOXQrPsSrvJxBHoKoPD0eghHKoR+p/rnA99d6qSbxlffRSNYzHLLranTBxr3vxdCs07ethTJo7Fpwwuheba6faUcIS40OBAzLL37SnhiFINRySc5X6Qz+RPrzlc4CTxxVHVABNH0GpIBhSZOFQDhEM1QDhUA4RDNYCs4VANEA7VAOEoQTWgTjg8NR+EQzVAOFQDhEM1gKzhUA0QDtUA4VANEA7VALKGQzVAOCJSDSgVjgnjhmpAqXCoBgiH0xAobvH3qhw7a1z9hldNARPHDxm6bIRqQKlwjLi0cWqHWEDNcIy7IHr6m0/tUBBwqrKnHYBw3EUyoGA4ht64oRpg4lANEA7VAOEAhMO4AbQJh2qAcADCMXhAMG6AiQMQDkA4op1fOE+BXhPH42teNaDjqcojK181oGk4dq9/1YDW4dhRAdUA4djWAtWA5RY/5fwqTyoH4QCcqgDCYRMAwgEIByAcgHAAwgEgHIBwAMIBCAcgHADCAQgHIByAcADCASAcgHAAwgEIByAcgHAACAcgHIBwAMIBCAeAcADCAQgHIByAcAAIByAcgHAAwgEIB4BwAMIBCAcgHIBwAMIBIByAcADCAQgHIBwAwgEIByAcgHAAwgEgHIBwAMIBCAcgHADCAQgHIByAcADCAQgHgHAAwgEIByAcgHAACAcgHIBwAMIBCAeAcADCAUz2Dwj/IlBSTR5CAAAAAElFTkSuQmCC">
+<meta name="theme-color" content="#FAF6EF">
+<meta name="referrer" content="no-referrer">
+<title>سارة — رفيقة التدريب</title>
+<style>
+:root{
+  --ivory:#FAF6EF;
+  --cream:#F2EAE0;
+  --cream-2:#EAE0D3;
+  --taupe:#B4A28F;
+  --taupe-2:#8E7F70;
+  --charcoal:#2A2522;
+  --ink:#191614;
+  --burgundy:#6E2233;
+  --burgundy-2:#8A2E42;
+  --burgundy-deep:#43121D;
+  --burgundy-wash:rgba(110,34,51,.07);
+  --olive:#6C7358;
+  --line:rgba(42,37,34,.12);
+  --line-2:rgba(42,37,34,.06);
+  --shadow:0 1px 2px rgba(42,37,34,.05), 0 8px 24px rgba(42,37,34,.06);
+  --r:18px;
+  --r-s:12px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px);
+  --ar:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Naskh Arabic",Tahoma,Arial,sans-serif;
+  --lat:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--ar);
+  background:var(--ivory);
+  color:var(--charcoal);
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,textarea,select{font-family:inherit;font-size:inherit;color:inherit;}
+button{cursor:pointer;border:none;background:none;padding:0;}
+input,textarea{outline:none;}
+a{color:inherit;}
+.en{direction:ltr;unicode-bidi:isolate;font-family:var(--lat);letter-spacing:.01em;}
+.num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;}
+
+/* ---------- shell ---------- */
+#app{max-width:540px;margin:0 auto;min-height:100vh;position:relative;}
+.screen{display:none;padding:calc(var(--safe-t) + 18px) 20px calc(96px + var(--safe-b));animation:fade .45s ease both;}
+.screen.on{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important;}}
+
+/* ---------- typography ---------- */
+.eyebrow{font-size:11px;letter-spacing:.24em;color:var(--taupe-2);text-transform:uppercase;margin:0 0 6px;}
+h1{font-size:27px;line-height:1.35;font-weight:600;margin:0 0 4px;letter-spacing:-.01em;}
+h2{font-size:19px;font-weight:600;margin:0 0 10px;}
+h3{font-size:16px;font-weight:600;margin:0 0 6px;}
+.muted{color:var(--taupe-2);font-size:14px;}
+.tiny{font-size:12.5px;color:var(--taupe-2);line-height:1.6;}
+.sect{margin:30px 0 0;}
+.sect-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.sect-h .eyebrow{margin:0;}
+
+/* hand-drawn divider */
+.rule{height:10px;margin:26px 0;opacity:.5;}
+.rule svg{width:100%;height:10px;display:block;}
+
+/* ---------- cards ---------- */
+.card{background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);}
+.card+.card{margin-top:12px;}
+.card-flat{background:var(--cream);border:1px solid var(--line-2);border-radius:var(--r);padding:16px;box-shadow:none;}
+
+/* ---------- buttons ---------- */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;border-radius:14px;background:var(--burgundy);color:#fff;font-size:17px;font-weight:600;letter-spacing:.01em;transition:transform .12s ease,background .2s;}
+.btn:active{transform:scale(.985);background:var(--burgundy-deep);}
+.btn.ghost{background:transparent;color:var(--burgundy);border:1px solid rgba(110,34,51,.3);}
+.btn.ghost:active{background:var(--burgundy-wash);}
+.btn.quiet{background:var(--cream);color:var(--charcoal);border:1px solid var(--line);}
+.btn.sm{min-height:44px;font-size:15px;border-radius:12px;}
+.btn[disabled]{opacity:.4;pointer-events:none;}
+.chip{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 15px;border-radius:999px;background:var(--cream);border:1px solid var(--line-2);font-size:14px;font-weight:500;transition:.18s;}
+.chip.on{background:var(--burgundy);color:#fff;border-color:var(--burgundy);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+
+/* ---------- today ---------- */
+.greet{margin:6px 0 2px;font-size:15px;color:var(--taupe-2);}
+.day-hero{position:relative;background:#fff;border:1px solid var(--line-2);border-radius:22px;padding:22px 20px 20px;box-shadow:var(--shadow);overflow:hidden;}
+.day-hero .mark{position:absolute;inset-inline-start:-30px;top:-40px;opacity:.06;pointer-events:none;}
+.day-name{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--burgundy);}
+.day-type{font-size:15px;letter-spacing:.14em;color:var(--taupe-2);margin-top:2px;}
+.day-meta{display:flex;gap:18px;margin-top:16px;flex-wrap:wrap;}
+.meta-i{display:flex;flex-direction:column;gap:1px;}
+.meta-i b{font-size:19px;font-weight:600;}
+.meta-i span{font-size:11.5px;letter-spacing:.1em;color:var(--taupe-2);}
+
+/* ---------- constellation ---------- */
+.constel{width:100%;max-width:330px;margin:0 auto;display:block;}
+.node-c{transition:.5s;}
+.node-lbl{font-size:11px;fill:var(--taupe-2);font-family:-apple-system,"SF Arabic","Segoe UI",Tahoma,sans-serif;}
+.node-lbl.done{fill:var(--burgundy);font-weight:600;}
+
+/* ---------- canvas ---------- */
+.canvas-wrap{background:linear-gradient(160deg,#FFFDF9,#F3EBE0);border:1px solid var(--line-2);border-radius:var(--r);padding:8px;box-shadow:var(--shadow);}
+.canvas-wrap svg{display:block;width:100%;height:auto;border-radius:12px;}
+.draw{stroke-dasharray:var(--len,900);stroke-dashoffset:var(--len,900);animation:draw 1.6s cubic-bezier(.3,.7,.3,1) forwards;}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- week list ---------- */
+.dayrow{display:flex;align-items:center;gap:14px;width:100%;text-align:start;padding:14px 16px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-s);margin-bottom:10px;box-shadow:0 1px 2px rgba(42,37,34,.04);transition:.15s;}
+.dayrow:active{transform:scale(.99);}
+.dayrow.today{border-color:rgba(110,34,51,.35);background:linear-gradient(180deg,#fff,rgba(110,34,51,.03));}
+.dayrow.rest{background:var(--cream);}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--taupe);flex:none;}
+.dot.done{background:var(--burgundy);border-color:var(--burgundy);}
+.dayrow .nm{font-weight:600;font-size:16.5px;}
+.dayrow .tp{font-size:12.5px;color:var(--taupe-2);letter-spacing:.08em;}
+.dayrow .rt{margin-inline-start:auto;font-size:12.5px;color:var(--taupe-2);text-align:end;}
+
+/* ---------- overlays ---------- */
+.overlay{position:fixed;inset:0;background:var(--ivory);z-index:60;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.overlay.on{display:flex;}
+.ov-head{position:sticky;top:0;background:rgba(250,246,239,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2);padding:calc(var(--safe-t) + 12px) 18px 12px;display:flex;align-items:center;gap:12px;z-index:2;}
+.ov-body{padding:18px 20px calc(40px + var(--safe-b));max-width:540px;width:100%;margin:0 auto;flex:1;}
+.x{width:38px;height:38px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--taupe-2);flex:none;}
+.ov-title{font-weight:600;font-size:16px;}
+.ov-sub{font-size:12px;color:var(--taupe-2);letter-spacing:.08em;}
+.prog-bar{height:3px;background:var(--cream-2);border-radius:2px;overflow:hidden;margin-top:10px;}
+.prog-bar i{display:block;height:100%;background:var(--burgundy);border-radius:2px;transition:width .4s ease;}
+
+/* ---------- workout ---------- */
+.ex-name{font-size:24px;font-weight:600;line-height:1.3;letter-spacing:-.01em;}
+.ex-en{font-size:14px;color:var(--taupe-2);margin-top:2px;}
+.setline{display:flex;align-items:baseline;gap:8px;margin-top:14px;}
+.setline b{font-size:32px;font-weight:600;color:var(--burgundy);}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.pill{background:var(--cream);border-radius:999px;padding:6px 13px;font-size:13px;color:var(--charcoal);}
+.pill.b{background:var(--burgundy-wash);color:var(--burgundy);}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+.field{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 8px 12px;text-align:center;}
+.field label{display:block;font-size:11.5px;letter-spacing:.14em;color:var(--taupe-2);margin-bottom:4px;}
+.stepper{display:flex;align-items:center;justify-content:center;gap:6px;}
+.stepper button{width:40px;height:40px;border-radius:11px;background:var(--cream);font-size:21px;line-height:1;color:var(--burgundy);flex:none;display:flex;align-items:center;justify-content:center;}
+.stepper button:active{background:var(--cream-2);}
+.stepper input{width:70px;text-align:center;font-size:25px;font-weight:600;border:none;background:transparent;padding:4px 0;direction:ltr;font-variant-numeric:tabular-nums;}
+.setgrid{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;}
+.setbox{flex:1;min-width:56px;border:1px solid var(--line);border-radius:10px;padding:7px 4px;text-align:center;font-size:12px;color:var(--taupe-2);background:#fff;}
+.setbox.done{background:var(--burgundy);border-color:var(--burgundy);color:#fff;}
+.setbox.cur{border-color:var(--burgundy);border-width:1.5px;color:var(--burgundy);}
+.setbox b{display:block;font-size:14px;font-weight:600;direction:ltr;}
+.checkrow{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:start;padding:13px 14px;border:1px solid var(--line-2);border-radius:var(--r-s);background:#fff;margin-bottom:9px;}
+.checkrow .bx{width:23px;height:23px;border-radius:7px;border:1.5px solid var(--taupe);flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-top:2px;}
+.checkrow.on .bx{background:var(--burgundy);border-color:var(--burgundy);}
+.checkrow.on{background:var(--burgundy-wash);border-color:rgba(110,34,51,.18);}
+.note-in{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;resize:none;line-height:1.6;font-size:15px;min-height:70px;}
+
+/* rule banner */
+.banner{border-inline-start:3px solid var(--burgundy);background:var(--burgundy-wash);border-radius:10px;padding:13px 15px;font-size:14.5px;line-height:1.75;}
+.banner.olive{border-color:var(--olive);background:rgba(108,115,88,.08);}
+.clue{background:var(--charcoal);color:#F5EFE7;border-radius:var(--r);padding:17px 18px;}
+.clue .k{font-size:11px;letter-spacing:.24em;color:var(--taupe);text-transform:uppercase;}
+.clue .t{font-size:16.5px;margin-top:7px;line-height:1.75;}
+.word{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:15px 17px;box-shadow:var(--shadow);}
+.word .w{font-family:var(--lat);font-size:26px;direction:ltr;color:var(--burgundy);line-height:1.1;}
+
+/* rest timer */
+#rest{position:fixed;inset:0;z-index:80;background:linear-gradient(170deg,#2A2522,#43121D);color:#F5EFE7;display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px 24px calc(30px + var(--safe-b));}
+#rest.on{display:flex;}
+#rest .lbl{font-size:12px;letter-spacing:.3em;color:rgba(245,239,231,.55);}
+#rest .clock{font-size:78px;font-weight:300;direction:ltr;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0 2px;letter-spacing:-.02em;}
+#rest .nx{font-size:15px;color:rgba(245,239,231,.7);text-align:center;margin-bottom:26px;}
+#rest .ctrls{display:flex;gap:10px;width:100%;max-width:340px;}
+#rest .ctrls button{flex:1;min-height:50px;border-radius:13px;background:rgba(255,255,255,.11);color:#F5EFE7;font-size:15px;font-weight:500;}
+#rest .quick{display:flex;gap:8px;margin-bottom:18px;}
+#rest .quick button{padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.09);color:rgba(245,239,231,.8);font-size:14px;}
+#rest .quick button.on{background:#F5EFE7;color:var(--burgundy-deep);font-weight:600;}
+.ringwrap{position:relative;width:230px;height:230px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.ringwrap svg{position:absolute;inset:0;transform:rotate(-90deg);}
+.ringwrap .inner{position:relative;text-align:center;}
+
+/* rpe */
+.rpe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px;}
+.rpe-b{border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px 6px;text-align:center;transition:.15s;}
+.rpe-b b{display:block;font-size:19px;font-weight:600;direction:ltr;}
+.rpe-b span{font-size:11.5px;color:var(--taupe-2);}
+.rpe-b:active,.rpe-b.on{background:var(--burgundy);border-color:var(--burgundy);color:#fff;}
+.rpe-b.on span,.rpe-b:active span{color:rgba(255,255,255,.75);}
+.rpe-b.wide{grid-column:span 3;padding:11px;}
+
+/* history */
+.hrow{display:flex;align-items:center;gap:12px;width:100%;text-align:start;padding:13px 15px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-s);margin-bottom:8px;}
+.hrow .arrow{margin-inline-start:auto;color:var(--taupe);font-size:16px;}
+table.hist{width:100%;border-collapse:collapse;font-size:14px;}
+table.hist th{font-size:11px;letter-spacing:.12em;color:var(--taupe-2);font-weight:500;padding:8px 6px;border-bottom:1px solid var(--line);text-align:start;}
+table.hist td{padding:10px 6px;border-bottom:1px solid var(--line-2);}
+table.hist td.n{direction:ltr;font-variant-numeric:tabular-nums;}
+
+/* nav */
+#nav{position:fixed;bottom:0;inset-inline:0;z-index:40;background:rgba(250,246,239,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line-2);padding:8px 6px calc(6px + var(--safe-b));display:none;}
+#nav.on{display:block;}
+#nav .in{max-width:540px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+#nav button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;color:var(--taupe-2);font-size:11px;border-radius:12px;}
+#nav button.on{color:var(--burgundy);font-weight:600;}
+#nav svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+/* onboarding */
+#onb{position:fixed;inset:0;z-index:100;background:var(--ivory);display:none;align-items:center;justify-content:center;padding:40px 28px calc(40px + var(--safe-b));}
+#onb.on{display:flex;}
+.onb-s{display:none;text-align:center;max-width:400px;width:100%;animation:fade .7s ease both;}
+.onb-s.on{display:block;}
+.onb-s h2{font-size:26px;font-weight:600;line-height:1.5;}
+.onb-dots{position:absolute;bottom:calc(26px + var(--safe-b));inset-inline:0;display:flex;gap:7px;justify-content:center;}
+.onb-dots i{width:6px;height:6px;border-radius:50%;background:var(--taupe);opacity:.35;transition:.3s;}
+.onb-dots i.on{opacity:1;background:var(--burgundy);width:20px;border-radius:3px;}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:120;background:rgba(25,22,20,.4);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);}
+#modal.on{display:flex;}
+#modal .box{background:var(--ivory);border-radius:22px 22px 0 0;padding:24px 22px calc(24px + var(--safe-b));width:100%;max-width:540px;animation:up .3s ease both;}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+#modal h3{font-size:19px;}
+#modal .acts{display:flex;flex-direction:column;gap:9px;margin-top:18px;}
+
+/* toast */
+#toast{position:fixed;bottom:calc(92px + var(--safe-b));inset-inline:0;display:flex;justify-content:center;z-index:200;pointer-events:none;}
+#toast div{background:var(--charcoal);color:var(--ivory);padding:11px 20px;border-radius:999px;font-size:14px;opacity:0;transform:translateY(10px);transition:.3s;max-width:88%;text-align:center;}
+#toast div.on{opacity:1;transform:none;}
+
+/* misc */
+.kv{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:15px;}
+.kv:last-child{border-bottom:none;}
+.kv b{font-weight:600;direction:ltr;unicode-bidi:isolate;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stat{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-s);padding:14px;box-shadow:0 1px 2px rgba(42,37,34,.04);}
+.stat b{display:block;font-size:25px;font-weight:600;color:var(--burgundy);direction:ltr;line-height:1.2;}
+.stat span{font-size:12px;color:var(--taupe-2);}
+.empty{text-align:center;padding:34px 18px;color:var(--taupe-2);font-size:14.5px;line-height:1.8;}
+.sig{font-family:var(--lat);font-style:italic;color:var(--burgundy);}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.gallery .g{background:linear-gradient(160deg,#FFFDF9,#F3EBE0);border:1px solid var(--line-2);border-radius:14px;padding:6px;}
+.gallery .g svg{width:100%;height:auto;display:block;}
+.gallery .g p{margin:5px 4px 2px;font-size:11.5px;color:var(--taupe-2);text-align:center;}
+/* rehabilitation phase — calm olive accent, same design language */
+.rehab-panel{border-inline-start:3px solid var(--olive);background:rgba(108,115,88,.07);border-radius:10px;padding:13px 15px;font-size:14.5px;line-height:1.75;}
+.journey .jstep{display:flex;gap:12px;align-items:flex-start;}
+.journey .jnum{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--taupe);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none;color:var(--taupe-2);margin-top:2px;}
+.journey .jnum.on{background:var(--burgundy);border-color:var(--burgundy);color:#fff;}
+.journey .jnum.half{border-color:var(--olive);color:var(--olive);border-style:dashed;}
+.journey .jline{width:1.5px;height:20px;background:var(--line);margin-inline-start:12px;}
+.journey .jt{font-weight:600;font-size:15.5px;}
+.journey .js{font-size:12.5px;color:var(--taupe-2);}
+.journey .jok{margin-inline-start:auto;font-size:13px;color:var(--burgundy);}
+.bars{margin:14px 0 4px;}
+.bars .brow{display:flex;justify-content:space-between;font-size:11.5px;color:var(--taupe-2);margin-top:9px;}
+.bars .bar{height:5px;background:var(--cream-2);border-radius:3px;overflow:hidden;margin-top:4px;}
+.bars .bar i{display:block;height:100%;background:var(--burgundy);border-radius:3px;transition:width .4s ease;}
+.bars .bar.rehab i{background:var(--olive);}
+.mark2{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--taupe-2);}
+.mark2 b{font-weight:600;}
+:focus-visible{outline:2px solid var(--burgundy);outline-offset:2px;border-radius:6px;}
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <section class="screen" id="s-today"></section>
+  <section class="screen" id="s-week"></section>
+  <section class="screen" id="s-history"></section>
+  <section class="screen" id="s-canvas"></section>
+  <section class="screen" id="s-sara"></section>
+</div>
+
+<nav id="nav"><div class="in">
+  <button data-nav="today" class="on"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-6 3 12 2.5-6H20"/></svg><span>اليوم</span></button>
+  <button data-nav="week"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>الأسبوع</span></button>
+  <button data-nav="history"><svg viewBox="0 0 24 24"><path d="M4 19V6M4 15l5-5 4 3 7-7"/><path d="M20 7v4h-4"/></svg><span>سجلي</span></button>
+  <button data-nav="canvas"><svg viewBox="0 0 24 24"><path d="M4 18c3-9 6-12 8-12s3 2 3 5-2 5-4 5-3-2-3-4"/><circle cx="18.5" cy="17" r="2.2"/></svg><span>لوحتي</span></button>
+  <button data-nav="sara"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.8 20c.8-3.9 3.7-6 7.2-6s6.4 2.1 7.2 6"/></svg><span>سارة</span></button>
+</div></nav>
+
+<div class="overlay" id="ov"><div class="ov-head" id="ov-head"></div><div class="ov-body" id="ov-body"></div></div>
+
+<div id="rest">
+  <div class="lbl">راحة</div>
+  <div class="ringwrap">
+    <svg viewBox="0 0 230 230"><circle cx="115" cy="115" r="104" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/><circle id="ring" cx="115" cy="115" r="104" fill="none" stroke="#F5EFE7" stroke-width="5" stroke-linecap="round" stroke-dasharray="653.45" stroke-dashoffset="0"/></svg>
+    <div class="inner"><div class="clock" id="rest-clock">00:00</div></div>
+  </div>
+  <div class="nx" id="rest-next"></div>
+  <div class="quick" id="rest-quick"></div>
+  <div class="ctrls">
+    <button data-act="rest-add">‎+15 ث</button>
+    <button data-act="rest-toggle" id="rest-toggle">إيقاف مؤقت</button>
+    <button data-act="rest-skip">تخطي</button>
+  </div>
+</div>
+
+<div id="onb">
+  <div class="onb-s on" data-onb="0"></div>
+  <div class="onb-s" data-onb="1"></div>
+  <div class="onb-s" data-onb="2"></div>
+  <div class="onb-s" data-onb="3"></div>
+  <div class="onb-dots"><i class="on"></i><i></i><i></i><i></i></div>
+</div>
+
+<div id="modal"><div class="box" id="modal-box"></div></div>
+<div id="toast"><div id="toast-t"></div></div>
+<input type="file" id="file-in" accept="application/json,.json" class="hidden">
+
+<script>
+"use strict";
+/* =========================================================
+   1) PROGRAM DATA — SOURCE OF TRUTH (do not modify)
+   ========================================================= */
+
+const saraProfile = {
+  name: "سارة",
+  fullName: "سارة الشقيران",
+  age: 49,
+  heightCm: 165,
+  weightKg: 60,
+  accent: "burgundy",
+  children: ["فاطمة","أفراح","تهاني","نايف","مالك","عبدالرحمن"]
+};
+
+const equipment = ["جهاز المشي","الدراجة الثابتة","الأوربتراك","كرة التمرين","دمبل","مرتبة تمرين","بنش قابل للتعديل","حبل مقاومة"];
+
+const prohibitedActivities = [
+  "Running","Jumping","Jump Squat","Box Jump","Burpees with jumping",
+  "Jump Rope","Sprint","Walking Lunges for distance","Prolonged walking for cardio"
+];
+
+const REST_FLEX = {min:60,max:90,def:75,options:[60,75,90]};
+
+const warmupHip = [
+  {ar:"تدوير الحوض ببطء — 10 لكل اتجاه", en:"Pelvic circles"},
+  {ar:"قوس وتقعير الظهر على أربع — 10 مرات", en:"Cat–Camel"},
+  {ar:"جسر الورك بوزن الجسم — 12 مرة", en:"Bodyweight Glute Bridge"},
+  {ar:"تبعيد الفخذين بالحبل جلوسًا — 15 مرة خفيفة", en:"Banded Abduction (light)"},
+  {ar:"فتح الورك بخطوة أمامية بإسناد — 8 لكل جهة", en:"Supported Hip Opener"}
+];
+const warmupUpper = [
+  {ar:"تدوير الحوض ببطء — 10 لكل اتجاه", en:"Pelvic circles"},
+  {ar:"قوس وتقعير الظهر على أربع — 10 مرات", en:"Cat–Camel"},
+  {ar:"تدوير الكتفين للخلف — 12 مرة", en:"Shoulder Circles"},
+  {ar:"سحب الحبل أمام الصدر — 15 مرة خفيفة", en:"Band Pull-Apart"},
+  {ar:"دمبل خفيف جدًا: مجموعة إحماء 12 تكرار على أول حركة", en:"Light warm-up set"}
+];
+const cooldown = [
+  {ar:"تمديد الخلفية جلوسًا على الكرسي — 30 ثانية لكل جهة", en:"Seated Hamstring Stretch"},
+  {ar:"تمديد الأمامية وقوفًا بإسناد — 30 ثانية لكل جهة", en:"Standing Quad Stretch"},
+  {ar:"تمديد قابض الورك بالركوع على المرتبة — 30 ثانية لكل جهة", en:"Kneeling Hip Flexor"},
+  {ar:"فتح الصدر عند إطار الباب — 30 ثانية", en:"Doorway Chest Opener"},
+  {ar:"تنفّس هادئ على الظهر — 6 أنفاس عميقة", en:"Calm Breathing"}
+];
+const cooldownNote = "تمديد بدون أي ضغط على الكاحل. لا وقوف على أطراف الأصابع في التمديد، ولا شدّ للكاحل.";
+
+function ex(id,ar,en,sets,lo,hi,rest,cue,mistake){
+  return {id:id,ar:ar,en:en,sets:sets,lo:lo,hi:hi,rest:rest,cue:cue,mistake:mistake};
+}
+
+const workoutProgram = {
+  1:{ index:1, family:"فاطمة", type:"Lower A", typeAr:"الجزء السفلي أ", kind:"strength", lower:true,
+      warmup:warmupHip, warmupRounds:1,
+      exercises:[
+        ex("goblet_squat","سكوات جوبلت","Goblet Squat",4,8,12,120,"انزلي ببطء، الصدر مرفوع والكعبان ثابتان على الأرض.","النزول بسرعة ثم الارتداد من الأسفل."),
+        ex("db_rdl","الرفعة الرومانية بالدمبل","Dumbbell Romanian Deadlift",4,8,12,120,"ادفعي الورك للخلف والدمبل قريب من الساق، الظهر مستقيم.","ثني الظهر بدل تحريك الورك."),
+        ex("split_squat","سكوات مشقوق ثابت بإسناد","Supported Static Split Squat",4,8,10,"flex","الثقل على الرجل الأمامية، والنزول عمودي للأسفل.","الاعتماد الكامل على اليد المسندة."),
+        ex("hip_thrust","دفع الورك بالدمبل","Dumbbell Hip Thrust",4,10,15,"flex","ادفعي من الكعب وثبّتي الوضعية لحظة في الأعلى.","تقويس أسفل الظهر بدل انقباض المؤخرة."),
+        ex("banded_abduction","تبعيد الفخذين بالحبل — جلوس","Seated Banded Abduction",4,12,15,"flex","افتحي ببطء، والرجوع أبطأ من الفتح.","استخدام الزخم وفتح سريع متقطع."),
+        ex("calf_raise_supported","رفع السمانة بإسناد","Supported Calf Raise",4,12,15,"flex","ارتفاع مريح وثبات لحظة في الأعلى، بدون مدى مؤلم.","الارتداد السريع بدون تحكم.")
+      ] },
+  2:{ index:2, family:"أفراح", type:"Upper A", typeAr:"الجزء العلوي أ", kind:"strength", lower:false,
+      warmup:warmupUpper, warmupRounds:1,
+      exercises:[
+        ex("db_press","ضغط الصدر بالدمبل","Dumbbell Press",4,10,12,"flex","الكتفان مسحوبان للخلف والمرفقان بزاوية مريحة.","فتح المرفقين بالكامل للجانبين."),
+        ex("one_arm_row","تجديف بذراع واحدة بإسناد","One-Arm Supported Dumbbell Row",4,10,12,"flex","اسحبي من المرفق باتجاه الورك، والصدر ثابت.","لفّ الجذع مع كل سحبة."),
+        ex("seated_shoulder_press","ضغط الكتف بالدمبل — جلوس","Seated Dumbbell Shoulder Press",4,8,12,"flex","الظهر مسند، والدفع للأعلى بخط مستقيم.","دفع الرقبة للأمام أو تقويس الظهر."),
+        ex("seated_lateral_raise","رفرفة جانبية — جلوس","Seated Lateral Raise",4,12,15,"flex","ارفعي حتى مستوى الكتف فقط، والنزول ببطء.","رفع الوزن بحركة الجسم."),
+        ex("biceps_curl","مرجحة البايسبس","Biceps Curl",4,10,15,"flex","المرفقان ثابتان بجانب الجذع.","تأرجح الجسم للمساعدة."),
+        ex("seated_triceps_ext","تمديد الترايسبس — جلوس","Seated Triceps Extensios",4,10,15,"flex","المرفقان قريبان من الرأس ولا يتحركان.","فتح المرفقين للخارج.")
+      ] },
+  3:{ index:3, family:"تهاني", type:"Cardio", typeAr:"كارديو منخفض التأثير", kind:"cardio", lower:false },
+  4:{ index:4, family:"نايف", type:"Lower B", typeAr:"الجزء السفلي ب", kind:"strength", lower:true,
+      warmup:warmupHip, warmupRounds:1,
+      exercises:[
+        ex("db_deadlift_raised","الرفعة الميتة بالدمبل من سطح مرتفع","Dumbbell Deadlift from Raised Surface",4,8,10,120,"ابدئي بالدفع من الأرض بالساقين والظهر محايد.","رفع الورك أولًا قبل الصدر."),
+        ex("db_squat_box","سكوات بالدمبل إلى صندوق","Dumbbell Squat to Box",4,10,12,120,"لمسة خفيفة على الصندوق ثم قومي بتحكم.","الارتماء على الصندوق بثقل الجسم."),
+        ex("low_step_up","صعود درجة منخفضة بإسناد","Low Step-Up with Support",4,8,10,"flex","الدفع من كعب الرجل التي على الدرجة، ونزول بهدوء.","الدفع من الرجل السفلية."),
+        ex("b_stance_rdl","الرفعة الرومانية بوضعية B","B-Stance Romanian Deadlift",4,8,10,"flex","الرجل الخلفية للتوازن فقط، والثقل على الأمامية.","توزيع الوزن بالتساوي على الرجلين."),
+        ex("glute_bridge_march","جسر المؤخرة مع رفع الركبتين بالتناوب","Glute Bridge March",4,8,10,"flex","الحوض ثابت تمامًا أثناء رفع الركبة.","هبوط جهة الحوض مع كل رفعة."),
+        ex("slow_calf_raise","رفع السمانة ببطء","Slow Calf Raise",4,12,15,"flex","3 ثوانٍ للنزول، بدون مدى مؤلم.","النزول السريع بثقل الجسم.")
+      ] },
+  5:{ index:5, family:"مالك", type:"Upper B", typeAr:"الجزء العلوي ب", kind:"strength", lower:false,
+      warmup:warmupUpper, warmupRounds:1,
+      exercises:[
+        ex("incline_press","ضغط الصدر المائل بالدمبل","Dumbbell Incline Chest Press",4,10,12,"flex","ميل البنش خفيف، والنزول حتى حدود مريحة للكتف.","ميل عالٍ جدًا يحوّل الحمل للكتف."),
+        ex("bent_over_row","تجديف منحنٍ بإسناد","Supported Bent-Over Row",4,10,12,"flex","الظهر مستقيم والسحب باتجاه أسفل الأضلاع.","رفع الجذع مع كل سحبة."),
+        ex("arnold_press","ضغط أرنولد — جلوس","Seated Arnold Press",4,10,12,"flex","دوران هادئ للمعصمين أثناء الصعود.","تسريع الدوران بدون تحكم."),
+        ex("db_pullover","بولوفر بالدمبل","Dumbbell Pullover",4,10,12,"flex","مدى مريح للكتف، والأضلاع لا ترتفع.","النزول خلف الرأس أكثر من اللازم."),
+        ex("lateral_raise","رفرفة جانبية","Lateral Raise",4,12,15,"flex","حتى مستوى الكتف فقط، ونزول محسوب.","الوزن أكبر من قدرة التحكم."),
+        ex("hammer_curl","مرجحة مطرقية","Hammer Curl",4,12,15,"flex","الكفّان متقابلان والمرفقان ثابتان.","تأرجح الجذع."),
+        ex("lying_triceps_ext","تمديد الترايسبس — استلقاء","Lying Triceps Extension",4,12,15,"flex","المرفقان ثابتان باتجاه السقف.","تحريك العضد مع كل تكرار.")
+      ] },
+  6:{ index:6, family:"عبدالرحمن", type:"Cardio", typeAr:"كارديو منخفض التأثير", kind:"cardio", lower:false },
+  7:{ index:7, family:"سارة", type:"Complete Rest", typeAr:"راحة تامة", kind:"rest", lower:false }
+};
+
+const familyDays = [1,2,3,4,5,6].map(function(i){return {day:i, name:workoutProgram[i].family, type:workoutProgram[i].type};});
+
+const cardioMachines = [
+  {id:"bike", ar:"الدراجة الثابتة", en:"Stationary Bike", pref:true},
+  {id:"elliptical", ar:"الأوربتراك", en:"Elliptical Cross Trainer", pref:true},
+  {id:"treadmill", ar:"جهاز المشي — مشي لطيف وقصير", en:"Treadmill (gentle walk)", pref:false}
+];
+
+/* Observation cues — themes: attention, control, detail. */
+const clues = [
+  {k:"Control", ar:"راقبي سرعة النزول. هل تبقى كما هي في المجموعة الأخيرة؟"},
+  {k:"Balance", ar:"هل هناك فرق واضح بين الجهة اليمنى واليسرى اليوم؟"},
+  {k:"Breathing", ar:"متى بالضبط يبدأ نمط تنفّسك يتغيّر؟"},
+  {k:"Tempo", ar:"جرّبي عدّ ثانيتين في النزول. هل تغيّر الإحساس؟"},
+  {k:"Grip", ar:"لاحظي قبضتك: هل تتعب قبل العضلة المستهدفة؟"},
+  {k:"Position", ar:"قدماك في أول مجموعة وآخر مجموعة — نفس المكان؟"},
+  {k:"Detail", ar:"أول تكرار وآخر تكرار: ما الفرق الذي تلاحظينه؟"},
+  {k:"Stillness", ar:"ما الذي يتحرك ولا يفترض أن يتحرك في هذه الحركة؟"},
+  {k:"Attention", ar:"في أي تكرار بدأ تركيزك يقل؟ لاحظي الرقم فقط."},
+  {k:"Range", ar:"هل المدى الكامل ثابت، أم يقصر مع التعب؟"}
+];
+
+const englishWords = [
+  {w:"Steady",  ar:"ثابت / مستمر",  line:"Steady reps > rushed reps."},
+  {w:"Control", ar:"تحكّم",          line:"Control is progress."},
+  {w:"Balance", ar:"توازن",          line:"Balance both sides, not just the strong one."},
+  {w:"Strength",ar:"قوة",            line:"Strength is built quietly."},
+  {w:"Consistency",ar:"انتظام",      line:"Consistency beats intensity."},
+  {w:"Recovery",ar:"استشفاء",        line:"Recovery is part of the training."},
+  {w:"Stability",ar:"ثبات",          line:"Stable first, heavy later."},
+  {w:"Progress",ar:"تقدّم",          line:"Same movement, better control. That is progress."},
+  {w:"Focus",   ar:"تركيز",          line:"Focus on the rep you are in."},
+  {w:"Effort",  ar:"مجهود",          line:"Measured effort, not maximum effort."},
+  {w:"Tempo",   ar:"إيقاع",          line:"Slow down to feel more."}
+];
+
+const motivations = [
+  "الجودة قبل العدد.",
+  "قوة بدون استعجال.",
+  "اليوم ما نبحث عن الفشل. نبحث عن أداء أنظف.",
+  "نفس الحركة، تحكّم أفضل. هذا تقدّم.",
+  "الانتظام يسبق الشدّة.",
+  "التحكّم هو المقياس، وليس الوزن.",
+  "خطوة صغيرة ثابتة تتفوّق على قفزة متقطعة."
+];
+
+const rpeInfo = [
+  {v:6, t:"مجهود متوسط — ما زال عندك عدة تكرارات ممكنة."},
+  {v:7, t:"مجهود جيد ومسيطر عليه."},
+  {v:8, t:"صعب لكن بدون فشل عضلي."}
+];
+
+const LOWER_RULE = "قاعدة اليوم: ننهي المجموعة وإحنا قادرين على تكرار أو تكرارين إضافيين تقريبًا. بدون فشل عضلي في تمارين الجزء السفلي.";
+const PAIN_NOTE  = "الألم غير المعتاد ليس هدفًا من التمرين. أوقفي الحركة وراجعي المختص عند الحاجة.";
+
+
+/* =========================================================
+   1b) REHABILITATION PROGRAM — SOURCE OF TRUTH (attached plan)
+   Content preserved as prescribed. Nothing added or substituted.
+   ========================================================= */
+const REHAB_RULE_T = "شهيق قبل الحركة — زفير أثناء الجهد.";
+const REHAB_RULE_S = "مع الزفير: تفعيل لطيف لقاع الحوض، بدون حبس النفس.";
+
+const breathingTechnique = [
+  "استلقي على ظهرك مع ثني الركبتين ووضع القدمين على الأرض، أو اجلسي في وضعية مريحة مع استقامة الظهر.",
+  "ضعي يدًا على الصدر ويدًا على البطن.",
+  "خذي شهيقًا بطيئًا من الأنف لمدة 3–4 ثوانٍ، وحاولي أن يتمدد القفص الصدري والبطن بلطف في جميع الاتجاهات.",
+  "أثناء الزفير من الفم لمدة 4–6 ثوانٍ: ارفعي عضلات قاع الحوض بلطف وكأنك تمنعين خروج البول أو الغازات.",
+  "أثناء الزفير أيضًا: اسحبي أسفل البطن للداخل برفق دون حبس النفس أو شد البطن بقوة.",
+  "استرخي تمامًا مع الشهيق التالي وكرري الحركة."
+];
+const breathingNotes = [
+  "كرري 8–10 أنفاس متتالية.",
+  "نفذي 2–3 جولات يوميًا.",
+  "التنفس يجب أن يكون هادئًا وطبيعيًا.",
+  "لا تحبسي النفس أثناء التمرين."
+];
+
+function rex(id,en,sets,reps,repsLabel,kind,tech,note){
+  return {id:id, en:en, sets:sets, reps:reps, repsLabel:repsLabel, kind:kind, tech:tech||[], note:note||""};
+}
+
+const TECH_BREATH = breathingTechnique;
+const TECH_PELVIC = [
+  "خذي شهيقًا هادئًا من الأنف.",
+  "أثناء الزفير من الفم: تخيلي أنك تحاولين منع خروج البول، وتمنعين خروج الغازات في نفس الوقت.",
+  "ارفعي العضلات للداخل وللأعلى بلطف.",
+  "فكري في «رفع» العضلات وليس «عصرها» بقوة.",
+  "حافظي على الانقباض لمدة 2–3 ثوانٍ.",
+  "استرخي بالكامل أثناء الشهيق التالي."
+];
+const TECH_GLUTE = [
+  "استلقي على ظهرك والركبتان مثنيتان.",
+  "شدي البطن بلطف.",
+  "ارفعي الحوض حتى يصبح الجسم بخط مستقيم من الكتفين للركبتين.",
+  "انزلي ببطء."
+];
+const TECH_SIT2STAND = [
+  "اجلسي على كرسي ثابت.",
+  "ميلي بالجذع قليلًا للأمام.",
+  "ادفعي الأرض بالقدمين وانهضي.",
+  "اجلسي ببطء مع التحكم بالحركة."
+];
+const TECH_WALLPUSH = [
+  "ضعي اليدين على الجدار بمستوى الصدر.",
+  "الجسم مستقيم.",
+  "اثني المرفقين واقتربي من الجدار.",
+  "ادفعي للعودة لوضع البداية."
+];
+const TECH_TVA = [
+  "استلقي على ظهرك مع ثني الركبتين.",
+  "خذي شهيقًا طبيعيًا.",
+  "أثناء الزفير اسحبي أسفل البطن للداخل بلطف وكأنك تغلقين سحاب بنطال ضيق.",
+  "لا تشفطي البطن بقوة.",
+  "لا تحبسي النفس.",
+  "حافظي على الوضع 3–5 ثوانٍ ثم استرخي."
+];
+const TECH_DEADBUG = [
+  "الركبتان مثنيتان 90 درجة. الذراعان للأعلى.",
+  "شدي الكور بلطف.",
+  "مدّي رجلًا واحدة ببطء للمس الأرض بالكعب ثم عودي.",
+  "بدّلي بين الجانبين. حافظي على ثبات أسفل الظهر.",
+  "إذا ظهر ضغط بالحوض أو تسرب بول تقلل المدى الحركي."
+];
+const TECH_CLAM = [
+  "الاستلقاء على الجانب.",
+  "الركبتان مثنيتان. القدمان متلامستان.",
+  "افتحي الركبة العلوية للأعلى مع بقاء القدمين متلامستين.",
+  "لا تديري الحوض للخلف.",
+  "انزلي ببطء."
+];
+const TECH_BANDROW = [
+  "الذراعان ممدودتان، ارفعي الصدر.",
+  "اسحبي الباند باتجاه أسفل الصدر.",
+  "اجمعي لوحي الكتف خلفًا. عودي ببطء.",
+  "لا ترفعي الكتفين للأعلى أثناء السحب."
+];
+const TECH_BIRDDOG = [
+  "اليدان تحت الكتفين والركبتان تحت الحوض.",
+  "شدي البطن بلطف، ومدي الذراع اليمنى والرجل اليسرى.",
+  "حافظي على ثبات الحوض.",
+  "عودي ببطء ثم بدّلي الجهة.",
+  "لا تسمحي بتقوس أسفل الظهر."
+];
+const TECH_MINISQUAT = [
+  "القدمان بعرض الكتفين.",
+  "انظري للأمام.",
+  "اثني الركبتين قليلًا فقط (ربع سكوات تقريبًا).",
+  "ادفعي الحوض للخلف بشكل خفيف.",
+  "انهضي بالضغط من الكعبين.",
+  "لا حاجة للنزول العميق في مرحلة التأهيل."
+];
+const TECH_WALK = ["مشي هادئ ضمن برنامج التأهيل، بالمدة المحددة فقط."];
+const TECH_PT = ["جلسة العلاج الطبيعي كما هي مقررة من المختص. البرنامج المرفق لا يفصّل حركاتها هنا."];
+
+const rehabRoutines = {
+  A: { key:"A", title:"Exercise A", titleAr:"تمارين A", items:[
+      rex("rb_breath","Diaphragmatic Breathing",3,8,"8 أنفاس","breath",TECH_BREATH,"سبق شرحه في صفحة التنفس."),
+      rex("rb_pelvic","Pelvic Floor Contraction",3,10,"10 تكرارات","reps",TECH_PELVIC),
+      rex("rb_glute","Glute Bridge",3,12,"12 تكرار","reps",TECH_GLUTE),
+      rex("rb_sit2stand","Sit To Stand",3,12,"12 تكرار","reps",TECH_SIT2STAND),
+      rex("rb_wallpush","Wall Push Up",3,12,"12 تكرار","reps",TECH_WALLPUSH),
+      rex("rb_walk","Walking",1,0,"15–20 دقيقة","walk",TECH_WALK)
+    ]},
+  B: { key:"B", title:"Exercise B", titleAr:"تمارين B", items:[
+      rex("rb_breath","Diaphragmatic Breathing",3,8,"8 أنفاس","breath",TECH_BREATH,"سبق شرحه في صفحة التنفس."),
+      rex("rb_tva","TVA Activation",3,10,"10 تكرارات","reps",TECH_TVA),
+      rex("rb_deadbug","Dead Bug Modified",3,8,"8 تكرارات","reps",TECH_DEADBUG),
+      rex("rb_clam","Clamshell",3,15,"15 تكرار","reps",TECH_CLAM),
+      rex("rb_bandrow","Standing Band Row",3,12,"12 تكرار","reps",TECH_BANDROW),
+      rex("rb_walk","Walking",1,0,"15–20 دقيقة","walk",TECH_WALK)
+    ]},
+  C: { key:"C", title:"Exercise C", titleAr:"تمارين C", items:[
+      rex("rb_breath","Diaphragmatic Breathing",3,8,"8 أنفاس","breath",TECH_BREATH,"سبق شرحه في صفحة التنفس."),
+      rex("rb_pelvic","Pelvic Floor Contraction",3,10,"10 تكرارات","reps",TECH_PELVIC),
+      rex("rb_birddog","Bird Dog",3,8,"8 تكرارات","reps",TECH_BIRDDOG),
+      rex("rb_minisquat","Mini Squat",3,12,"12 تكرار","reps",TECH_MINISQUAT),
+      rex("rb_glute","Glute Bridge",3,12,"12 تكرار","reps",TECH_GLUTE),
+      rex("rb_walk","Walking",1,0,"15–20 دقيقة","walk",TECH_WALK)
+    ]},
+  PT:{ key:"PT", title:"Physical Therapy Exercise", titleAr:"تمرين العلاج الطبيعي", items:[
+      rex("rb_pt","Physical Therapy Exercise",1,0,"كما هي مقررة","pt",TECH_PT),
+      rex("rb_walk15","Walking",1,0,"15 دقيقة","walk",TECH_WALK)
+    ]},
+  BREATH:{ key:"BREATH", title:"Diaphragmatic Breathing", titleAr:"تمرين التنفس", items:[
+      rex("rb_breath_day","Diaphragmatic Breathing",3,8,"8 أنفاس","breath",TECH_BREATH,"يمكن تنفيذه أيضًا كجلسة مستقلة 5–10 دقائق: 8–10 أنفاس متتالية، و2–3 جولات.")
+    ]}
+};
+const rehabByDay = {1:"PT", 2:"A", 3:"PT", 4:"B", 5:"PT", 6:"C", 7:"BREATH"};
+function rehabOf(day){ return rehabRoutines[rehabByDay[day]]; }
+function rehabTotalSets(day){ return rehabOf(day).items.reduce(function(a,i){ return a+i.sets; },0); }
+
+/* =========================================================
+   2) STORAGE — IndexedDB only, fully local
+   ========================================================= */
+const DB_NAME = "sara_training";
+const DB_STORE = "state";
+const DB_KEY = "app";
+const LS_KEY = "sara_training_state_v1";
+let _db = null, _idbOK = false, _lsOK = false;
+
+function openDB(){
+  return new Promise(function(resolve){
+    let req;
+    try{ req = indexedDB.open(DB_NAME, 1); }
+    catch(e){ return resolve(null); }
+    let settled = false;
+    const done = function(v){ if(!settled){ settled = true; resolve(v); } };
+    req.onupgradeneeded = function(){ const d = req.result; if(!d.objectStoreNames.contains(DB_STORE)) d.createObjectStore(DB_STORE); };
+    req.onsuccess = function(){ _db = req.result; _idbOK = true; done(_db); };
+    req.onerror = function(){ done(null); };
+    req.onblocked = function(){ done(null); };
+    setTimeout(function(){ done(null); }, 3000);
+  });
+}
+function dbGet(){
+  return new Promise(function(resolve){
+    if(!_db) return resolve(null);
+    try{
+      const tx = _db.transaction(DB_STORE,"readonly");
+      const r = tx.objectStore(DB_STORE).get(DB_KEY);
+      r.onsuccess = function(){ resolve(r.result || null); };
+      r.onerror = function(){ resolve(null); };
+    }catch(e){ resolve(null); }
+  });
+}
+function dbPut(val){
+  return new Promise(function(resolve){
+    if(!_db) return resolve(false);
+    try{
+      const tx = _db.transaction(DB_STORE,"readwrite");
+      tx.objectStore(DB_STORE).put(val, DB_KEY);
+      tx.oncomplete = function(){ resolve(true); };
+      tx.onerror = function(){ resolve(false); };
+      tx.onabort = function(){ resolve(false); };
+    }catch(e){ resolve(false); }
+  });
+}
+/* second, independent copy — survives in browsers where IndexedDB is cleared or blocked */
+function lsGet(){
+  try{ const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; }catch(e){ return null; }
+}
+function lsPut(val){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(val)); _lsOK = true; return true; }
+  catch(e){ _lsOK = false; return false; }
+}
+function storageMode(){
+  if(_idbOK && _lsOK) return "idb+ls";
+  if(_idbOK) return "idb";
+  if(_lsOK) return "ls";
+  return "none";
+}
+/* writes, then reads back, and reports what actually happened */
+function storageTest(){
+  const stamp = Date.now();
+  state.savedAt = stamp;
+  const snap = JSON.parse(JSON.stringify(state));
+  let lsMsg;
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify(snap));
+    const back = lsGet();
+    _lsOK = !!(back && back.savedAt === stamp);
+    lsMsg = _lsOK ? "يعمل ✓" : "الكتابة تمت لكن القراءة رجعت فارغة";
+  }catch(e){ _lsOK = false; lsMsg = "محجوب — " + (e && e.name ? e.name : "خطأ"); }
+
+  dbPut(snap).then(function(ok){
+    if(!ok) return null;
+    return dbGet();
+  }).then(function(back){
+    const idbOk = !!(back && back.savedAt === stamp);
+    _idbOK = idbOk;
+    const where = (location.protocol === "file:") ? "ملف محلي (file://)"
+                : (location.protocol === "http:" || location.protocol === "https:") ? (location.host || location.protocol)
+                : (location.protocol + " — معاينة داخل تطبيق");
+    let h = '<h3>اختبار الحفظ</h3>';
+    h += '<div class="kv"><span>مكان التشغيل</span><b style="direction:ltr;font-size:12.5px">'+esc(where)+'</b></div>';
+    h += '<div class="kv"><span>IndexedDB</span><b style="direction:rtl;font-size:13px">'+(idbOk?"يعمل ✓":"غير متاح")+'</b></div>';
+    h += '<div class="kv"><span>التخزين المحلي</span><b style="direction:rtl;font-size:13px">'+esc(lsMsg)+'</b></div>';
+    if(idbOk || _lsOK){
+      h += '<div class="banner olive" style="margin-top:12px">الحفظ يعمل هنا. إذا فُقد التقدّم رغم ذلك، فالسبب غالبًا فتح نسخة ملف مختلفة عن التي حُفظ فيها.</div>';
+    } else {
+      h += '<div class="banner" style="margin-top:12px">هذا المتصفح لا يسمح بالتخزين في هذا المكان. الأسباب المعتادة: فتح الملف مباشرة من «الملفات»، أو معاينة داخل تطبيق، أو تصفّح خاص.<br><span class="tiny">الحل: تشغيل التطبيق من رابط ويب ثابت وإضافته إلى الشاشة الرئيسية، أو الاعتماد على التصدير والاستيراد.</span></div>';
+    }
+    h += '<div class="acts"><button class="btn quiet sm" data-act="export">تصدير نسخة الآن</button><button class="btn quiet sm" data-act="modal-close">إغلاق</button></div>';
+    modal(h);
+    render();
+  });
+}
+function storageLabel(){
+  const m = storageMode();
+  if(m==="idb+ls") return "IndexedDB + نسخة محلية احتياطية";
+  if(m==="idb") return "IndexedDB";
+  if(m==="ls") return "التخزين المحلي للمتصفح";
+  return "غير متاح — لن يُحفظ التقدّم";
+}
+
+/* =========================================================
+   3) STATE
+   ========================================================= */
+function defaultState(){
+  return {
+    version:1,
+    onboarded:false,
+    startedAt:null,
+    currentWeek:1,
+    sessions:[],                 /* completed main workouts */
+    rehabSessions:[],            /* completed rehabilitation phases */
+    notes:{},                    /* exerciseId -> [{week,date,text}] */
+    reflections:{},              /* week -> {a,b,c} */
+    restPrefs:{},                /* exerciseId -> [secs...] */
+    deload:{ weeks:[], lastDeloadWeek:0, postponed:false },
+    settings:{ cardioMachine:"bike", cardioMinutes:20, flexRest:75 },
+    lastCanvasSeen:0,
+    savedAt:null
+  };
+}
+let state = defaultState();
+let saveTimer = null;
+function snapshot(){
+  state.savedAt = Date.now();
+  return JSON.parse(JSON.stringify(state));
+}
+/* every save is written to BOTH stores, so one of them surviving is enough */
+function persistAll(){
+  const snap = snapshot();
+  lsPut(snap);
+  return dbPut(snap).then(function(ok){ return ok || _lsOK; });
+}
+function save(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(function(){ persistAll(); }, 120);
+}
+function flushSave(){ clearTimeout(saveTimer); persistAll(); }
+function saveNow(){ clearTimeout(saveTimer); return persistAll(); }
+
+/* =========================================================
+   4) SMALL HELPERS
+   ========================================================= */
+const $ = function(s,r){ return (r||document).querySelector(s); };
+const $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+function en(s){ return '<span class="en">'+esc(s)+'</span>'; }
+function nm(s){ return '<span class="num">'+esc(s)+'</span>'; }
+function todayISO(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function fmtDate(iso){ if(!iso) return ""; const p=String(iso).split("-"); return p[2]+"/"+p[1]; }
+function mmss(s){ s=Math.max(0,Math.round(s)); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+function pick(arr,seed){ return arr[Math.abs(Math.floor(seed))%arr.length]; }
+function rng(seed){ let t = seed>>>0; return function(){ t += 0x6D2B79F5; let x = Math.imul(t ^ (t>>>15), 1|t); x ^= x + Math.imul(x ^ (x>>>7), 61|x); return ((x ^ (x>>>14))>>>0)/4294967296; }; }
+function toast(msg){
+  const t = $("#toast-t"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove("on"); }, 2400);
+}
+function modal(html){ $("#modal-box").innerHTML = html; $("#modal").classList.add("on"); }
+function closeModal(){ $("#modal").classList.remove("on"); }
+
+/* ---- program helpers ---- */
+function setsFor(exercise, week){
+  if(isDeload(week)) return Math.max(3, Math.round(exercise.sets*0.75));
+  return exercise.sets;
+}
+function isDeload(week){ return state.deload.weeks.indexOf(week==null?state.currentWeek:week) !== -1; }
+function restSeconds(exercise){ return exercise.rest === "flex" ? (state.settings.flexRest||75) : exercise.rest; }
+function restLabel(exercise){ return exercise.rest === "flex" ? "60–90 ث" : "دقيقتان"; }
+function totalSets(day, week){
+  const d = workoutProgram[day];
+  if(d.kind!=="strength") return 0;
+  return d.exercises.reduce(function(a,e){ return a + setsFor(e, week); },0);
+}
+function estMinutes(day, week){
+  const d = workoutProgram[day];
+  if(d.kind==="cardio") return state.settings.cardioMinutes + 6;
+  if(d.kind!=="strength") return 0;
+  let s = 0;
+  d.exercises.forEach(function(e){ const n = setsFor(e, week); s += n*45 + (n-1)*restSeconds(e) + 30; });
+  return Math.round((s/60) + 9);
+}
+function sessionsOfWeek(w){ return state.sessions.filter(function(s){ return s.week===w; }); }
+/* --- rehabilitation phase (phase 1) --- */
+function isRehabDone(day, w){
+  w = (w==null)? state.currentWeek : w;
+  return state.rehabSessions.some(function(r){ return r.week===w && r.day===day; });
+}
+function recordRehab(day, w, kind){
+  if(isRehabDone(day,w)) return;
+  state.rehabSessions.push({ week:w, day:day, kind:kind, date:todayISO() });
+  saveNow();
+}
+/* a day counts as complete only when both required phases are done */
+function isDayFull(day, w){
+  w = (w==null)? state.currentWeek : w;
+  if(day===7) return isRehabDone(7,w);
+  return isRehabDone(day,w) && isDayDone(day,w);
+}
+/* 0 = nothing, 1 = rehabilitation only, 2 = both phases */
+function dayState(day, w){
+  w = (w==null)? state.currentWeek : w;
+  if(isDayFull(day,w)) return 2;
+  if(isRehabDone(day,w) || isDayDone(day,w)) return 1;
+  return 0;
+}
+function isDayDone(day, w){ return sessionsOfWeek(w==null?state.currentWeek:w).some(function(s){ return s.day===day; }); }
+function weekDoneCount(w){ let c=0; for(let i=1;i<=6;i++) if(isDayFull(i,w)) c++; return c; }
+function weekComplete(w){ return weekDoneCount(w==null?state.currentWeek:w)===6; }
+function nextDay(){
+  for(let i=1;i<=6;i++) if(!isDayFull(i)) return i;
+  return 7;
+}
+function exerciseById(id){
+  for(const k in workoutProgram){
+    const d = workoutProgram[k];
+    if(d.exercises) for(let i=0;i<d.exercises.length;i++) if(d.exercises[i].id===id) return d.exercises[i];
+  }
+  return null;
+}
+function dayOfExercise(id){
+  for(const k in workoutProgram){
+    const d = workoutProgram[k];
+    if(d.exercises && d.exercises.some(function(e){return e.id===id;})) return d;
+  }
+  return null;
+}
+/* history for one exercise: [{week,date,sets:[{w,r,rpe}]}] newest last */
+function historyOf(id){
+  const out = [];
+  state.sessions.forEach(function(s){
+    if(!s.entries) return;
+    const e = s.entries.filter(function(x){ return x.ex===id; });
+    if(e.length) out.push({ week:s.week, date:s.date, sets:e.map(function(x){ return {w:x.weight, r:x.reps, rpe:x.rpe}; }) });
+  });
+  return out;
+}
+function lastPerf(id){ const h = historyOf(id); return h.length? h[h.length-1] : null; }
+function avgRpeOf(sets){
+  const v = sets.map(function(s){return s.rpe;}).filter(function(x){ return typeof x==="number"; });
+  if(!v.length) return null;
+  return Math.round((v.reduce(function(a,b){return a+b;},0)/v.length)*10)/10;
+}
+function lastNote(id){ const n = state.notes[id]; return (n&&n.length)? n[n.length-1] : null; }
+
+/* =========================================================
+   5) INTELLIGENCE — restrained, data-backed only
+   ========================================================= */
+/* Progression: only when top of range is repeatedly reached at RPE <= 7 */
+function progressionHint(id){
+  const exd = exerciseById(id); if(!exd) return null;
+  const h = historyOf(id);
+  if(h.length < 2) return null;
+  const recent = h.slice(-2);
+  const ok = recent.every(function(s){
+    const reps = s.sets.map(function(x){return x.r;}).filter(function(x){return typeof x==="number";});
+    if(reps.length < 3) return false;
+    const allTop = reps.every(function(r){ return r >= exd.hi; });
+    const ar = avgRpeOf(s.sets);
+    return allTop && (ar===null || ar <= 7);
+  });
+  if(!ok) return null;
+  return "الأداء صار مريحًا نسبيًا. في الجلسة القادمة يمكنك التفكير بزيادة بسيطة جدًا في الوزن إذا كان ذلك مناسبًا.";
+}
+/* Observations from stored data only */
+function observations(id){
+  const out = [];
+  const h = historyOf(id);
+  const exd = exerciseById(id);
+  if(!exd) return out;
+
+  if(h.length >= 2){
+    const a = avgRpeOf(h[h.length-1].sets), b = avgRpeOf(h[h.length-2].sets);
+    if(a!==null && b!==null && a>=7.5 && b>=7.5)
+      out.push("آخر جلستين كان هذا التمرين أقرب لـ RPE 8. لا نستعجل زيادة الوزن.");
+  }
+  if(h.length >= 3){
+    const avgR = function(s){ const r=s.sets.map(function(x){return x.r;}).filter(function(x){return typeof x==="number";}); return r.length? r.reduce(function(x,y){return x+y;},0)/r.length : null; };
+    const older = avgR(h[h.length-3]), now = avgR(h[h.length-1]);
+    if(older!==null && now!==null && now - older >= 1.5)
+      out.push("قبل أسبوعين كان متوسطك "+Math.round(older)+" تكرارات. الآن "+Math.round(now)+".");
+    const wOld = Math.max.apply(null, h[h.length-3].sets.map(function(x){return x.w||0;}));
+    const wNow = Math.max.apply(null, h[h.length-1].sets.map(function(x){return x.w||0;}));
+    if(wNow > wOld) out.push("الوزن ارتفع من "+wOld+" إلى "+wNow+" كجم منذ أسبوعين.");
+  }
+  if(exd.rest === "flex"){
+    const p = state.restPrefs[id] || [];
+    if(p.length >= 3){
+      const counts = {};
+      p.slice(-6).forEach(function(v){ counts[v]=(counts[v]||0)+1; });
+      let best=null, bc=0;
+      for(const k in counts) if(counts[k]>bc){ bc=counts[k]; best=k; }
+      if(bc >= 3) out.push("غالبًا ترتاحين "+best+" ثانية هنا.");
+    }
+  }
+  return out;
+}
+function weekObservations(){
+  const out = [];
+  const done = state.sessions.length;
+  if(done >= 3){
+    const strength = state.sessions.filter(function(s){return s.type==="strength";});
+    if(strength.length >= 3){
+      const rp = strength.map(function(s){return s.avgRpe;}).filter(function(x){return typeof x==="number";});
+      if(rp.length>=3){
+        const last = rp.slice(-3).reduce(function(a,b){return a+b;},0)/3;
+        out.push("متوسط جهدك في آخر ثلاث جلسات قوة: "+ (Math.round(last*10)/10) + " RPE.");
+      }
+    }
+  }
+  const weeksDone = [];
+  for(let w=1; w<=state.currentWeek; w++) if(weekComplete(w)) weeksDone.push(w);
+  if(weeksDone.length >= 2) out.push("أكملتِ "+weeksDone.length+" أسابيع كاملة حتى الآن.");
+  return out;
+}
+/* Deload */
+function weeksSinceDeload(){ return state.currentWeek - (state.deload.lastDeloadWeek || 0); }
+function deloadDue(){ return weeksSinceDeload() >= 6 && !isDeload(state.currentWeek); }
+function deloadUrgent(){ return weeksSinceDeload() >= 8 && !isDeload(state.currentWeek); }
+
+/* =========================================================
+   6) SARA'S CANVAS — one mark per completed day
+   ========================================================= */
+/* Each family day contributes a distinct mark. Seeded by week so
+   every week's painting differs, but stays composed, never random. */
+function canvasSVG(week, opts){
+  opts = opts || {};
+  const animate = !!opts.animate;
+  /* 2 = both phases done (finished stroke), 1 = rehabilitation only (outline) */
+  const st2 = {};
+  for(let i=1;i<=6;i++) st2[i] = dayState(i, week);
+  const done = {};
+  for(let i=1;i<=6;i++) done[i] = st2[i]===2;
+  const restDone = !!(state.reflections[week] && state.reflections[week].saved);
+  const R = rng(week*7919 + 13);
+  const j = function(m){ return (R()-.5)*2*m; };
+  const B = "#6E2233", B2 = "#8A2E42", T = "#B4A28F", O = "#6C7358";
+  let p = '';
+  const A = function(sel){ return animate && done[sel] ? ' class="draw"' : ''; };
+  const st = function(len){ return animate ? ' style="--len:'+len+'px;animation-delay:'+(R()*.4).toFixed(2)+'s"' : ''; };
+  /* rehabilitation draws the outline; the main workout completes the stroke */
+  const wOf = function(i,full){ return st2[i]===2 ? full : Math.max(1, full*0.45); };
+  const oOf = function(i,full){ return st2[i]===2 ? full : "0.22"; };
+  const dOf = function(i){ return st2[i]===2 ? '' : ' stroke-dasharray="5 7"'; };
+
+  /* base paper grain: faint guide lines, always present */
+  p += '<g opacity=".16" stroke="'+T+'" stroke-width="1" fill="none">';
+  p += '<path d="M40 '+(300+j(10))+' C 120 '+(250+j(20))+', 280 '+(330+j(20))+', 360 '+(280+j(10))+'"/>';
+  p += '<circle cx="200" cy="205" r="'+(150+j(6))+'"/>';
+  p += '</g>';
+
+  /* 1 — فاطمة / Lower A : broad curved burgundy stroke */
+  if(st2[1]) p += '<path'+A(1)+st(430)+dOf(1)+' d="M52 '+(322+j(8))+' C 110 '+(232+j(14))+', 176 '+(214+j(14))+', 238 '+(268+j(12))+'" fill="none" stroke="'+B+'" stroke-width="'+wOf(1,9)+'" stroke-linecap="round" opacity="'+oOf(1,".92")+'"/>';
+  /* 2 — أفراح / Upper A : fine flowing line */
+  if(st2[2]) p += '<path'+A(2)+st(520)+dOf(2)+' d="M66 '+(126+j(10))+' C 138 '+(72+j(12))+', 226 '+(150+j(14))+', 300 '+(96+j(10))+' S 356 '+(140+j(10))+', 352 '+(176+j(8))+'" fill="none" stroke="'+B2+'" stroke-width="'+wOf(2,2)+'" stroke-linecap="round" opacity="'+oOf(2,".9")+'"/>';
+  /* 3 — تهاني / Cardio : soft circular motion */
+  if(st2[3]) p += '<circle'+A(3)+st(560)+dOf(3)+' cx="'+(268+j(8))+'" cy="'+(148+j(8))+'" r="'+(62+j(6))+'" fill="none" stroke="'+O+'" stroke-width="'+wOf(3,3)+'" opacity="'+oOf(3,".65")+'"/>';
+  /* 4 — نايف / Lower B : structured element */
+  if(st2[4]){
+    const x = 96+j(6), y = 196+j(6);
+    p += '<g'+A(4)+st(360)+dOf(4)+' stroke="'+B+'" stroke-width="'+wOf(4,2.4)+'" fill="none" opacity="'+oOf(4,".85")+'">';
+    p += '<path d="M'+x+' '+y+' h96 v72 h-96 z" transform="rotate('+(-9+j(4)).toFixed(1)+' '+(x+48)+' '+(y+36)+')"/>';
+    p += '<path d="M'+(x+24)+' '+(y+72)+' v-72" transform="rotate('+(-9+j(4)).toFixed(1)+' '+(x+48)+' '+(y+36)+')"/>';
+    p += '</g>';
+  }
+  /* 5 — مالك / Upper B : balanced geometric stroke */
+  if(st2[5]) p += '<path'+A(5)+st(400)+dOf(5)+' d="M132 '+(342+j(8))+' L '+(206+j(6))+' '+(228+j(8))+' L '+(282+j(6))+' '+(342+j(8))+'" fill="none" stroke="'+B2+'" stroke-width="'+wOf(5,4)+'" stroke-linecap="round" stroke-linejoin="round" opacity="'+oOf(5,".9")+'"/>';
+  /* 6 — عبدالرحمن / Cardio : finishing outer curve */
+  if(st2[6]) p += '<path'+A(6)+st(600)+dOf(6)+' d="M356 '+(96+j(8))+' C 392 '+(190+j(10))+', 356 '+(316+j(12))+', 246 '+(360+j(8))+'" fill="none" stroke="'+O+'" stroke-width="'+wOf(6,5)+'" stroke-linecap="round" opacity="'+oOf(6,".7")+'"/>';
+
+  /* 7 — Sara : signature mark, only after the six are complete */
+  if(weekComplete(week)){
+    p += '<g'+ (animate?' class="draw"':'') + st(260) + ' stroke="'+B+'" stroke-width="2" fill="none" opacity=".95">';
+    p += '<path d="M170 '+(300+j(4))+' c 16 -22, 40 -22, 46 -2 c 5 17, -18 22, -20 38 c -2 15, 20 18, 34 6"/>';
+    p += '</g>';
+    p += '<circle cx="'+(232+j(3))+'" cy="'+(292+j(3))+'" r="3.4" fill="'+B+'" opacity="'+(restDone?".95":".45")+'"/>';
+  }
+  return '<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="لوحة الأسبوع">'+p+'</svg>';
+}
+function canvasCount(week){ let c=0; for(let i=1;i<=6;i++) if(isDayFull(i,week)) c++; return c; }
+
+/* =========================================================
+   7) SIX + ONE CONSTELLATION
+   ========================================================= */
+function constellationSVG(week, opts){
+  opts = opts || {};
+  const w = week==null? state.currentWeek : week;
+  const cx=165, cy=155, r=100;
+  let s = '<svg class="constel" viewBox="0 0 330 320" xmlns="http://www.w3.org/2000/svg">';
+  const complete = weekComplete(w);
+  /* connecting ring */
+  s += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="rgba(42,37,34,.12)" stroke-width="1" stroke-dasharray="3 5"/>';
+  const pts = [];
+  for(let i=0;i<6;i++){
+    const a = (-90 + i*60) * Math.PI/180;
+    pts.push([cx + r*Math.cos(a), cy + r*Math.sin(a)]);
+  }
+  /* spokes for completed days */
+  for(let i=0;i<6;i++){
+    if(isDayFull(i+1,w))
+      s += '<line x1="'+cx+'" y1="'+cy+'" x2="'+pts[i][0].toFixed(1)+'" y2="'+pts[i][1].toFixed(1)+'" stroke="rgba(110,34,51,.28)" stroke-width="1.2"/>';
+  }
+  /* center — Sara */
+  s += '<circle cx="'+cx+'" cy="'+cy+'" r="'+(complete?30:26)+'" fill="'+(complete?"#6E2233":"#F2EAE0")+'" stroke="'+(complete?"#6E2233":"rgba(42,37,34,.16)")+'" stroke-width="1.4"/>';
+  s += '<text class="node-lbl" x="'+cx+'" y="'+(cy+6)+'" text-anchor="middle" font-size="15" font-weight="600" fill="'+(complete?"#FAF6EF":"#8E7F70")+'">سارة</text>';
+  /* nodes */
+  for(let i=0;i<6;i++){
+    const ds = dayState(i+1,w);
+    const d = ds===2;
+    const x = pts[i][0], y = pts[i][1];
+    /* partial: rehabilitation done, main workout still open */
+    s += '<circle class="node-c" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(d?13:(ds===1?11:9))+'" fill="'+(d?"#6E2233":"#FFFFFF")+'" stroke="'+(d||ds===1?"#6E2233":"rgba(42,37,34,.22)")+'" stroke-width="'+(ds===1?"1.8":"1.4")+'"'+(ds===1?' stroke-dasharray="3 3"':'')+'/>';
+    if(ds===1) s += '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="4" fill="#6E2233" opacity=".5"/>';
+    const ly = y + (y<cy? -20 : 26);
+    s += '<text class="node-lbl'+(d?" done":"")+'" x="'+x.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="middle">'+workoutProgram[i+1].family+'</text>';
+  }
+  s += '</svg>';
+  return s;
+}
+/* --- the day's two phases, shown as one journey --- */
+function rehabSummary(day){
+  const r = rehabOf(day);
+  if(day===7) return "تمرين تنفس — 3 × 8 أنفاس";
+  if(rehabByDay[day]==="PT") return "تمرين العلاج الطبيعي + مشي 15 دقيقة";
+  return (r.items.length-1)+" حركات تأهيل + مشي";
+}
+function mainSummary(day){
+  const d = workoutProgram[day];
+  if(d.kind==="strength") return d.exercises.length+" تمارين قوة";
+  if(d.kind==="cardio") return "كارديو منخفض التأثير";
+  return "راحة تامة";
+}
+function journeyCard(day, w){
+  w = (w==null)? state.currentWeek : w;
+  const d = workoutProgram[day];
+  const r = rehabOf(day);
+  const rDone = isRehabDone(day,w);
+  const mDone = (day===7) ? false : isDayDone(day,w);
+  let h = '<div class="card journey" style="margin-top:14px">';
+  h += '<p class="eyebrow">رحلة اليوم</p>';
+  h += '<div class="jstep"><span class="jnum '+(rDone?"on":"half")+'">'+(rDone?"✓":"1")+'</span><span><span class="jt">التأهيل</span><br><span class="js">'+esc(day===7? r.title : (rehabByDay[day]==="PT"? r.titleAr : r.title))+' — '+esc(rehabSummary(day))+'</span></span>'+(rDone?'<span class="jok">✓</span>':'')+'</div>';
+  h += '<div class="jline"></div>';
+  if(day===7){
+    h += '<div class="jstep"><span class="jnum">2</span><span><span class="jt">راحة تامة</span><br><span class="js">يوم سارة — بدون تمرين</span></span></div>';
+  } else {
+    h += '<div class="jstep"><span class="jnum '+(mDone?"on":"")+'">'+(mDone?"✓":"2")+'</span><span><span class="jt en">'+esc(d.type)+'</span><br><span class="js">'+esc(mainSummary(day))+'</span></span>'+(mDone?'<span class="jok">✓</span>':'')+'</div>';
+  }
+  h += '</div>';
+  return h;
+}
+function rehabFrac(){
+  if(!W) return 0;
+  const items = rehabOf(W.day).items;
+  const total = items.reduce(function(a,i){ return a+i.sets; },0);
+  let done = 0;
+  items.forEach(function(i){ done += Math.min(i.sets, W.rehabLog[i.id]||0); });
+  return total? done/total : 0;
+}
+function mainFrac(){
+  if(!W) return 0;
+  const d = workoutProgram[W.day];
+  if(!d.exercises) return 0;
+  if(W.phase==="cooldown"||W.phase==="done") return 1;
+  if(W.phase==="rehab"||W.phase==="rehab-done"||W.phase==="warmup") return 0;
+  const total = totalSets(W.day, W.week);
+  let done = 0;
+  d.exercises.forEach(function(e,i){
+    if(i < W.exIdx) done += setsFor(e, W.week);
+    else if(i === W.exIdx) done += W.setIdx;
+  });
+  return total? done/total : 0;
+}
+function journeyBars(){
+  if(!W) return "";
+  const rf = Math.round(rehabFrac()*100), mf = Math.round(mainFrac()*100);
+  const overall = Math.round(workoutProgress()*100);
+  let h = '<div class="bars">';
+  h += '<div class="brow"><span>التأهيل</span><span class="num">'+rf+'%</span></div><div class="bar rehab"><i style="width:'+rf+'%"></i></div>';
+  h += '<div class="brow"><span>التمرين الأساسي</span><span class="num">'+mf+'%</span></div><div class="bar"><i style="width:'+mf+'%"></i></div>';
+  h += '<p class="tiny" style="margin:8px 0 0">إجمالي الجلسة: <span class="num">'+overall+'%</span></p>';
+  h += '</div>';
+  return h;
+}
+function sketchRule(){
+  return '<div class="rule"><svg viewBox="0 0 300 10" preserveAspectRatio="none"><path d="M2 6 C 60 2, 110 9, 168 5 S 262 2, 298 6" fill="none" stroke="#B4A28F" stroke-width="1.2" stroke-linecap="round"/></svg></div>';
+}
+
+/* =========================================================
+   8) SCREENS
+   ========================================================= */
+let currentScreen = "today";
+function go(name){
+  currentScreen = name;
+  $$(".screen").forEach(function(s){ s.classList.remove("on"); });
+  $("#s-"+name).classList.add("on");
+  $$("#nav button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-nav")===name); });
+  render();
+  window.scrollTo(0,0);
+}
+function render(){
+  if(currentScreen==="today") renderToday();
+  else if(currentScreen==="week") renderWeek();
+  else if(currentScreen==="history") renderHistory();
+  else if(currentScreen==="canvas") renderCanvasScreen();
+  else if(currentScreen==="sara") renderSara();
+}
+function greeting(){
+  const h = new Date().getHours();
+  if(h<12) return "صباح الخير يا سارة";
+  if(h<17) return "مساء الخير يا سارة";
+  return "مساء الخير يا سارة";
+}
+function seedOfDay(day){ return state.currentWeek*11 + day*3; }
+
+/* -------- اليوم -------- */
+function renderToday(){
+  const day = nextDay();
+  const d = workoutProgram[day];
+  const w = state.currentWeek;
+  const deload = isDeload(w);
+  let h = "";
+
+  if(storageMode()==="none"){
+    h += '<div class="banner" style="margin-bottom:12px"><b>تنبيه: الحفظ غير مفعّل</b><br>هذا المتصفح يمنع تخزين البيانات عند فتح الملف مباشرة من الملفات، ولذلك يُفقد التقدّم عند الإغلاق. التفاصيل والحل في «سارة ← النسخ الاحتياطي».</div>';
+  }
+  h += '<p class="greet">'+esc(greeting())+'</p>';
+  h += '<h1 style="font-size:22px;font-weight:500;color:var(--taupe-2)">الأسبوع '+nm(w)+'</h1>';
+
+  /* deload banners */
+  if(deload){
+    h += '<div class="banner" style="margin:14px 0 0"><b>وضع التخفيف — DELOAD</b><br>نفس الحركات. حمل أخف. الهدف هذا الأسبوع هو الاستشفاء وليس إثبات القوة.</div>';
+  } else if(deloadDue()){
+    h += '<div class="banner olive" style="margin:14px 0 0">'+(deloadUrgent()? "مرّت "+nm(weeksSinceDeload())+" أسابيع من غير تخفيف. يفضّل جدولته هذا الأسبوع." : "قرب أسبوع التخفيف.")+
+         ' <button class="chip" data-act="deload-open" style="margin-top:10px">التفاصيل</button></div>';
+  }
+
+  /* hero */
+  h += '<div class="day-hero" style="margin-top:16px">';
+  h += '<div class="mark"><svg width="200" height="200" viewBox="0 0 200 200"><path d="M20 170 C 60 90, 120 70, 180 110" fill="none" stroke="#6E2233" stroke-width="18" stroke-linecap="round"/></svg></div>';
+  h += '<p class="eyebrow">اليوم</p>';
+  h += '<div class="day-name">'+esc(d.family)+'</div>';
+  h += '<div class="day-type">'+en(d.type)+' — '+esc(d.typeAr)+'</div>';
+  h += '<p class="tiny" style="margin:8px 0 0">المرحلة 1: التأهيل · المرحلة 2: '+en(d.type)+'</p>';
+  if(d.kind==="strength"){
+    h += '<div class="day-meta">';
+    h += '<div class="meta-i"><b>'+nm(d.exercises.length)+'</b><span>تمارين</span></div>';
+    h += '<div class="meta-i"><b>'+nm(totalSets(day,w))+'</b><span>مجموعات عمل</span></div>';
+    h += '<div class="meta-i"><b>'+nm("~"+estMinutes(day,w))+'</b><span>دقيقة تقريبًا</span></div>';
+    h += '</div>';
+  } else if(d.kind==="cardio"){
+    h += '<div class="day-meta"><div class="meta-i"><b>'+nm(state.settings.cardioMinutes)+'</b><span>دقيقة</span></div><div class="meta-i"><b>منخفض التأثير</b><span>الشدّة: معتدلة</span></div></div>';
+  } else {
+    h += '<div class="day-meta"><div class="meta-i"><b>راحة تامة</b><span>بدون تمرين</span></div></div>';
+  }
+  h += '</div>';
+
+  /* the day's two phases */
+  h += journeyCard(day, w);
+
+  const rDone = isRehabDone(day,w);
+  const mDone = (day!==7) && isDayDone(day,w);
+  if(rDone && !mDone && day!==7){
+    h += '<div class="rehab-panel" style="margin-top:12px">التأهيل انتهى — التمرين الأساسي باقي.</div>';
+  }
+
+  /* lower body rule preview */
+  if(d.kind==="strength" && d.lower){
+    h += '<div class="banner" style="margin-top:12px">'+esc(LOWER_RULE)+'</div>';
+  }
+
+  /* start button */
+  if(day===7){
+    h += '<div style="margin-top:16px"><button class="btn" data-act="open-sara-day">افتحي يوم سارة</button></div>';
+  } else {
+    h += '<div style="margin-top:16px"><button class="btn" data-act="start" data-day="'+day+'">'+(rDone && !mDone ? "أكملي التمرين الأساسي" : "ابدئي جلسة اليوم")+'</button></div>';
+  }
+  h += '<p class="tiny" style="text-align:center;margin-top:10px">'+esc(pick(motivations, seedOfDay(day)))+'</p>';
+
+  /* last time */
+  const lastSess = state.sessions.filter(function(s){ return s.day===day; }).slice(-1)[0];
+  if(lastSess){
+    h += sketchRule();
+    h += '<div class="sect-h"><p class="eyebrow">آخر مرة</p><span class="tiny">'+esc(fmtDate(lastSess.date))+' — الأسبوع '+nm(lastSess.week)+'</span></div>';
+    h += '<div class="card-flat">';
+    if(lastSess.type==="strength"){
+      h += '<div class="kv"><span>مجموعات مكتملة</span><b>'+esc(lastSess.setsDone)+'</b></div>';
+      if(lastSess.avgRpe) h += '<div class="kv"><span>متوسط الجهد</span><b>RPE '+esc(lastSess.avgRpe)+'</b></div>';
+      const top = lastSess.entries && lastSess.entries[0];
+      if(top){
+        const e0 = exerciseById(top.ex);
+        h += '<div class="kv"><span>'+esc(e0?e0.ar:top.ex)+'</span><b>'+esc(top.weight)+' كجم × '+esc(top.reps)+'</b></div>';
+      }
+    } else if(lastSess.type==="cardio"){
+      h += '<div class="kv"><span>'+esc(lastSess.machineAr||"كارديو")+'</span><b>'+esc(lastSess.minutes)+' د</b></div>';
+      if(lastSess.avgRpe) h += '<div class="kv"><span>الجهد</span><b>RPE '+esc(lastSess.avgRpe)+'</b></div>';
+    }
+    h += '</div>';
+  }
+
+  /* canvas */
+  h += sketchRule();
+  h += '<div class="sect-h"><p class="eyebrow">لوحة سارة — الأسبوع '+nm(w)+'</p><span class="tiny">'+nm(canvasCount(w))+'/6</span></div>';
+  h += '<div class="canvas-wrap">'+canvasSVG(w,{animate:false})+'</div>';
+  h += '<p class="tiny" style="text-align:center;margin-top:8px">كل يوم مكتمل يضيف أثره إلى اللوحة.</p>';
+
+  /* this week */
+  h += sketchRule();
+  h += '<div class="sect-h"><p class="eyebrow">هذا الأسبوع</p><span class="tiny">'+nm(weekDoneCount(w))+' من 6</span></div>';
+  h += constellationSVG(w);
+  if(weekComplete(w)){
+    h += '<div class="card" style="margin-top:12px;text-align:center"><h3>الأسبوع اكتمل</h3><p class="tiny">ستة أيام بأسمائهم. واليوم لكِ.</p><button class="btn ghost sm" data-act="open-sara-day" style="margin-top:12px">يوم سارة</button></div>';
+  }
+
+  /* today's english word */
+  const wordObj = pick(englishWords, seedOfDay(day)+w);
+  h += sketchRule();
+  h += '<p class="eyebrow">Today\u2019s Word</p>';
+  h += '<div class="word"><div class="w">'+esc(wordObj.w)+'</div><div><div style="font-weight:600">'+esc(wordObj.ar)+'</div><div class="tiny en" style="direction:ltr">'+esc(wordObj.line)+'</div></div></div>';
+
+  h += '<p class="tiny" style="margin-top:26px;text-align:center;opacity:.75">'+esc(PAIN_NOTE)+'</p>';
+  $("#s-today").innerHTML = h;
+}
+
+/* -------- الأسبوع -------- */
+function renderWeek(){
+  const w = state.currentWeek;
+  let h = '<p class="eyebrow">البرنامج الأسبوعي</p><h1>ستة أيام بأسمائهم<br><span style="color:var(--taupe-2);font-weight:500">واليوم السابع لكِ</span></h1>';
+  if(isDeload(w)) h += '<div class="banner" style="margin:14px 0">وضع التخفيف مفعّل هذا الأسبوع: نفس التمارين، مجموعات أقل، وجهد مستهدف RPE 5–6.</div>';
+  h += '<div style="margin-top:18px">';
+  for(let i=1;i<=7;i++){
+    const d = workoutProgram[i];
+    const ds = i<7 ? dayState(i,w) : (isRehabDone(7,w)?2:0);
+    const done = ds===2;
+    const isToday = i===nextDay();
+    const rDone = isRehabDone(i,w);
+    const mDone = i<7 ? isDayDone(i,w) : !!(state.reflections[w] && state.reflections[w].saved);
+    const rLabel = i===7 ? "تنفّس" : (rehabByDay[i]==="PT" ? "علاج طبيعي" : "تأهيل "+rehabByDay[i]);
+    const mLabel = i===7 ? "راحة" : d.type;
+    h += '<button class="dayrow'+(isToday?" today":"")+(i===7?" rest":"")+'" data-act="day-detail" data-day="'+i+'">';
+    h += '<span class="dot'+(done?" done":"")+'"'+(ds===1?' style="background:var(--olive);border-color:var(--olive);opacity:.55"':'')+'></span>';
+    h += '<span><span class="nm">'+esc(d.family)+'</span><br><span class="tp">'+en(d.type)+'</span></span>';
+    h += '<span class="rt"><span class="mark2">'+(rDone?"✓":"○")+' '+esc(rLabel)+'</span><br><span class="mark2">'+(mDone?"✓":"○")+' <span class="en">'+esc(mLabel)+'</span></span></span>';
+    h += '</button>';
+  }
+  h += '</div>';
+  h += sketchRule();
+  h += '<div class="card-flat"><h3>لا يتغيّر البرنامج</h3><p class="tiny">التمارين والمجموعات والتكرارات ثابتة كما وُصفت. التنويع يأتي من التتبّع والتقدّم واللوحة، لا من تغيير الحركات.</p></div>';
+  h += '<div class="card-flat" style="margin-top:12px"><h3>ممنوع دائمًا</h3><p class="tiny">'+prohibitedActivities.map(function(p){return '<span class="en">'+esc(p)+'</span>';}).join(' · ')+'</p></div>';
+  $("#s-week").innerHTML = h;
+}
+
+/* -------- سجلي -------- */
+function renderHistory(){
+  let h = '<p class="eyebrow">سجل التمارين</p><h1>سجلي</h1><p class="muted">كل تمرين يحتفظ بتاريخه: الأوزان، التكرارات، الجهد، والملاحظات.</p>';
+  const days = [1,2,4,5];
+  let any = false;
+  days.forEach(function(di){
+    const d = workoutProgram[di];
+    h += '<div class="sect"><div class="sect-h"><p class="eyebrow">'+esc(d.family)+' — '+en(d.type)+'</p></div>';
+    d.exercises.forEach(function(e){
+      const hist = historyOf(e.id);
+      if(hist.length) any = true;
+      const last = hist.length? hist[hist.length-1] : null;
+      h += '<button class="hrow" data-act="ex-detail" data-ex="'+e.id+'">';
+      h += '<span><span style="font-weight:600">'+esc(e.ar)+'</span><br><span class="tiny en">'+esc(e.en)+'</span><br><span class="tiny">'+(last? (nm(last.sets.map(function(s){return s.r;}).join(" / "))+' · '+nm(last.sets[0].w)+' كجم') : "لا توجد بيانات بعد")+'</span></span>';
+      h += '<span class="arrow">‹</span></button>';
+    });
+    h += '</div>';
+  });
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">تهاني وعبدالرحمن — '+en("Cardio")+'</p></div>';
+  const cs = state.sessions.filter(function(s){return s.type==="cardio";});
+  if(!cs.length) h += '<div class="empty">لم تُسجَّل جلسات كارديو بعد.</div>';
+  else {
+    h += '<div class="card"><table class="hist"><tr><th>التاريخ</th><th>الجهاز</th><th>الدقائق</th><th>الجهد</th></tr>';
+    cs.slice().reverse().slice(0,12).forEach(function(s){
+      h += '<tr><td class="n">'+esc(fmtDate(s.date))+'</td><td>'+esc(s.machineAr||"")+'</td><td class="n">'+esc(s.minutes)+'</td><td class="n">'+(s.avgRpe? "RPE "+s.avgRpe : "—")+'</td></tr>';
+    });
+    h += '</table></div>';
+  }
+  h += '</div>';
+  $("#s-history").innerHTML = h;
+}
+
+/* -------- لوحتي -------- */
+function renderCanvasScreen(){
+  const w = state.currentWeek;
+  let h = '<p class="eyebrow">لوحات سارة</p><h1>لوحتي</h1><p class="muted">لوحة لكل أسبوع، ترسمها أيامك المكتملة.</p>';
+  h += '<div class="canvas-wrap" style="margin-top:16px">'+canvasSVG(w,{animate:false})+'</div>';
+  h += '<p class="tiny" style="text-align:center;margin-top:8px">الأسبوع '+nm(w)+' — '+nm(canvasCount(w))+' من 6 علامات'+(weekComplete(w)?' · اكتملت اللوحة':'')+'</p>';
+
+  const prev = [];
+  for(let i=1;i<w;i++) if(canvasCount(i)>0) prev.push(i);
+  h += sketchRule();
+  h += '<div class="sect-h"><p class="eyebrow">الأرشيف</p><span class="tiny">'+nm(prev.length)+' لوحة</span></div>';
+  if(!prev.length) h += '<div class="empty">لوحات الأسابيع السابقة ستظهر هنا.</div>';
+  else{
+    h += '<div class="gallery">';
+    prev.slice().reverse().forEach(function(i){
+      h += '<div class="g">'+canvasSVG(i,{animate:false})+'<p>الأسبوع '+i+' — '+canvasCount(i)+'/6</p></div>';
+    });
+    h += '</div>';
+  }
+  $("#s-canvas").innerHTML = h;
+}
+
+/* -------- سارة -------- */
+function renderSara(){
+  const w = state.currentWeek;
+  const strength = state.sessions.filter(function(s){return s.type==="strength";});
+  const cardio = state.sessions.filter(function(s){return s.type==="cardio";});
+  const allSets = strength.reduce(function(a,s){return a+(s.setsDone||0);},0);
+  const minutes = state.sessions.reduce(function(a,s){return a+(s.minutes||0);},0);
+  const rpes = state.sessions.map(function(s){return s.avgRpe;}).filter(function(x){return typeof x==="number";});
+  const avgRpe = rpes.length? Math.round((rpes.reduce(function(a,b){return a+b;},0)/rpes.length)*10)/10 : null;
+  let weeksDone=0; for(let i=1;i<=w;i++) if(weekComplete(i)) weeksDone++;
+
+  let h = '<p class="eyebrow">'+en("Sara Alshugairan")+'</p><h1>سارة</h1>';
+  h += '<p class="muted">رحلة تدريب واحدة، تُبنى أسبوعًا بعد أسبوع.</p>';
+
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">التزامي</p></div><div class="stat-grid">';
+  h += '<div class="stat"><b>'+weeksDone+'</b><span>أسابيع كاملة</span></div>';
+  h += '<div class="stat"><b>'+strength.length+'</b><span>جلسات قوة</span></div>';
+  h += '<div class="stat"><b>'+cardio.length+'</b><span>جلسات كارديو</span></div>';
+  h += '<div class="stat"><b>'+allSets+'</b><span>مجموعات عمل</span></div>';
+  h += '</div></div>';
+
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">جهدي</p></div><div class="card">';
+  h += '<div class="kv"><span>متوسط الجهد</span><b>'+(avgRpe? "RPE "+avgRpe : "—")+'</b></div>';
+  h += '<div class="kv"><span>دقائق التدريب</span><b>'+minutes+'</b></div>';
+  h += '<div class="kv"><span>الأسبوع الحالي</span><b>'+w+(isDeload(w)?" — تخفيف":"")+'</b></div>';
+  h += '</div>';
+  const obs = weekObservations();
+  if(obs.length) h += '<div class="banner" style="margin-top:12px">'+obs.map(esc).join('<br>')+'</div>';
+  h += '</div>';
+
+  /* deload */
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">أسبوع التخفيف</p></div><div class="card">';
+  h += '<p class="tiny" style="margin-top:0">البرنامج ينصّ على تخفيف كل 6–8 أسابيع تقريبًا. مرّ '+weeksSinceDeload()+' أسبوع منذ آخر تخفيف.</p>';
+  if(isDeload(w)){
+    h += '<div class="banner" style="margin-bottom:12px">هذا الأسبوع في وضع التخفيف.</div>';
+    h += '<button class="btn quiet sm" data-act="deload-cancel">إلغاء وضع التخفيف لهذا الأسبوع</button>';
+  } else {
+    h += '<button class="btn '+(deloadDue()?"":"quiet")+' sm" data-act="deload-open">بدء أسبوع التخفيف</button>';
+  }
+  h += '</div></div>';
+
+  /* journey */
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">رحلتي</p></div><div class="card">';
+  if(!state.sessions.length) h += '<p class="tiny" style="margin:0">تبدأ الرحلة مع أول جلسة مسجّلة.</p>';
+  else{
+    for(let i=1;i<=w;i++){
+      const c = canvasCount(i);
+      h += '<div class="kv"><span>الأسبوع '+i+(isDeload(i)?' <span class="tiny">(تخفيف)</span>':'')+'</span><b>'+c+'/6</b></div>';
+    }
+  }
+  h += '</div>';
+  if(weekComplete(w)) h += '<button class="btn ghost sm" data-act="new-week" style="margin-top:12px">ابدئي الأسبوع '+(w+1)+'</button>';
+  h += '</div>';
+
+  /* settings */
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">الإعدادات</p></div><div class="card">';
+  h += '<p class="tiny" style="margin:0 0 8px">الراحة الافتراضية للتمارين ذات 60–90 ثانية</p><div class="chips">';
+  REST_FLEX.options.forEach(function(o){ h += '<button class="chip'+(state.settings.flexRest===o?" on":"")+'" data-act="set-flexrest" data-v="'+o+'">'+o+' ث</button>'; });
+  h += '</div>';
+  h += '<p class="tiny" style="margin:16px 0 8px">مدة الكارديو الافتراضية</p><div class="chips">';
+  [15,20].forEach(function(o){ h += '<button class="chip'+(state.settings.cardioMinutes===o?" on":"")+'" data-act="set-cardiomin" data-v="'+o+'">'+o+' دقيقة</button>'; });
+  h += '</div>';
+  h += '<p class="tiny" style="margin:16px 0 8px">جهاز الكارديو المفضّل</p><div class="chips">';
+  cardioMachines.forEach(function(m){ h += '<button class="chip'+(state.settings.cardioMachine===m.id?" on":"")+'" data-act="set-machine" data-v="'+m.id+'">'+esc(m.ar)+'</button>'; });
+  h += '</div>';
+  h += '</div></div>';
+
+  /* backup */
+  h += '<div class="sect"><div class="sect-h"><p class="eyebrow">النسخ الاحتياطي</p></div><div class="card">';
+  h += '<p class="tiny" style="margin:0 0 8px">كل شيء محفوظ على جهازك فقط. لا يوجد اتصال بأي خادم.</p>';
+  h += '<div class="kv"><span>حالة التخزين</span><b style="direction:rtl;font-size:13px">'+esc(storageLabel())+'</b></div>';
+  if(state.savedAt) h += '<div class="kv"><span>آخر حفظ</span><b style="direction:rtl;font-size:13px">'+esc(new Date(state.savedAt).toLocaleString("ar"))+'</b></div>';
+  if(storageMode()==="none"){
+    h += '<div class="banner" style="margin:12px 0">المتصفح لا يسمح بالحفظ عند فتح الملف مباشرة من الملفات. الحل: افتحي التطبيق من رابط ويب وأضيفيه إلى الشاشة الرئيسية، أو صدّري ملف تدريبك بعد كل جلسة واستوردية عند الفتح.</div>';
+  }
+  h += '<div style="height:4px"></div>';
+  h += '<button class="btn quiet sm" data-act="storage-test">اختبار الحفظ</button>';
+  h += '<button class="btn quiet sm" data-act="export" style="margin-top:9px">تصدير تدريبي (JSON)</button>';
+  h += '<button class="btn quiet sm" data-act="import" style="margin-top:9px">استيراد تدريبي</button>';
+  h += '<button class="btn quiet sm" data-act="reset" style="margin-top:9px;color:var(--burgundy)">إعادة ضبط الرحلة</button>';
+  h += '</div></div>';
+
+  h += '<p class="tiny" style="margin-top:24px;text-align:center;opacity:.7">'+nm(saraProfile.age)+' سنة · '+nm(saraProfile.heightCm)+' سم · '+nm(saraProfile.weightKg)+' كجم<br>القياسات هنا للسياق فقط. المقياس الحقيقي هو التحكّم والانتظام.</p>';
+  h += '<p class="tiny" style="margin-top:18px;text-align:center">'+esc(PAIN_NOTE)+'</p>';
+  $("#s-sara").innerHTML = h;
+}
+
+/* =========================================================
+   9) OVERLAY SHELL
+   ========================================================= */
+let ovMode = null;
+function openOv(mode, headHTML, bodyHTML){
+  ovMode = mode;
+  $("#ov-head").innerHTML = headHTML;
+  $("#ov-body").innerHTML = bodyHTML;
+  $("#ov").classList.add("on");
+  $("#ov").scrollTop = 0;
+  document.body.style.overflow = "hidden";
+}
+function closeOv(){
+  $("#ov").classList.remove("on");
+  document.body.style.overflow = "";
+  ovMode = null;
+  render();
+}
+function ovHead(title, sub, prog){
+  let h = '<button class="x" data-act="ov-close">✕</button><div style="flex:1"><div class="ov-title">'+title+'</div>'+(sub?'<div class="ov-sub">'+sub+'</div>':'')+
+          (prog!=null?'<div class="prog-bar"><i style="width:'+Math.round(prog*100)+'%"></i></div>':'')+'</div>';
+  return h;
+}
+
+/* -------- day detail (from week screen) -------- */
+function openDayDetail(day){
+  const d = workoutProgram[day];
+  const w = state.currentWeek;
+  const done = isDayDone(day,w);
+  let b = '';
+  b += '<p class="eyebrow">يوم '+esc(d.family)+'</p><h1 style="color:var(--burgundy)">'+en(d.type)+'</h1><p class="muted">'+esc(d.typeAr)+'</p>';
+  if(isDayFull(day,w)) b += '<div class="banner olive" style="margin:14px 0">اليوم مكتمل: التأهيل والتمرين الأساسي.</div>';
+  else if(isRehabDone(day,w)) b += '<div class="rehab-panel" style="margin:14px 0">التأهيل انتهى — التمرين الأساسي باقي.</div>';
+  b += journeyCard(day, w);
+  /* PHASE 1 — rehabilitation */
+  (function(){
+    const r = rehabOf(day);
+    b += '<div class="sect"><div class="sect-h"><p class="eyebrow">المرحلة الأولى — التأهيل</p><span class="tiny">'+esc(rehabByDay[day]==="PT"? r.titleAr : r.title)+'</span></div>';
+    b += '<div class="rehab-panel" style="margin-bottom:10px"><b>قاعدة التأهيل</b><br>'+esc(REHAB_RULE_T)+'<br><span class="tiny">'+esc(REHAB_RULE_S)+'</span></div>';
+    r.items.forEach(function(it,i){
+      b += '<button class="hrow" data-act="rehab-tech" data-day="'+day+'" data-i="'+i+'">';
+      b += '<span><span style="font-weight:600" class="en">'+esc(it.en)+'</span><br><span class="tiny">'+(it.sets>1? esc(it.sets+" × "+it.reps)+' — '+esc(it.repsLabel) : esc(it.repsLabel))+'</span></span>';
+      b += '<span class="arrow">‹</span></button>';
+    });
+    b += '<p class="tiny">التأهيل مقرّر كما هو، بدون أوزان أو زيادة تدريجية.</p></div>';
+  })();
+  if(d.kind==="strength"){
+    if(d.lower) b += '<div class="banner" style="margin:14px 0">'+esc(LOWER_RULE)+'</div>';
+    b += '<div class="sect"><div class="sect-h"><p class="eyebrow">المرحلة الثانية — الإحماء (جولة واحدة)</p></div><div class="card-flat">';
+    d.warmup.forEach(function(x){ b += '<div class="kv"><span>'+esc(x.ar)+'</span><b class="en" style="font-weight:400;font-size:12px;color:var(--taupe-2)">'+esc(x.en)+'</b></div>'; });
+    b += '</div></div>';
+    b += '<div class="sect"><div class="sect-h"><p class="eyebrow">المرحلة الثانية — '+en(d.type)+'</p><span class="tiny">'+nm(totalSets(day,w))+' مجموعة</span></div>';
+    d.exercises.forEach(function(e,i){
+      b += '<button class="hrow" data-act="ex-detail" data-ex="'+e.id+'"><span style="min-width:22px;color:var(--taupe);font-size:13px" class="num">'+(i+1)+'</span>';
+      b += '<span><span style="font-weight:600">'+esc(e.ar)+'</span><br><span class="tiny en">'+esc(e.en)+'</span><br><span class="tiny">'+nm(setsFor(e,w))+' مجموعات · '+nm(e.lo+"–"+e.hi)+' تكرار · راحة '+restLabel(e)+'</span></span><span class="arrow">‹</span></button>';
+    });
+    b += '</div>';
+    b += '<div class="sect"><div class="sect-h"><p class="eyebrow">التهدئة</p></div><div class="card-flat">';
+    cooldown.forEach(function(x){ b += '<div class="kv"><span>'+esc(x.ar)+'</span></div>'; });
+    b += '<p class="tiny" style="margin-top:10px">'+esc(cooldownNote)+'</p></div></div>';
+    b += '<button class="btn" data-act="start" data-day="'+day+'" style="margin-top:20px">'+(isRehabDone(day,w)? (done?"إعادة التمرين الأساسي":"ابدئي التمرين الأساسي") : "ابدئي جلسة اليوم")+'</button>';
+  } else if(d.kind==="cardio"){
+    b += '<div class="card-flat" style="margin-top:14px"><h3>المرحلة الثانية — كارديو منخفض التأثير</h3><p class="tiny">الدراجة الثابتة أو الأوربتراك. مدة 15–20 دقيقة بشدّة معتدلة يمكن الاستمرار عليها. بدون جري أو قفز أو فترات عالية الشدّة.</p></div>';
+    b += '<button class="btn" data-act="start" data-day="'+day+'" style="margin-top:20px">'+(isRehabDone(day,w)? (done?"إعادة الكارديو":"ابدئي الكارديو") : "ابدئي جلسة اليوم")+'</button>';
+  } else {
+    b += '<div class="card-flat" style="margin-top:14px"><h3>راحة تامة</h3><p class="tiny">لا تمرين، ولا مشي مطوّل، ولا نشاط بديل. اليوم للاستشفاء والمراجعة.</p></div>';
+    b += '<button class="btn ghost" data-act="open-sara-day" style="margin-top:20px">افتحي يوم سارة</button>';
+  }
+  openOv("day", ovHead(esc(d.family), esc(d.type)), b);
+}
+
+/* -------- exercise detail -------- */
+function openExDetail(id){
+  const e = exerciseById(id); if(!e) return;
+  const d = dayOfExercise(id);
+  const hist = historyOf(id);
+  const w = state.currentWeek;
+  let b = '';
+  b += '<p class="eyebrow">'+esc(d.family)+' — '+en(d.type)+'</p>';
+  b += '<h1>'+esc(e.ar)+'</h1><p class="ex-en">'+en(e.en)+'</p>';
+  b += '<div class="pills"><span class="pill b">'+nm(setsFor(e,w))+' مجموعات</span><span class="pill b">'+nm(e.lo+"–"+e.hi)+' تكرار</span><span class="pill">راحة '+restLabel(e)+'</span></div>';
+  b += '<div class="sect"><div class="card-flat"><h3>مفتاح التنفيذ</h3><p class="tiny" style="margin:0">'+esc(e.cue)+'</p>';
+  b += '<h3 style="margin-top:14px">خطأ يجب تجنّبه</h3><p class="tiny" style="margin:0">'+esc(e.mistake)+'</p></div></div>';
+
+  const note = lastNote(id);
+  if(note) b += '<div class="banner olive" style="margin-top:14px">ملاحظة آخر مرة: «'+esc(note.text)+'»</div>';
+  const hint = progressionHint(id);
+  if(hint) b += '<div class="banner" style="margin-top:12px">'+esc(hint)+'</div>';
+  observations(id).forEach(function(o){ b += '<div class="banner olive" style="margin-top:10px">'+esc(o)+'</div>'; });
+
+  b += '<div class="sect"><div class="sect-h"><p class="eyebrow">السجل</p><span class="tiny">'+nm(hist.length)+' جلسة</span></div>';
+  if(!hist.length) b += '<div class="empty">لا توجد بيانات بعد. ستظهر هنا بعد أول جلسة.</div>';
+  else{
+    b += '<div class="card"><table class="hist"><tr><th>الأسبوع</th><th>الوزن</th><th>التكرارات</th><th>RPE</th></tr>';
+    hist.slice().reverse().forEach(function(s){
+      const ws = Array.from(new Set(s.sets.map(function(x){return x.w;}))).join("/");
+      b += '<tr><td class="n">'+s.week+'</td><td class="n">'+esc(ws)+' كجم</td><td class="n">'+esc(s.sets.map(function(x){return x.r;}).join(" / "))+'</td><td class="n">'+(avgRpeOf(s.sets)||"—")+'</td></tr>';
+    });
+    b += '</table></div>';
+    b += '<div class="card" style="margin-top:12px">'+progressChart(hist, e)+'</div>';
+  }
+  b += '</div>';
+  b += '<button class="btn quiet sm" data-act="note-open" data-ex="'+id+'" style="margin-top:16px">إضافة ملاحظة لهذا التمرين</button>';
+  openOv("ex", ovHead(esc(e.ar), esc(e.en)), b);
+}
+function progressChart(hist, e){
+  const pts = hist.map(function(s){
+    const r = s.sets.map(function(x){return x.r;}).filter(function(x){return typeof x==="number";});
+    const wgt = Math.max.apply(null, s.sets.map(function(x){return x.w||0;}));
+    return { week:s.week, reps: r.length? r.reduce(function(a,b){return a+b;},0)/r.length : 0, w:wgt };
+  });
+  if(pts.length<2) return '<p class="tiny" style="margin:0">يظهر منحنى التقدّم بعد جلستين.</p>';
+  const W=300,H=120,pad=22;
+  const maxR = Math.max(e.hi, Math.max.apply(null,pts.map(function(p){return p.reps;})));
+  const minR = Math.min(e.lo, Math.min.apply(null,pts.map(function(p){return p.reps;})));
+  const sx = function(i){ return pad + i*((W-pad*2)/(pts.length-1)); };
+  const sy = function(v){ const t=(v-minR)/((maxR-minR)||1); return H-pad - t*(H-pad*2); };
+  let path = pts.map(function(p,i){ return (i?"L":"M")+sx(i).toFixed(1)+" "+sy(p.reps).toFixed(1); }).join(" ");
+  let s = '<p class="tiny" style="margin:0 0 6px">متوسط التكرارات لكل جلسة</p>';
+  s += '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;display:block">';
+  s += '<line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="rgba(42,37,34,.12)"/>';
+  s += '<path d="'+path+'" fill="none" stroke="#6E2233" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+  pts.forEach(function(p,i){
+    s += '<circle cx="'+sx(i).toFixed(1)+'" cy="'+sy(p.reps).toFixed(1)+'" r="3.4" fill="#6E2233"/>';
+    s += '<text x="'+sx(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle" font-size="9" fill="#8E7F70">'+p.week+'</text>';
+  });
+  s += '</svg>';
+  return s;
+}
+
+/* -------- note modal -------- */
+function openNote(id, cb){
+  const e = exerciseById(id);
+  const prev = lastNote(id);
+  modal('<h3>ملاحظة — '+esc(e?e.ar:"")+'</h3>'+
+    (e? '<p class="tiny en" style="direction:ltr;margin:0 0 6px">'+esc(e.en)+'</p>':'')+
+    (prev? '<p class="tiny">آخر ملاحظة: «'+esc(prev.text)+'»</p>':'')+
+    '<textarea class="note-in" id="note-text" placeholder="مثال: الوزن مناسب."></textarea>'+
+    '<div class="acts"><button class="btn sm" data-act="note-save" data-ex="'+id+'">حفظ الملاحظة</button>'+
+    '<button class="btn quiet sm" data-act="modal-close">إلغاء</button></div>');
+  setTimeout(function(){ const t=$("#note-text"); if(t) t.focus(); },60);
+}
+function saveNote(id){
+  const t = $("#note-text"); if(!t) return;
+  const v = t.value.trim();
+  if(v){
+    if(!state.notes[id]) state.notes[id]=[];
+    state.notes[id].push({week:state.currentWeek, date:todayISO(), text:v});
+    save(); toast("حُفظت الملاحظة");
+  }
+  closeModal();
+  if(ovMode==="ex") openExDetail(id);
+  else if(ovMode==="workout") renderWorkout();
+}
+
+/* =========================================================
+   10) WORKOUT MODE
+   ========================================================= */
+let W = null;
+function buildW(day, w, phase, hadRehab){
+  const d = workoutProgram[day];
+  const obj = {
+    day: day, week: w, deload: isDeload(w),
+    phase: phase, exIdx: 0, setIdx: 0,
+    rehabIdx: 0, rehabLog: {}, hadRehabPhase: !!hadRehab,
+    warmDone: [], coolDone: [],
+    entries: [], startTs: Date.now(),
+    draft: {}
+  };
+  if(d.exercises) d.exercises.forEach(function(e){
+    const last = lastPerf(e.id);
+    obj.draft[e.id] = {
+      weight: last && last.sets.length ? (last.sets[last.sets.length-1].w || 0) : 0,
+      reps: last && last.sets.length ? (last.sets[0].r || e.lo) : e.lo,
+      rpe: null
+    };
+  });
+  return obj;
+}
+function openWorkoutOverlay(){
+  renderWorkout();
+  $("#ov").classList.add("on");
+  ovMode = "workout";
+  document.body.style.overflow = "hidden";
+}
+function startSession(day){
+  const d = workoutProgram[day];
+  if(d.kind==="rest"){ openSaraDay(); return; }
+  const w = state.currentWeek;
+  /* PHASE 1 — rehabilitation, unless it is already done today */
+  if(!isRehabDone(day,w)){
+    W = buildW(day, w, "rehab", true);
+    openWorkoutOverlay();
+    return;
+  }
+  /* PHASE 2 — the existing main workout, unchanged */
+  if(d.kind==="cardio"){ startCardio(day); return; }
+  W = buildW(day, w, "warmup", false);
+  openWorkoutOverlay();
+}
+/* rehabilitation finished → elegant handover to the main workout */
+function continueToMain(){
+  if(!W) return;
+  const d = workoutProgram[W.day];
+  if(d.kind==="cardio"){
+    const day = W.day; W = null;
+    startCardio(day);
+    return;
+  }
+  W.phase = "warmup";
+  W.startTs = Date.now();
+  renderWorkout();
+}
+function rehabSetDone(){
+  if(!W) return;
+  const items = rehabOf(W.day).items;
+  const it = items[W.rehabIdx];
+  const n = (W.rehabLog[it.id]||0) + 1;
+  W.rehabLog[it.id] = n;
+  if(n >= it.sets){
+    if(W.rehabIdx < items.length-1) W.rehabIdx++;
+    else {
+      recordRehab(W.day, W.week, rehabByDay[W.day]);
+      W.phase = "rehab-done";
+    }
+  }
+  renderWorkout();
+}
+function workoutProgress(){
+  if(!W) return 0;
+  const d = workoutProgram[W.day];
+  const R0 = W.hadRehabPhase ? 0.35 : 0;
+  if(W.phase==="rehab") return 0.02 + rehabFrac()*(R0-0.02);
+  if(W.phase==="rehab-done") return R0;
+  if(!d.exercises) return R0;
+  if(W.phase==="warmup") return R0 + 0.02;
+  if(W.phase==="cooldown"||W.phase==="done") return 1;
+  const total = totalSets(W.day, W.week);
+  let done = 0;
+  d.exercises.forEach(function(e,i){
+    if(i < W.exIdx) done += setsFor(e, W.week);
+    else if(i === W.exIdx) done += W.setIdx;
+  });
+  return Math.min(.99, R0 + (total? done/total : 0)*(1-R0));
+}
+function renderWorkout(){
+  if(!W) return;
+  const d = workoutProgram[W.day];
+  const head = ovHead('يوم '+esc(d.family), en(d.type)+(W.deload? ' · تخفيف':''), workoutProgress());
+  let b = '';
+
+  if(W.phase==="rehab"){
+    const r = rehabOf(W.day);
+    const items = r.items;
+    const it = items[W.rehabIdx];
+    const doneSets = W.rehabLog[it.id]||0;
+    b += '<p class="eyebrow">المرحلة الأولى — التأهيل</p>';
+    b += '<h1 style="font-size:24px">'+esc(rehabByDay[W.day]==="PT"? r.titleAr : r.title)+'</h1>';
+    b += '<div class="rehab-panel" style="margin:12px 0"><b>قاعدة التأهيل اليوم</b><br>'+esc(REHAB_RULE_T)+'<br><span class="tiny">'+esc(REHAB_RULE_S)+'</span></div>';
+    b += journeyBars();
+    /* compact strip of the routine */
+    b += '<div class="setgrid" style="margin-top:6px">';
+    items.forEach(function(x,i){
+      const dn = (W.rehabLog[x.id]||0) >= x.sets;
+      b += '<div class="setbox '+(dn?"done":(i===W.rehabIdx?"cur":""))+'" style="min-width:44px"><b>'+(i+1)+'</b></div>';
+    });
+    b += '</div>';
+    b += '<div class="card" style="margin-top:14px">';
+    b += '<div class="ex-name en" style="font-size:21px">'+esc(it.en)+'</div>';
+    if(it.kind==="pt") b += '<div class="ex-en">'+esc(rehabRoutines.PT.titleAr)+'</div>';
+    if(it.sets>1){
+      b += '<div class="setline"><b>'+nm("المجموعة "+Math.min(it.sets,doneSets+1))+'</b><span class="muted">من '+nm(it.sets)+'</span></div>';
+      b += '<div class="pills"><span class="pill b">'+esc(it.repsLabel)+'</span><span class="pill">'+nm(it.sets+" × "+it.reps)+'</span></div>';
+    } else {
+      b += '<div class="pills" style="margin-top:12px"><span class="pill b">'+esc(it.repsLabel)+'</span></div>';
+    }
+    if(it.note) b += '<p class="tiny" style="margin-top:10px">'+esc(it.note)+'</p>';
+    b += '<div class="chips" style="margin-top:12px"><button class="chip" data-act="rehab-tech" data-i="'+W.rehabIdx+'">طريقة التنفيذ</button></div>';
+    b += '<button class="btn" data-act="rehab-set" style="margin-top:14px">✓ تمت</button>';
+    b += '</div>';
+    b += '<p class="tiny" style="text-align:center;margin-top:14px;opacity:.8">التأهيل ليس تمرين قوة: بدون أوزان، وبدون قياس RPE، وبدون زيادة تدريجية.</p>';
+    b += '<p class="tiny" style="text-align:center;margin-top:8px;opacity:.75">'+esc(PAIN_NOTE)+'</p>';
+  }
+
+  else if(W.phase==="rehab-done"){
+    const d2 = workoutProgram[W.day];
+    b += '<div style="text-align:center;padding:14px 0 2px">';
+    b += '<div style="font-size:40px;color:var(--olive);line-height:1">✓</div>';
+    b += '<h1 style="font-size:26px;margin-top:8px">اكتمل التأهيل</h1>';
+    b += '<p class="muted">المرحلة الأولى تمت. مكانها محفوظ.</p></div>';
+    b += journeyBars();
+    b += '<div class="rehab-panel" style="margin-top:14px">الآن نبدأ التمرين الأساسي.</div>';
+    b += '<button class="btn" data-act="rehab-continue" style="margin-top:16px">ابدئي '+esc(d2.type)+'</button>';
+    b += '<button class="btn quiet sm" data-act="ov-close" style="margin-top:10px">أكتفي بالتأهيل اليوم</button>';
+    b += '<p class="tiny" style="text-align:center;margin-top:12px">إذا أنهيتِ هنا، يبقى التأهيل مسجّلًا ويظهر اليوم كمرحلة واحدة مكتملة.</p>';
+  }
+
+  else if(W.phase==="warmup"){
+    b += '<p class="eyebrow">المرحلة الثانية — الإحماء (جولة واحدة)</p><h1 style="font-size:23px">قبل ما نبدأ</h1>';
+    if(d.lower) b += '<div class="banner" style="margin:12px 0">'+esc(LOWER_RULE)+'</div>';
+    if(W.deload) b += '<div class="banner olive" style="margin:12px 0">وضع التخفيف: نفس الحركات، مجموعات أقل، والجهد المستهدف RPE 5–6.</div>';
+    const clue = pick(clues, seedOfDay(W.day)+W.week);
+    b += '<div class="clue" style="margin:14px 0"><div class="k">Today\u2019s Clue — '+esc(clue.k)+'</div><div class="t">'+esc(clue.ar)+'</div></div>';
+    d.warmup.forEach(function(x,i){
+      const on = W.warmDone.indexOf(i)!==-1;
+      b += '<button class="checkrow'+(on?" on":"")+'" data-act="warm-toggle" data-i="'+i+'"><span class="bx">'+(on?"✓":"")+'</span><span><span style="font-weight:500">'+esc(x.ar)+'</span><br><span class="tiny en">'+esc(x.en)+'</span></span></button>';
+    });
+    b += journeyBars();
+    b += '<button class="btn" data-act="warm-done" style="margin-top:16px">جاهزة — نبدأ التمرين</button>';
+    b += '<p class="tiny" style="text-align:center;margin-top:10px">الإحماء تحضير، وليس تمرينًا. بدون أي حركة ارتطامية.</p>';
+  }
+
+  else if(W.phase==="exercise"){
+    const e = d.exercises[W.exIdx];
+    const nSets = setsFor(e, W.week);
+    const dr = W.draft[e.id];
+    const last = lastPerf(e.id);
+    b += '<p class="eyebrow">تمرين '+nm((W.exIdx+1)+" من "+d.exercises.length)+'</p>';
+    b += '<div class="ex-name">'+esc(e.ar)+'</div><div class="ex-en">'+en(e.en)+'</div>';
+    b += '<div class="setline"><b>'+nm("المجموعة "+(W.setIdx+1))+'</b><span class="muted">من '+nm(nSets)+'</span></div>';
+    b += '<div class="pills"><span class="pill b">الهدف '+nm(e.lo+"–"+e.hi)+' تكرار</span><span class="pill">راحة '+restLabel(e)+'</span>'+(W.deload?'<span class="pill b">RPE 5–6</span>':'<span class="pill">RPE 6–8</span>')+'</div>';
+
+    if(last){
+      const ws = Array.from(new Set(last.sets.map(function(x){return x.w;}))).join("/");
+      b += '<p class="tiny" style="margin-top:12px">آخر مرة: '+nm(ws)+' كجم × '+nm(last.sets.map(function(x){return x.r;}).join(" / "))+(avgRpeOf(last.sets)? ' · RPE '+avgRpeOf(last.sets):'')+'</p>';
+    }
+    const n0 = lastNote(e.id);
+    if(n0) b += '<p class="tiny" style="margin-top:4px">ملاحظة آخر مرة: «'+esc(n0.text)+'»</p>';
+
+    /* set boxes */
+    b += '<div class="setgrid">';
+    for(let i=0;i<nSets;i++){
+      const rec = W.entries.filter(function(x){ return x.ex===e.id; })[i];
+      const cls = rec? "done" : (i===W.setIdx? "cur":"");
+      b += '<div class="setbox '+cls+'"><span>'+(i+1)+'</span><b>'+(rec? (rec.weight+"×"+rec.reps) : "—")+'</b></div>';
+    }
+    b += '</div>';
+
+    b += '<div class="inputs">';
+    b += '<div class="field"><label>الوزن (كجم)</label><div class="stepper"><button data-act="step" data-f="weight" data-d="-0.5">−</button><input id="in-weight" inputmode="decimal" value="'+esc(dr.weight)+'"><button data-act="step" data-f="weight" data-d="0.5">+</button></div></div>';
+    b += '<div class="field"><label>التكرارات</label><div class="stepper"><button data-act="step" data-f="reps" data-d="-1">−</button><input id="in-reps" inputmode="numeric" value="'+esc(dr.reps)+'"><button data-act="step" data-f="reps" data-d="1">+</button></div></div>';
+    b += '</div>';
+    b += '<button class="btn" data-act="set-done" style="margin-top:16px">✓ تمت المجموعة</button>';
+
+    b += '<div class="chips" style="margin-top:12px;justify-content:center">';
+    b += '<button class="chip" data-act="note-open" data-ex="'+e.id+'">ملاحظة</button>';
+    b += '<button class="chip" data-act="ex-info" data-ex="'+e.id+'">التنفيذ</button>';
+    b += '<button class="chip" data-act="rpe-info">ما هو RPE؟</button>';
+    b += '</div>';
+
+    if(W.exIdx===0 && W.setIdx===0){
+      const clue = pick(clues, seedOfDay(W.day)+W.week+W.exIdx);
+      b += '<div class="clue" style="margin-top:18px"><div class="k">Today\u2019s Clue — '+esc(clue.k)+'</div><div class="t">'+esc(clue.ar)+'</div></div>';
+    }
+    if(d.lower && W.setIdx===nSets-1) b += '<div class="banner" style="margin-top:16px">المجموعة الأخيرة: نتوقف ونحن قادرات على تكرار أو تكرارين إضافيين. بدون فشل عضلي.</div>';
+    b += '<p class="tiny" style="text-align:center;margin-top:18px;opacity:.75">'+esc(PAIN_NOTE)+'</p>';
+  }
+
+  else if(W.phase==="rpe"){
+    const e = d.exercises[W.exIdx];
+    b += '<p class="eyebrow">'+esc(e.ar)+' — '+esc(e.en)+'</p><h1 style="font-size:24px">كيف كانت المجموعة؟</h1>';
+    b += '<p class="muted">'+(W.deload? "هذا الأسبوع نستهدف RPE 5–6." : "نستهدف RPE 6–8"+(d.lower?" بدون فشل عضلي.":"."))+'</p>';
+    b += '<div class="rpe-grid">';
+    rpeInfo.forEach(function(r){ b += '<button class="rpe-b" data-act="rpe" data-v="'+r.v+'"><b>RPE '+r.v+'</b><span>'+(r.v===6?"متوسط":r.v===7?"جيد":"صعب")+'</span></button>'; });
+    b += '<button class="rpe-b wide" data-act="rpe" data-v="9"><b>صعب جدًا</b><span>Too Hard — نخفف المرة القادمة</span></button>';
+    b += '<button class="rpe-b wide" data-act="rpe" data-v="5"><b>سهل</b><span>Too Easy</span></button>';
+    b += '</div>';
+    b += '<button class="chip" data-act="rpe-info" style="margin-top:14px">ما معنى هذه الأرقام؟</button>';
+  }
+
+  else if(W.phase==="cooldown"){
+    b += '<p class="eyebrow">التهدئة</p><h1 style="font-size:23px">ننهي بهدوء</h1>';
+    b += '<div class="banner" style="margin:12px 0">'+esc(cooldownNote)+'</div>';
+    cooldown.forEach(function(x,i){
+      const on = W.coolDone.indexOf(i)!==-1;
+      b += '<button class="checkrow'+(on?" on":"")+'" data-act="cool-toggle" data-i="'+i+'"><span class="bx">'+(on?"✓":"")+'</span><span><span style="font-weight:500">'+esc(x.ar)+'</span><br><span class="tiny en">'+esc(x.en)+'</span></span></button>';
+    });
+    b += '<button class="btn" data-act="finish" style="margin-top:16px">إنهاء الجلسة</button>';
+  }
+
+  else if(W.phase==="done"){
+    b = W.doneHTML;
+  }
+
+  $("#ov-head").innerHTML = head;
+  $("#ov-body").innerHTML = b;
+  $("#ov").scrollTop = 0;
+  bindInputs();
+}
+function bindInputs(){
+  if(!W || W.phase!=="exercise") return;
+  const d = workoutProgram[W.day];
+  if(!d.exercises) return;
+  const wI = $("#in-weight"), rI = $("#in-reps");
+  if(!wI || !rI) return;
+  const e = d.exercises[W.exIdx];
+  wI.addEventListener("input", function(){ W.draft[e.id].weight = wI.value.replace(/[^\d.]/g,""); });
+  rI.addEventListener("input", function(){ W.draft[e.id].reps = rI.value.replace(/[^\d]/g,""); });
+}
+function stepField(f, delta){
+  if(!W) return;
+  const e = workoutProgram[W.day].exercises[W.exIdx];
+  const el = $(f==="weight"? "#in-weight":"#in-reps");
+  let v = parseFloat(el.value); if(isNaN(v)) v = 0;
+  v = Math.max(0, Math.round((v+delta)*100)/100);
+  el.value = v;
+  W.draft[e.id][f] = v;
+}
+function completeSet(){
+  if(!W) return;
+  const d = workoutProgram[W.day];
+  const e = d.exercises[W.exIdx];
+  const nSets = setsFor(e, W.week);
+  const dr = W.draft[e.id];
+  const weight = parseFloat(dr.weight)||0;
+  const reps = parseInt(dr.reps,10)||0;
+  if(reps<=0){ toast("سجّلي عدد التكرارات أولًا"); return; }
+  W.entries.push({ ex:e.id, set:W.setIdx+1, weight:weight, reps:reps, rpe:null });
+  const wasLast = (W.setIdx === nSets-1);
+  const lastEx = (W.exIdx === d.exercises.length-1);
+  if(wasLast){
+    W.phase = "rpe";
+    renderWorkout();
+  } else {
+    W.setIdx++;
+    renderWorkout();
+    startRest(restSeconds(e), e, "المجموعة "+(W.setIdx+1)+" من "+nSets+" — "+e.ar);
+  }
+  save();
+}
+function applyRPE(v){
+  if(!W) return;
+  const d = workoutProgram[W.day];
+  const e = d.exercises[W.exIdx];
+  const mine = W.entries.filter(function(x){ return x.ex===e.id; });
+  if(mine.length) mine[mine.length-1].rpe = v;
+  if(v>=9){ toast("سجّلناها. المرة القادمة نخفف قليلًا."); }
+  const lastEx = (W.exIdx === d.exercises.length-1);
+  if(lastEx){
+    W.phase = "cooldown";
+    renderWorkout();
+  } else {
+    W.exIdx++; W.setIdx = 0; W.phase = "exercise";
+    renderWorkout();
+    const nx = d.exercises[W.exIdx];
+    startRest(restSeconds(e), e, "التمرين التالي: "+nx.ar);
+  }
+  save();
+}
+function finishSession(){
+  if(!W) return;
+  const d = workoutProgram[W.day];
+  const minutes = Math.max(1, Math.round((Date.now()-W.startTs)/60000));
+  const rpes = W.entries.map(function(x){ return x.rpe===9? 8.5 : x.rpe; }).filter(function(x){ return typeof x==="number"; });
+  const avg = rpes.length? Math.round((rpes.reduce(function(a,b){return a+b;},0)/rpes.length)*10)/10 : null;
+  const sess = {
+    id: Date.now(), week: W.week, day: W.day, type:"strength",
+    date: todayISO(), minutes: minutes, setsDone: W.entries.length,
+    avgRpe: avg, deload: W.deload, entries: W.entries
+  };
+  /* replace any earlier session for the same week+day */
+  state.sessions = state.sessions.filter(function(s){ return !(s.week===W.week && s.day===W.day); });
+  state.sessions.push(sess);
+  saveNow();
+
+  const hints = [];
+  d.exercises.forEach(function(e){ const hi = progressionHint(e.id); if(hi) hints.push({ex:e.ar, en:e.en, t:hi}); });
+
+  let b = '';
+  b += '<div style="text-align:center;padding:6px 0 2px"><p class="eyebrow">اكتمل</p><h1 style="font-size:30px;color:var(--burgundy)">يوم '+esc(d.family)+'</h1><p class="muted">'+en(d.type)+'</p></div>';
+  b += '<div class="stat-grid" style="margin-top:18px"><div class="stat"><b>'+sess.setsDone+'</b><span>مجموعات مكتملة</span></div><div class="stat"><b>'+(avg? avg : "—")+'</b><span>متوسط RPE</span></div><div class="stat"><b>'+minutes+'</b><span>دقيقة</span></div><div class="stat"><b>'+weekDoneCount(W.week)+'/6</b><span>أيام الأسبوع</span></div></div>';
+  b += '<div style="margin-top:18px"><p class="eyebrow">أُضيف أثر هذا اليوم إلى لوحتك</p><div class="canvas-wrap">'+canvasSVG(W.week,{animate:true})+'</div></div>';
+  hints.forEach(function(hh){ b += '<div class="banner" style="margin-top:12px"><b>'+esc(hh.ex)+'</b> <span class="tiny en">'+esc(hh.en)+'</span><br>'+esc(hh.t)+'</div>'; });
+  if(weekComplete(W.week)){
+    b += '<div class="card" style="margin-top:16px;text-align:center"><h2>الأسبوع اكتمل</h2>'+constellationSVG(W.week)+'<p class="muted" style="margin-top:6px">ستة أيام بأسمائهم. واليوم لكِ.</p><button class="btn ghost sm" data-act="open-sara-day" style="margin-top:12px">يوم سارة</button></div>';
+  }
+  b += '<p style="text-align:center;margin-top:22px;font-size:17px">تم يا سارة. مكانك محفوظ.</p>';
+  b += '<button class="btn quiet" data-act="ov-close" style="margin-top:16px">تمام</button>';
+  W.phase = "done"; W.doneHTML = b;
+  renderWorkout();
+}
+function exitWorkout(){
+  if(!W || W.phase==="done" || W.phase==="rehab-done"){ closeOv(); W=null; return; }
+  if(W.phase==="rehab"){
+    const some = Object.keys(W.rehabLog).length>0;
+    modal('<h3>إنهاء التأهيل؟</h3><p class="tiny">'+(some? "لم تكتمل مرحلة التأهيل بعد، ولن تُسجَّل إذا خرجتِ الآن." : "لم تبدئي أي حركة بعد.")+'</p><div class="acts"><button class="btn quiet sm" data-act="discard-exit">خروج</button><button class="btn quiet sm" data-act="modal-close">متابعة التأهيل</button></div>');
+    return;
+  }
+  const has = W.entries.length>0;
+  modal('<h3>إنهاء الجلسة؟</h3><p class="tiny">'+(has? "سجّلتِ "+W.entries.length+" مجموعة. يمكنك حفظ ما تم أو الخروج بدون حفظ." : "لم تُسجَّل أي مجموعة بعد.")+'</p><div class="acts">'+
+    (has? '<button class="btn sm" data-act="save-exit">حفظ ما تم وإنهاء</button>':'')+
+    '<button class="btn quiet sm" data-act="discard-exit">خروج بدون حفظ</button>'+
+    '<button class="btn quiet sm" data-act="modal-close">متابعة التمرين</button></div>');
+}
+
+/* =========================================================
+   11) REST TIMER
+   ========================================================= */
+let R = { t:null, left:0, total:0, paused:false, ex:null };
+function startRest(sec, exercise, nextLabel){
+  R.total = sec; R.left = sec; R.paused = false; R.ex = exercise;
+  $("#rest-next").textContent = nextLabel || "";
+  renderRestQuick();
+  $("#rest").classList.add("on");
+  $("#rest-toggle").textContent = "إيقاف مؤقت";
+  tickRest();
+  clearInterval(R.t);
+  R.t = setInterval(function(){
+    if(R.paused) return;
+    R.left--;
+    if(R.left<=0){ endRest(true); return; }
+    tickRest();
+  },1000);
+}
+function renderRestQuick(){
+  const q = $("#rest-quick");
+  if(R.ex && R.ex.rest==="flex"){
+    q.innerHTML = REST_FLEX.options.map(function(o){
+      return '<button data-act="rest-set" data-v="'+o+'" class="'+(R.total===o?"on":"")+'">'+o+' ث</button>';
+    }).join("");
+    q.style.display = "flex";
+  } else { q.innerHTML=""; q.style.display="none"; }
+}
+function tickRest(){
+  $("#rest-clock").textContent = mmss(R.left);
+  const c = 2*Math.PI*104;
+  const frac = R.total? (R.left/R.total) : 0;
+  const ring = $("#ring");
+  ring.setAttribute("stroke-dasharray", c);
+  ring.setAttribute("stroke-dashoffset", (c*(1-frac)).toFixed(1));
+}
+function endRest(natural){
+  clearInterval(R.t); R.t=null;
+  $("#rest").classList.remove("on");
+  if(R.ex && R.ex.rest==="flex"){
+    if(!state.restPrefs[R.ex.id]) state.restPrefs[R.ex.id]=[];
+    state.restPrefs[R.ex.id].push(R.total);
+    if(state.restPrefs[R.ex.id].length>20) state.restPrefs[R.ex.id] = state.restPrefs[R.ex.id].slice(-20);
+    save();
+  }
+  R.ex = null;
+}
+function setRest(sec){
+  R.total = sec; R.left = sec; R.paused=false;
+  state.settings.flexRest = sec; save();
+  renderRestQuick(); tickRest();
+}
+
+/* =========================================================
+   12) CARDIO MODE — low impact only
+   ========================================================= */
+let C = null;
+function startCardio(day){
+  C = { day:day, week:state.currentWeek, machine:state.settings.cardioMachine,
+        minutes:state.settings.cardioMinutes, phase:"setup", left:0, total:0, paused:false, t:null, rpe:null, talk:null, startTs:null };
+  ovMode = "cardio";
+  $("#ov").classList.add("on");
+  document.body.style.overflow = "hidden";
+  renderCardio();
+}
+function renderCardio(){
+  const d = workoutProgram[C.day];
+  const head = ovHead('يوم '+esc(d.family), en("Low Impact Cardio"), C.phase==="setup"?0:(C.phase==="done"?1:(C.total? 1-(C.left/C.total):0)));
+  let b = '';
+  if(C.phase==="setup"){
+    b += '<p class="eyebrow">يوم '+esc(d.family)+'</p><h1 style="font-size:26px">كارديو منخفض التأثير</h1>';
+    b += '<p class="muted">بدون جري، بدون قفز، وبدون فترات عالية الشدّة. شدّة معتدلة يمكن الاستمرار عليها.</p>';
+    b += '<div class="sect"><p class="eyebrow">الجهاز</p>';
+    cardioMachines.forEach(function(m){
+      b += '<button class="checkrow'+(C.machine===m.id?" on":"")+'" data-act="cardio-machine" data-v="'+m.id+'"><span class="bx">'+(C.machine===m.id?"✓":"")+'</span><span><span style="font-weight:600">'+esc(m.ar)+'</span><br><span class="tiny en">'+esc(m.en)+'</span>'+(m.pref?'':'<br><span class="tiny">اختياري: مشي لطيف وقصير فقط، البرنامج لا يعتمد المشي المطوّل كوسيلة كارديو.</span>')+'</span></button>';
+    });
+    b += '</div>';
+    b += '<div class="sect"><p class="eyebrow">المدة</p><div class="chips">';
+    [15,20].forEach(function(m){ b += '<button class="chip'+(C.minutes===m?" on":"")+'" data-act="cardio-min" data-v="'+m+'">'+m+' دقيقة</button>'; });
+    b += '</div></div>';
+    b += '<div class="banner olive" style="margin-top:16px">اختبار الكلام: تقدرين تتكلمين بجُمل قصيرة بدون انقطاع شديد. هذه هي الشدّة المطلوبة.</div>';
+    b += '<button class="btn" data-act="cardio-start" style="margin-top:18px">ابدئي</button>';
+  }
+  else if(C.phase==="run"){
+    const mach = cardioMachines.filter(function(m){return m.id===C.machine;})[0];
+    b += '<div style="text-align:center;padding-top:8px"><p class="eyebrow">'+esc(mach?mach.ar:"")+'</p>';
+    b += '<div id="cardio-clock" style="font-size:64px;font-weight:300;direction:ltr;font-variant-numeric:tabular-nums;color:var(--burgundy);line-height:1.1">'+mmss(C.left)+'</div>';
+    b += '<p class="muted">من '+nm(C.minutes)+' دقيقة</p></div>';
+    b += '<div class="chips" style="justify-content:center;margin-top:18px"><button class="chip" data-act="cardio-toggle">'+(C.paused?"متابعة":"إيقاف مؤقت")+'</button><button class="chip" data-act="cardio-finish">إنهاء الآن</button></div>';
+    b += '<div class="banner" style="margin-top:22px">هل تستطيعين الكلام بجمل قصيرة بدون انقطاع شديد؟</div>';
+    b += '<div class="chips" style="margin-top:10px"><button class="chip'+(C.talk==="yes"?" on":"")+'" data-act="cardio-talk" data-v="yes">نعم</button><button class="chip'+(C.talk==="hard"?" on":"")+'" data-act="cardio-talk" data-v="hard">بصعوبة</button><button class="chip'+(C.talk==="no"?" on":"")+'" data-act="cardio-talk" data-v="no">لا</button></div>';
+    if(C.talk==="no") b += '<p class="tiny" style="margin-top:10px">خفّفي المقاومة أو السرعة قليلًا. الهدف شدّة مستدامة، لا أقصى مجهود.</p>';
+    b += '<p class="tiny" style="text-align:center;margin-top:24px">'+esc(pick(motivations, C.week+C.day))+'</p>';
+  }
+  else if(C.phase==="rpe"){
+    b += '<h1 style="font-size:24px">كيف كانت الجلسة؟</h1><p class="muted">الشدّة المستهدفة: معتدلة ومستدامة.</p>';
+    b += '<div class="rpe-grid">';
+    rpeInfo.forEach(function(r){ b += '<button class="rpe-b" data-act="cardio-rpe" data-v="'+r.v+'"><b>RPE '+r.v+'</b><span>'+(r.v===6?"متوسط":r.v===7?"جيد":"صعب")+'</span></button>'; });
+    b += '<button class="rpe-b wide" data-act="cardio-rpe" data-v="9"><b>صعب جدًا</b><span>Too Hard</span></button>';
+    b += '</div>';
+  }
+  else if(C.phase==="done"){ b = C.doneHTML; }
+  $("#ov-head").innerHTML = head;
+  $("#ov-body").innerHTML = b;
+}
+function cardioStart(){
+  C.total = C.minutes*60; C.left = C.total; C.phase="run"; C.paused=false; C.startTs=Date.now();
+  state.settings.cardioMachine = C.machine; state.settings.cardioMinutes = C.minutes; save();
+  renderCardio();
+  clearInterval(C.t);
+  C.t = setInterval(function(){
+    if(C.paused) return;
+    C.left--;
+    if(C.left<=0){ clearInterval(C.t); C.phase="rpe"; renderCardio(); return; }
+    if(ovMode==="cardio" && C.phase==="run"){
+      const cl = document.getElementById("cardio-clock");
+      if(cl) cl.textContent = mmss(C.left); else renderCardio();
+      const bar = document.querySelector("#ov-head .prog-bar i");
+      if(bar && C.total) bar.style.width = Math.round((1-(C.left/C.total))*100)+"%";
+    }
+  },1000);
+}
+function cardioFinish(){
+  clearInterval(C.t);
+  C.minutesDone = Math.max(1, Math.round((C.total - C.left)/60));
+  C.phase = "rpe"; renderCardio();
+}
+function cardioSave(rpe){
+  clearInterval(C.t);
+  const d = workoutProgram[C.day];
+  const mach = cardioMachines.filter(function(m){return m.id===C.machine;})[0];
+  const mins = C.minutesDone || C.minutes;
+  const sess = { id:Date.now(), week:C.week, day:C.day, type:"cardio", date:todayISO(),
+    minutes:mins, machine:C.machine, machineAr: mach?mach.ar:"", avgRpe: rpe<9? rpe : 8, talk:C.talk, setsDone:0 };
+  state.sessions = state.sessions.filter(function(s){ return !(s.week===C.week && s.day===C.day); });
+  state.sessions.push(sess);
+  saveNow();
+  let b = '<div style="text-align:center;padding:6px 0"><p class="eyebrow">اكتمل</p><h1 style="font-size:30px;color:var(--burgundy)">يوم '+esc(d.family)+'</h1><p class="muted">'+nm(mins)+' دقيقة — '+esc(mach?mach.ar:"")+'</p></div>';
+  b += '<div class="stat-grid" style="margin-top:16px"><div class="stat"><b>'+mins+'</b><span>دقيقة</span></div><div class="stat"><b>'+(rpe<9?rpe:8)+'</b><span>RPE</span></div></div>';
+  b += '<div style="margin-top:18px"><p class="eyebrow">أُضيف أثر هذا اليوم إلى لوحتك</p><div class="canvas-wrap">'+canvasSVG(C.week,{animate:true})+'</div></div>';
+  if(weekComplete(C.week)) b += '<div class="card" style="margin-top:16px;text-align:center"><h2>الأسبوع اكتمل</h2>'+constellationSVG(C.week)+'<p class="muted">ستة أيام بأسمائهم. واليوم لكِ.</p><button class="btn ghost sm" data-act="open-sara-day" style="margin-top:12px">يوم سارة</button></div>';
+  b += '<p style="text-align:center;margin-top:20px;font-size:17px">تم يا سارة. مكانك محفوظ.</p>';
+  b += '<button class="btn quiet" data-act="ov-close" style="margin-top:16px">تمام</button>';
+  C.doneHTML = b; C.phase="done"; renderCardio();
+}
+
+/* =========================================================
+   13) SARA DAY — complete rest
+   ========================================================= */
+function openSaraDay(){
+  const w = state.currentWeek;
+  const ss = sessionsOfWeek(w);
+  const strength = ss.filter(function(s){return s.type==="strength";});
+  const cardio = ss.filter(function(s){return s.type==="cardio";});
+  const sets = strength.reduce(function(a,s){return a+(s.setsDone||0);},0);
+  const mins = ss.reduce(function(a,s){return a+(s.minutes||0);},0);
+  const rp = ss.map(function(s){return s.avgRpe;}).filter(function(x){return typeof x==="number";});
+  const avg = rp.length? Math.round((rp.reduce(function(a,b){return a+b;},0)/rp.length)*10)/10 : null;
+  const ref = state.reflections[w] || {};
+
+  /* improved exercises: top set reps up vs previous week */
+  let improved = 0;
+  [1,2,4,5].forEach(function(di){
+    workoutProgram[di].exercises.forEach(function(e){
+      const h = historyOf(e.id);
+      if(h.length>=2){
+        const a = h[h.length-1], b2 = h[h.length-2];
+        const ar = a.sets.reduce(function(x,y){return x+(y.r||0);},0);
+        const br = b2.sets.reduce(function(x,y){return x+(y.r||0);},0);
+        const aw = Math.max.apply(null,a.sets.map(function(x){return x.w||0;}));
+        const bw = Math.max.apply(null,b2.sets.map(function(x){return x.w||0;}));
+        if(aw>bw || (aw===bw && ar>br)) improved++;
+      }
+    });
+  });
+
+  let b = '';
+  b += '<div style="text-align:center;padding:10px 0 4px"><p class="eyebrow">اليوم السابع</p><h1 style="font-size:34px;color:var(--burgundy)">يوم سارة</h1><p class="muted">راحة تامة</p></div>';
+  const breathDone = isRehabDone(7,w);
+  b += '<div class="sect" style="margin-top:16px"><div class="sect-h"><p class="eyebrow">المرحلة الأولى — تمرين التنفس</p>'+(breathDone?'<span class="tiny">تم ✓</span>':'')+'</div>';
+  b += '<div class="card"><div class="ex-name en" style="font-size:20px">Diaphragmatic Breathing</div><div class="ex-en">تمرين التنفس الحجابي</div>';
+  b += '<div class="pills"><span class="pill b">3 × 8 أنفاس</span><span class="pill">أو جلسة 5–10 دقائق</span></div>';
+  b += '<div class="rehab-panel" style="margin-top:12px">'+esc(REHAB_RULE_T)+'<br><span class="tiny">'+esc(REHAB_RULE_S)+'</span></div>';
+  b += '<div class="chips" style="margin-top:12px"><button class="chip" data-act="breath-tech">طريقة التنفيذ</button></div>';
+  if(!breathDone) b += '<button class="btn sm" data-act="breath-done" style="margin-top:12px">✓ تم تمرين التنفس</button>';
+  b += '</div></div>';
+  b += '<div class="banner olive" style="margin-top:14px">بعد التنفس: راحة تامة. لا تمرين، ولا مشي مطوّل، ولا نشاط بديل. الراحة جزء من البرنامج، وليست توقفًا عنه.</div>';
+  b += '<div style="margin-top:18px">'+constellationSVG(w)+'</div>';
+  b += '<div class="sect"><div class="sect-h"><p class="eyebrow">أسبوع سارة — الأسبوع '+nm(w)+'</p></div><div class="stat-grid">';
+  b += '<div class="stat"><b>'+strength.length+'</b><span>جلسات قوة</span></div>';
+  b += '<div class="stat"><b>'+cardio.length+'</b><span>جلسات كارديو</span></div>';
+  b += '<div class="stat"><b>'+sets+'</b><span>مجموعات عمل</span></div>';
+  b += '<div class="stat"><b>'+mins+'</b><span>دقيقة تدريب</span></div>';
+  b += '<div class="stat"><b>'+(avg||"—")+'</b><span>متوسط RPE</span></div>';
+  b += '<div class="stat"><b>'+improved+'</b><span>تمارين تحسّنت</span></div>';
+  b += '</div>';
+  b += '<div class="card" style="margin-top:12px"><div class="kv"><span>الأيام المكتملة</span><b>'+weekDoneCount(w)+'/6</b></div><div class="kv"><span>حتى أسبوع التخفيف</span><b>'+(isDeload(w)? "هذا الأسبوع" : Math.max(0, 6-weeksSinceDeload())+" أسبوع")+'</b></div></div>';
+  const obs = weekObservations();
+  if(obs.length) b += '<div class="banner" style="margin-top:12px">'+obs.map(esc).join("<br>")+'</div>';
+  b += '</div>';
+
+  b += '<div class="sect"><div class="sect-h"><p class="eyebrow">لوحة الأسبوع</p></div><div class="canvas-wrap">'+canvasSVG(w,{animate:false})+'</div>';
+  b += '<p class="tiny" style="text-align:center;margin-top:8px">'+(weekComplete(w)? "اكتملت اللوحة." : canvasCount(w)+" من 6 علامات.")+'</p></div>';
+
+  b += '<div class="sect"><div class="sect-h"><p class="eyebrow">تأمل الأسبوع</p></div><div class="card">';
+  b += '<p class="tiny" style="margin:0 0 6px">أي تمرين كان أسهل من الأسبوع الماضي؟</p><textarea class="note-in" id="ref-a">'+esc(ref.a||"")+'</textarea>';
+  b += '<p class="tiny" style="margin:14px 0 6px">أي تمرين احتاج تركيزًا أكثر؟</p><textarea class="note-in" id="ref-b">'+esc(ref.b||"")+'</textarea>';
+  b += '<p class="tiny" style="margin:14px 0 6px">كيف كانت طاقتك بشكل عام؟</p><textarea class="note-in" id="ref-c">'+esc(ref.c||"")+'</textarea>';
+  b += '<button class="btn sm" data-act="ref-save" style="margin-top:14px">حفظ</button></div></div>';
+
+  if(weekComplete(w)){
+    b += '<div class="card" style="margin-top:18px;text-align:center"><h3>ستة أيام بأسمائهم. واليوم لكِ.</h3><button class="btn" data-act="new-week" style="margin-top:12px">ابدئي الأسبوع '+(w+1)+'</button></div>';
+  }
+  const wordObj = pick(englishWords, w*3+7);
+  b += '<div class="sect"><p class="eyebrow">Today\u2019s Word</p><div class="word"><div class="w">'+esc(wordObj.w)+'</div><div><div style="font-weight:600">'+esc(wordObj.ar)+'</div><div class="tiny en">'+esc(wordObj.line)+'</div></div></div></div>';
+  openOv("sara-day", ovHead("يوم سارة","Complete Rest"), b);
+}
+function saveReflection(){
+  const w = state.currentWeek;
+  state.reflections[w] = {
+    a: ($("#ref-a")||{value:""}).value.trim(),
+    b: ($("#ref-b")||{value:""}).value.trim(),
+    c: ($("#ref-c")||{value:""}).value.trim(),
+    saved: true
+  };
+  saveNow(); toast("حُفظ تأمل الأسبوع");
+}
+
+/* =========================================================
+   14) DELOAD / WEEK CONTROL
+   ========================================================= */
+function openDeload(){
+  const w = state.currentWeek;
+  modal('<h3>أسبوع التخفيف</h3>'+
+    '<p class="tiny">مرّ '+weeksSinceDeload()+' أسبوع منذ آخر تخفيف. البرنامج ينصّ على تخفيف كل 6–8 أسابيع.</p>'+
+    '<div class="banner" style="margin-top:10px">نفس الحركات. حمل أخف. الهدف هذا الأسبوع هو الاستشفاء وليس إثبات القوة.<br><span class="tiny">المجموعات تقل نحو 25% والجهد المستهدف RPE 5–6.</span></div>'+
+    '<div class="acts"><button class="btn sm" data-act="deload-start">بدء أسبوع التخفيف الآن (الأسبوع '+w+')</button>'+
+    '<button class="btn quiet sm" data-act="deload-later">تأجيل — أذكّرك الأسبوع القادم</button>'+
+    '<button class="btn quiet sm" data-act="modal-close">إغلاق</button></div>');
+}
+function startDeload(){
+  const w = state.currentWeek;
+  if(state.deload.weeks.indexOf(w)===-1) state.deload.weeks.push(w);
+  state.deload.lastDeloadWeek = w;
+  state.deload.postponed = false;
+  saveNow(); closeModal(); render();
+  toast("وضع التخفيف مفعّل هذا الأسبوع");
+}
+function cancelDeload(){
+  const w = state.currentWeek;
+  state.deload.weeks = state.deload.weeks.filter(function(x){ return x!==w; });
+  if(state.deload.lastDeloadWeek===w) state.deload.lastDeloadWeek = 0;
+  saveNow(); render(); toast("أُلغي وضع التخفيف");
+}
+function newWeek(){
+  modal('<h3>الأسبوع '+(state.currentWeek+1)+'</h3><p class="tiny">تبدأ لوحة جديدة، وتُحفظ لوحة الأسبوع '+state.currentWeek+' في الأرشيف. كل السجل السابق يبقى كما هو.</p><div class="acts"><button class="btn sm" data-act="new-week-yes">ابدئي الأسبوع الجديد</button><button class="btn quiet sm" data-act="modal-close">ليس الآن</button></div>');
+}
+
+/* =========================================================
+   15) BACKUP
+   ========================================================= */
+function exportData(){
+  const data = JSON.stringify({ app:"sara-training", exportedAt:new Date().toISOString(), state:state }, null, 2);
+  const blob = new Blob([data], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "sara-training-"+todayISO()+".json";
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 300);
+  toast("تم تجهيز ملف التصدير");
+}
+function importData(file){
+  const r = new FileReader();
+  r.onload = function(){
+    try{
+      const parsed = JSON.parse(r.result);
+      const s = parsed.state || parsed;
+      if(!s || typeof s!=="object" || !("sessions" in s)) throw new Error("bad");
+      const merged = defaultState();
+      for(const k in merged) if(k in s) merged[k] = s[k];
+      merged.settings = Object.assign(defaultState().settings, s.settings||{});
+      merged.deload = Object.assign(defaultState().deload, s.deload||{});
+      if(!("rehabSessions" in s) || !Array.isArray(s.rehabSessions)){
+        merged.rehabSessions = merged.sessions.map(function(x){
+          return { week:x.week, day:x.day, kind:(rehabByDay[x.day]||"PT"), date:x.date, legacy:true };
+        });
+      }
+      state = merged;
+      saveNow().then(function(){ render(); toast("تم استيراد بياناتك"); });
+    }catch(e){ toast("الملف غير صالح"); }
+  };
+  r.readAsText(file);
+}
+function resetJourney(){
+  modal('<h3>إعادة ضبط الرحلة</h3><p class="tiny">سيُحذف كل شيء: الجلسات، الأوزان، الملاحظات، اللوحات، والتأملات. لا يمكن التراجع.</p><p class="tiny">يُنصح بتصدير نسخة أولًا.</p><div class="acts"><button class="btn quiet sm" data-act="export">تصدير أولًا</button><button class="btn sm" data-act="reset-confirm" style="background:var(--burgundy)">نعم، احذفي كل شيء</button><button class="btn quiet sm" data-act="modal-close">إلغاء</button></div>');
+}
+function doReset(){
+  modal('<h3>تأكيد أخير</h3><p class="tiny">اكتبي كلمة <b>حذف</b> للتأكيد.</p><input class="note-in" id="reset-word" style="min-height:auto;text-align:center" ><div class="acts"><button class="btn sm" data-act="reset-final">تأكيد الحذف</button><button class="btn quiet sm" data-act="modal-close">إلغاء</button></div>');
+}
+function resetFinal(){
+  const v = ($("#reset-word")||{value:""}).value.trim();
+  if(v!=="حذف"){ toast("اكتبي كلمة: حذف"); return; }
+  const ob = state.onboarded;
+  state = defaultState();
+  state.onboarded = ob;
+  state.startedAt = todayISO();
+  saveNow().then(function(){ closeModal(); go("today"); toast("بدأت رحلة جديدة"); });
+}
+
+/* =========================================================
+   16) FIRST OPEN
+   ========================================================= */
+let onbIdx = 0;
+function buildOnboarding(){
+  const s = $$("#onb .onb-s");
+  s[0].innerHTML =
+    '<svg viewBox="0 0 300 150" style="width:100%;max-width:300px"><path class="draw" style="--len:420px" d="M30 118 C 70 40, 140 26, 190 62 C 232 92, 254 66, 272 44" fill="none" stroke="#6E2233" stroke-width="6" stroke-linecap="round"/></svg>'+
+    '<h2 style="margin-top:18px;font-size:40px;color:var(--burgundy)">سارة</h2>'+
+    '<button class="btn ghost sm" data-act="onb-next" style="margin-top:34px">التالي</button>';
+  s[1].innerHTML =
+    '<svg viewBox="0 0 260 260" style="width:100%;max-width:250px">'+
+      '<circle cx="130" cy="130" r="92" fill="none" stroke="rgba(42,37,34,.14)" stroke-width="1" stroke-dasharray="3 5"/>'+
+      [0,1,2,3,4,5].map(function(i){ const a=(-90+i*60)*Math.PI/180; return '<circle cx="'+(130+92*Math.cos(a)).toFixed(1)+'" cy="'+(130+92*Math.sin(a)).toFixed(1)+'" r="7" fill="#fff" stroke="#6E2233" stroke-width="1.6"/>'; }).join("")+
+      '<circle cx="130" cy="130" r="20" fill="#F2EAE0" stroke="rgba(42,37,34,.18)"/>'+
+    '</svg>'+
+    '<button class="btn ghost sm" data-act="onb-next" style="margin-top:34px">التالي</button>';
+  s[2].innerHTML =
+    '<h2 style="font-size:30px;line-height:1.7">قوتك.<br>وقتك.<br>برنامجك.</h2>'+
+    '<p class="tiny" style="margin-top:14px">البرنامج كما هو. التجربة حوله صارت لكِ.</p>'+
+    '<button class="btn ghost sm" data-act="onb-next" style="margin-top:34px">التالي</button>';
+  s[3].innerHTML =
+    '<p class="eyebrow">أيام أسبوعك</p>'+
+    '<h2 style="font-size:22px;line-height:2;color:var(--burgundy)">فاطمة • أفراح • تهاني<br>نايف • مالك • عبدالرحمن</h2>'+
+    '<p style="margin-top:16px;font-size:17px">ستة أيام بأسمائهم. واليوم السابع لكِ.</p>'+
+    '<button class="btn" data-act="onb-start" style="margin-top:30px">نبدأ</button>';
+}
+function onbGo(i){
+  onbIdx = i;
+  $$("#onb .onb-s").forEach(function(el,k){ el.classList.toggle("on", k===i); });
+  $$("#onb .onb-dots i").forEach(function(el,k){ el.classList.toggle("on", k===i); });
+}
+function finishOnboarding(){
+  state.onboarded = true;
+  state.startedAt = todayISO();
+  saveNow();
+  $("#onb").classList.remove("on");
+  $("#nav").classList.add("on");
+  go("today");
+}
+
+/* =========================================================
+   17) EVENTS
+   ========================================================= */
+document.addEventListener("click", function(ev){
+  const navBtn = ev.target.closest("#nav button[data-nav]");
+  if(navBtn){ go(navBtn.getAttribute("data-nav")); return; }
+  const el = ev.target.closest("[data-act]");
+  if(!el) return;
+  const a = el.getAttribute("data-act");
+  const v = el.getAttribute("data-v");
+  const day = parseInt(el.getAttribute("data-day"),10);
+  const exId = el.getAttribute("data-ex");
+
+  switch(a){
+    case "onb-next": onbGo(Math.min(3,onbIdx+1)); break;
+    case "onb-start": finishOnboarding(); break;
+
+    case "ov-close":
+      if(ovMode==="workout") exitWorkout();
+      else if(ovMode==="cardio" && C && C.phase==="run"){
+        modal('<h3>إنهاء الكارديو؟</h3><div class="acts"><button class="btn sm" data-act="cardio-finish">إنهاء وتسجيل</button><button class="btn quiet sm" data-act="cardio-exit">خروج بدون حفظ</button><button class="btn quiet sm" data-act="modal-close">متابعة</button></div>');
+      }
+      else { if(C&&C.t) clearInterval(C.t); C=null; W=null; closeOv(); }
+      break;
+
+    case "start": startSession(day); break;
+    case "day-detail": openDayDetail(day); break;
+    case "ex-detail": openExDetail(exId); break;
+    case "ex-info": {
+      const e = exerciseById(exId);
+      modal('<h3>'+esc(e.ar)+'</h3><p class="tiny en" style="direction:ltr">'+esc(e.en)+'</p><div class="card-flat" style="margin-top:10px"><h3>مفتاح التنفيذ</h3><p class="tiny" style="margin:0">'+esc(e.cue)+'</p><h3 style="margin-top:12px">خطأ يجب تجنّبه</h3><p class="tiny" style="margin:0">'+esc(e.mistake)+'</p></div><div class="acts"><button class="btn quiet sm" data-act="modal-close">إغلاق</button></div>');
+      break; }
+    case "rpe-info":
+      modal('<h3>مقياس الجهد RPE</h3>'+rpeInfo.map(function(r){ return '<div class="kv"><span><b>RPE '+r.v+'</b> — '+esc(r.t)+'</span></div>'; }).join("")+
+        '<p class="tiny" style="margin-top:10px">في تمارين الجزء السفلي لا نصل إلى الفشل العضلي. نتوقف ونحن قادرات على تكرار أو تكرارين إضافيين.</p>'+
+        '<div class="acts"><button class="btn quiet sm" data-act="modal-close">فهمت</button></div>');
+      break;
+
+    case "rehab-set": rehabSetDone(); break;
+    case "rehab-continue": continueToMain(); break;
+    case "rehab-tech": {
+      const day = el.hasAttribute("data-day") ? parseInt(el.getAttribute("data-day"),10) : (W? W.day : 1);
+      const it = rehabOf(day).items[parseInt(el.getAttribute("data-i"),10)];
+      modal('<h3 class="en" style="direction:ltr;text-align:start">'+esc(it.en)+'</h3>'+
+        (it.sets>1? '<p class="tiny">'+esc(it.sets+" × "+it.reps)+' — '+esc(it.repsLabel)+'</p>' : '<p class="tiny">'+esc(it.repsLabel)+'</p>')+
+        '<div class="rehab-panel" style="margin-top:10px">'+it.tech.map(function(t){ return '• '+esc(t); }).join("<br>")+'</div>'+
+        '<p class="tiny" style="margin-top:10px">'+esc(REHAB_RULE_T)+' '+esc(REHAB_RULE_S)+'</p>'+
+        '<div class="acts"><button class="btn quiet sm" data-act="modal-close">إغلاق</button></div>');
+      break; }
+    case "breath-tech":
+      modal('<h3 class="en" style="direction:ltr;text-align:start">Diaphragmatic Breathing</h3>'+
+        '<div class="rehab-panel" style="margin-top:10px">'+breathingTechnique.map(function(t){ return '• '+esc(t); }).join("<br>")+'</div>'+
+        '<p class="tiny" style="margin-top:10px">'+breathingNotes.map(esc).join("<br>")+'</p>'+
+        '<div class="acts"><button class="btn quiet sm" data-act="modal-close">إغلاق</button></div>');
+      break;
+    case "breath-done":
+      recordRehab(7, state.currentWeek, "BREATH");
+      toast("تم تسجيل تمرين التنفس");
+      openSaraDay();
+      break;
+    case "warm-toggle": {
+      const i = parseInt(el.getAttribute("data-i"),10);
+      const k = W.warmDone.indexOf(i);
+      if(k===-1) W.warmDone.push(i); else W.warmDone.splice(k,1);
+      renderWorkout(); break; }
+    case "warm-done": W.phase="exercise"; renderWorkout(); break;
+    case "cool-toggle": {
+      const i = parseInt(el.getAttribute("data-i"),10);
+      const k = W.coolDone.indexOf(i);
+      if(k===-1) W.coolDone.push(i); else W.coolDone.splice(k,1);
+      renderWorkout(); break; }
+    case "step": stepField(el.getAttribute("data-f"), parseFloat(el.getAttribute("data-d"))); break;
+    case "set-done": completeSet(); break;
+    case "rpe": applyRPE(parseInt(v,10)); break;
+    case "finish": finishSession(); break;
+    case "save-exit": closeModal(); finishSession(); break;
+    case "discard-exit": closeModal(); W=null; closeOv(); break;
+
+    case "rest-toggle": R.paused=!R.paused; $("#rest-toggle").textContent = R.paused? "متابعة":"إيقاف مؤقت"; break;
+    case "rest-skip": endRest(false); break;
+    case "rest-add": R.left+=15; R.total=Math.max(R.total,R.left); tickRest(); break;
+    case "rest-set": setRest(parseInt(v,10)); break;
+
+    case "cardio-machine": C.machine=v; renderCardio(); break;
+    case "cardio-min": C.minutes=parseInt(v,10); renderCardio(); break;
+    case "cardio-start": cardioStart(); break;
+    case "cardio-toggle": C.paused=!C.paused; renderCardio(); break;
+    case "cardio-talk": C.talk=v; renderCardio(); break;
+    case "cardio-finish": closeModal(); cardioFinish(); break;
+    case "cardio-exit": closeModal(); if(C&&C.t) clearInterval(C.t); C=null; closeOv(); break;
+    case "cardio-rpe": cardioSave(parseInt(v,10)); break;
+
+    case "open-sara-day": closeModal(); openSaraDay(); break;
+    case "ref-save": saveReflection(); break;
+
+    case "note-open": openNote(exId); break;
+    case "note-save": saveNote(exId); break;
+    case "modal-close": closeModal(); break;
+
+    case "deload-open": openDeload(); break;
+    case "deload-start": startDeload(); break;
+    case "deload-later": state.deload.postponed=true; save(); closeModal(); toast("أجّلنا التخفيف. نذكّرك لاحقًا."); render(); break;
+    case "deload-cancel": cancelDeload(); break;
+
+    case "new-week": newWeek(); break;
+    case "new-week-yes":
+      state.currentWeek++; saveNow(); closeModal();
+      if(ovMode) closeOv();
+      go("today"); toast("بدأ الأسبوع "+state.currentWeek);
+      break;
+
+    case "set-flexrest": state.settings.flexRest=parseInt(v,10); save(); render(); break;
+    case "set-cardiomin": state.settings.cardioMinutes=parseInt(v,10); save(); render(); break;
+    case "set-machine": state.settings.cardioMachine=v; save(); render(); break;
+
+    case "storage-test": storageTest(); break;
+    case "export": exportData(); break;
+    case "import": $("#file-in").click(); break;
+    case "reset": resetJourney(); break;
+    case "reset-confirm": doReset(); break;
+    case "reset-final": resetFinal(); break;
+  }
+});
+$("#file-in").addEventListener("change", function(e){
+  const f = e.target.files && e.target.files[0];
+  if(f) importData(f);
+  e.target.value = "";
+});
+$("#modal").addEventListener("click", function(e){ if(e.target.id==="modal") closeModal(); });
+
+/* =========================================================
+   18) INIT
+   ========================================================= */
+(function init(){
+  buildOnboarding();
+  /* ask the browser to keep this data (supported browsers only) */
+  try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+  /* probe localStorage without touching saved data */
+  try{ localStorage.setItem("__sara_probe__","1"); localStorage.removeItem("__sara_probe__"); _lsOK = true; }catch(e){ _lsOK = false; }
+
+  openDB().then(dbGet).then(function(fromDB){
+    const fromLS = lsGet();
+    let saved = null;
+    if(fromDB && fromLS) saved = ((fromDB.savedAt||0) >= (fromLS.savedAt||0)) ? fromDB : fromLS;
+    else saved = fromDB || fromLS;
+
+    if(saved && typeof saved==="object"){
+      const merged = defaultState();
+      for(const k in merged) if(k in saved) merged[k] = saved[k];
+      merged.settings = Object.assign(defaultState().settings, saved.settings||{});
+      merged.deload = Object.assign(defaultState().deload, saved.deload||{});
+      state = merged;
+      /* migration: days finished before the rehabilitation phase existed stay complete */
+      if(!("rehabSessions" in saved) || !Array.isArray(saved.rehabSessions)){
+        state.rehabSessions = state.sessions.map(function(x){
+          return { week:x.week, day:x.day, kind:(rehabByDay[x.day]||"PT"), date:x.date, legacy:true };
+        });
+      }
+      persistAll(); /* bring both stores back in sync */
+    }
+    if(!state.onboarded){
+      $("#onb").classList.add("on");
+      onbGo(0);
+    } else {
+      $("#nav").classList.add("on");
+      go("today");
+    }
+    if(storageMode()==="none"){
+      setTimeout(function(){ toast("المتصفح يمنع الحفظ هنا — راجعي «سارة ← النسخ الاحتياطي»"); }, 1200);
+    }
+  });
+
+  /* write immediately when the page is hidden or closed */
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="hidden") flushSave(); });
+  window.addEventListener("pagehide", flushSave);
+  window.addEventListener("beforeunload", flushSave);
+})();
+</script>
+</body>
+</html>
