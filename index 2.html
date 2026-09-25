@@ -1,0 +1,2366 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#26282B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="مالك">
+<title>مالك — المدرب التلقائي</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{
+  --paper:#EEEDE7; --paper-2:#E3E0D7; --stone:#CFC7B8; --ink:#26282B; --ink-2:#55585C; --ink-3:#7C7E7F;
+  --olive:#3F4A2E; --olive-2:#5E6A45; --olive-3:#DDE0CF; --bronze:#94703F; --bronze-2:#C29A62; --navy:#1E2835; --danger:#8A3B2E;
+  --ui:"SF Arabic","Geeza Pro","Noto Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
+  --cond:"Avenir Next Condensed","DIN Condensed","Roboto Condensed","Arial Narrow","Helvetica Neue",sans-serif;
+  --r-s:6px; --r-m:12px; --r-l:18px;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.6;overflow-x:hidden}
+body.wo-open{overflow:hidden}
+button,input{font:inherit;color:inherit}
+[hidden]{display:none!important}
+h1,h2,h3{line-height:1.25;margin:0 0 .4em}
+h1{font-size:2rem;font-weight:800}
+h2{font-size:1.15rem;font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0 0 .7em}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:var(--paper-2);padding:1px 5px;border-radius:4px;word-break:break-all}
+.muted{color:var(--ink-3);font-size:.9rem}
+.center{text-align:center}
+.plain{padding-inline-start:1.1em;margin:0 0 .8em}
+.plain li{margin-bottom:.3em}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+:focus-visible{outline:3px solid var(--bronze-2);outline-offset:2px}
+
+/* buttons */
+.btn{display:block;width:100%;border:0;border-radius:var(--r-m);padding:15px 18px;font-weight:700;font-size:1.02rem;cursor:pointer;text-align:center;margin-top:10px;min-height:52px}
+.row .btn{width:auto;flex:1 1 150px}
+.btn-primary{background:var(--olive);color:#F4F2EA}
+.btn-primary:active{background:#323b24}
+.btn-start{font-size:1.25rem;min-height:64px;background:var(--ink);color:#F4F2EA}
+.btn-secondary{background:var(--paper-2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--stone)}
+.btn-ghost{background:transparent;color:var(--ink-2);box-shadow:inset 0 0 0 1.5px var(--stone)}
+.btn-link{background:none;color:var(--olive);text-decoration:underline;min-height:0;padding:8px}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-opt{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--stone);margin-top:0}
+.btn-opt[aria-pressed="true"]{background:var(--olive);color:#fff;box-shadow:none}
+.btn-opt.is-rec{box-shadow:inset 0 0 0 2px var(--bronze)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.opts{display:grid;gap:10px;margin:12px 0 18px}
+.opts-4{grid-template-columns:repeat(2,1fr)}
+.chip{border:0;background:var(--paper-2);border-radius:999px;padding:8px 14px;font-size:.88rem;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--stone)}
+.chip[aria-pressed="true"]{background:var(--olive-3);box-shadow:inset 0 0 0 1.5px var(--olive-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.linkish{background:none;border:0;padding:0;cursor:pointer;text-align:start;text-decoration:underline;text-decoration-color:var(--stone);text-underline-offset:3px}
+.field{display:block;margin:10px 0}
+.field span{display:block;font-size:.9rem;color:var(--ink-2);margin-bottom:4px}
+.field input{width:100%;padding:12px;border-radius:var(--r-s);border:1.5px solid var(--stone);background:#fff;min-height:48px}
+.switch{display:flex;gap:10px;align-items:center;padding:8px 0}
+.switch input{width:22px;height:22px;accent-color:var(--olive)}
+.file-btn{position:relative;overflow:hidden}
+.file-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+/* shell */
+#shell{padding:calc(var(--safe-t) + 10px) 18px calc(var(--safe-b) + 92px);max-width:620px;margin:0 auto}
+.page-head{padding:14px 0 8px}
+.kicker{font-size:.86rem;color:var(--ink-3);margin-bottom:2px}
+.page-head h1{font-size:2.2rem}
+.block{padding:18px 0;border-top:1.5px solid var(--paper-2)}
+.block h2{margin-bottom:.55em}
+.note{background:var(--olive-3);border-radius:var(--r-m);padding:12px 14px}
+.block.note{border:0;margin:12px 0}
+.nav{position:fixed;inset:auto 0 0 0;background:rgba(238,237,231,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1.5px solid var(--paper-2);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 6px calc(var(--safe-b) + 6px);z-index:20}
+.nav button{background:none;border:0;padding:10px 2px;font-size:.84rem;font-weight:600;color:var(--ink-3);border-radius:var(--r-s);cursor:pointer;min-height:48px}
+.nav button[aria-current="page"]{color:var(--ink);background:var(--paper-2)}
+
+/* session card */
+.session{background:#fff;border-radius:var(--r-l);padding:18px;margin:10px 0 16px;box-shadow:0 1px 0 var(--stone)}
+.session-primary{background:#F8F7F2;box-shadow:inset 0 0 0 1.5px var(--stone)}
+.session-head{display:flex;gap:16px;align-items:center;margin-bottom:10px}
+.session-letter{font-family:var(--cond);font-weight:800;font-size:5.4rem;line-height:.8;color:var(--bronze);min-width:.7em;text-align:center}
+.session-head h3{font-family:var(--cond);font-size:1.6rem;font-weight:700;margin:0}
+.session-head p{margin:0;color:var(--ink-2)}
+.session-head .areas{font-size:.86rem;color:var(--ink-3)}
+.ex-list{margin:6px 0 4px;padding-inline-start:1.4em}
+.ex-list li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--paper-2)}
+.ex-list li small{color:var(--ink-3);white-space:nowrap}
+.sound-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.session-done{background:var(--olive-3)}
+.session-recovery{background:var(--olive-3)}
+
+.wedding{margin:6px 0 10px;padding:14px 18px;border-radius:var(--r-m);background:var(--ink);color:#EDEBE3}
+.wed-label{margin:0;font-size:.85rem;color:var(--bronze-2)}
+.wed-main{margin:0;font-size:1.5rem;font-weight:800}
+.wed-sub{margin:0;font-size:.9rem;color:#BEBAB0}
+.week-dots{display:flex;gap:10px;list-style:none;padding:0;margin:0 0 10px}
+.week-dots li{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--cond);font-size:1.5rem;font-weight:700;box-shadow:inset 0 0 0 2px var(--stone);color:var(--ink-3)}
+.week-dots li.is-done{background:var(--olive);color:#fff;box-shadow:none}
+.mini,.stats,.report-grid,.kv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 10px}
+.mini div,.stats div,.report-grid div,.kv div{background:#fff;border-radius:var(--r-s);padding:10px 12px}
+.mini dt,.stats dt,.report-grid dt,.kv dt{font-size:.8rem;color:var(--ink-3)}
+.mini dd,.stats dd,.report-grid dd,.kv dd{margin:0;font-size:1.35rem;font-weight:800;font-family:var(--cond)}
+.kv dd{font-size:1.1rem;font-family:var(--ui)}
+.entries{list-style:none;padding:0;margin:0}
+.entries li{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;padding:8px 0;border-bottom:1px solid var(--paper-2);font-size:.9rem}
+.report{background:#fff;border-radius:var(--r-m);padding:14px;margin-bottom:12px}
+.report-banner{margin:6px 0 14px}
+.report-msg{font-weight:700;margin-top:6px}
+.changes{padding-inline-start:1.1em;font-size:.92rem}
+.lvl-list{list-style:none;padding:0;margin:0}
+.lvl-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--paper-2)}
+.lvl-list b{font-family:var(--cond);font-size:1.05rem}
+
+/* plan */
+.phases{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.phases li{background:#fff;border-radius:var(--r-m);padding:12px 14px;border-inline-start:4px solid var(--stone)}
+.phases li.is-now{border-inline-start-color:var(--bronze);background:#F8F5EE}
+.phases h3 span{font-family:var(--cond);color:var(--ink-3);font-weight:600}
+.ph-weeks{margin:0;font-size:.8rem;color:var(--ink-3)}
+.ph-rir{margin:0;font-size:.82rem;color:var(--olive-2);font-weight:700}
+.week-tmpl{list-style:none;padding:0;margin:0 0 8px}
+.week-tmpl li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-2)}
+.week-tmpl li.k-strength span:last-child{font-weight:800;font-family:var(--cond);font-size:1.1rem}
+.week-tmpl li.k-rest{color:var(--ink-3)}
+.plan-grid{display:grid;gap:12px}
+.plan-sess{background:#fff;border-radius:var(--r-m);padding:14px}
+.plan-sess h3{font-family:var(--cond);font-size:1.4rem}
+.plan-sess ul{list-style:none;padding:0;margin:0}
+.plan-sess li{display:flex;justify-content:space-between;padding:5px 0;font-size:.95rem}
+.plan-sess small{color:var(--ink-3)}
+.fam{background:#fff;border-radius:var(--r-s);margin-bottom:8px;padding:4px 12px}
+.fam summary{display:flex;justify-content:space-between;gap:10px;padding:10px 0;cursor:pointer;font-weight:700}
+.fam summary span:last-child{font-family:var(--cond);font-weight:600;color:var(--ink-2)}
+.fam ol{padding-inline-start:0;list-style:none;margin:0 0 8px}
+.fam li{padding:6px 0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.fam li.is-cur .linkish{font-weight:800;color:var(--olive)}
+.gate{color:var(--bronze);font-size:.78rem}
+.evidence dl{margin:0}
+.evidence dl div{padding:10px 0;border-bottom:1px solid var(--paper-2)}
+.evidence dt{font-weight:800;color:var(--olive)}
+.evidence dd{margin:0}
+.joz-head h1{font-size:2.6rem;letter-spacing:-.01em}
+.joz-tag{color:var(--bronze);font-weight:700;margin:0}
+.refs{font-size:.8rem;direction:ltr;text-align:left;padding-left:1.4em;color:var(--ink-2)}
+.refs li{margin-bottom:6px}
+.vid-list{list-style:none;padding:0;margin:8px 0 0;max-height:320px;overflow:auto;font-size:.82rem}
+.vid-list li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--paper-2)}
+.vid-list .vs{color:var(--ink-3);white-space:nowrap}
+.danger h2{color:var(--danger)}
+
+/* onboarding */
+#onboard{min-height:100vh;min-height:100dvh;padding:calc(var(--safe-t) + 24px) 22px calc(var(--safe-b) + 24px);max-width:560px;margin:0 auto;display:flex;flex-direction:column;justify-content:center}
+.ob-intro{text-align:start}
+.ob-name{font-family:var(--cond);font-size:clamp(4.2rem,24vw,8rem);font-weight:800;line-height:.85;letter-spacing:.01em;margin:0 0 10px;color:var(--ink);text-align:left}
+.ob-stats{display:flex;gap:26px;margin:0 0 26px}
+.ob-stats dt{font-size:.8rem;color:var(--ink-3)}
+.ob-stats dd{margin:0;font-family:var(--cond);font-size:2.2rem;font-weight:700}
+.ob-back{font-family:var(--cond);font-size:1.8rem;font-weight:800;color:var(--bronze);margin:0;text-align:left}
+.ob-line{font-size:1.45rem;font-weight:800;margin-bottom:10px}
+.ob-sub{color:var(--ink-2)}
+.ob-count{color:var(--ink-3);font-size:.86rem}
+.cal-q{font-size:1.15rem;margin-top:10px}
+.demo-box{background:var(--ink);border-radius:var(--r-m);aspect-ratio:16/10;position:relative;overflow:hidden}
+.demo-name{font-family:var(--cond);font-size:1.4rem;font-weight:700;margin:8px 0 0;text-align:left}
+.cues{padding-inline-start:1.1em;margin:6px 0}
+.cues li{font-weight:600}
+
+/* modal */
+#modal{position:fixed;inset:0;background:rgba(30,32,34,.55);z-index:60;display:flex;align-items:flex-end;justify-content:center}
+.modal-body{background:var(--paper);width:100%;max-width:620px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:var(--r-l) var(--r-l) 0 0;padding:22px 20px calc(var(--safe-b) + 20px)}
+.prev-list{list-style:none;padding:0;margin:12px 0}
+.prev-list li{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--paper-2)}
+.thumb{background:var(--ink);border-radius:var(--r-s);aspect-ratio:16/10}
+.pl-en{font-family:var(--cond);font-weight:700;font-size:1.15rem;margin:0;text-align:left}
+.pl-ar{margin:0;color:var(--ink-2);font-size:.9rem}
+.pl-meta{margin:0;color:var(--ink-3);font-size:.8rem}
+.safety{font-size:.88rem;color:var(--danger)}
+.ex-en{font-family:var(--cond);font-size:1.8rem;margin-top:12px;text-align:left}
+.ex-ar{color:var(--ink-2);margin-top:-6px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-b) + 90px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;z-index:90;font-size:.9rem;max-width:90vw;text-align:center}
+
+/* figure */
+.fig-svg{width:100%;height:100%;display:block}
+.fp-floor{stroke:#5F6264;stroke-width:2}
+.fp-wall{fill:#44474A}.fp-chair{fill:#8C7654}.fp-sofa{fill:#4E5540}.fp-mat{fill:#3C4632}
+.f-limb{stroke:#F2EFE8;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.f-far{stroke:#9FA58F}
+.f-torso{stroke-width:12}.f-wide{stroke-width:30}
+.f-head{fill:#F2EFE8}
+.f-towel{stroke:#C29A62;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.f-glow{fill:#C29A62;transition:none}
+.f-belly{fill:#C29A62;opacity:.7}
+.f-shadowline{stroke:#000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.ms-video,.ms-fig{position:absolute;inset:0}
+[data-kind="fig"] .ms-video,[data-kind="video"] .ms-fig{display:none}
+.demo-video{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+
+/* ============ WORKOUT (hands-free) ============ */
+#workout{position:fixed;inset:0;z-index:50;background:var(--ink);color:#F3F1EA;display:flex;flex-direction:column;padding:calc(var(--safe-t) + 8px) 14px calc(var(--safe-b) + 10px);transition:background .4s}
+#workout[data-phase="rest"]{background:#2C3622}
+#workout[data-phase="prep"],#workout[data-phase="trans"],#workout[data-phase="switch"]{background:var(--navy)}
+#workout[data-phase="warm"]{background:#30302C}
+.wo-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.95rem;color:#C8C4B8}
+.wo-title{font-family:var(--cond);font-weight:700;font-size:1.05rem}
+.wo-bar{height:5px;background:rgba(255,255,255,.12);border-radius:3px;margin:6px 0 8px;overflow:hidden}
+.wo-bar i{display:block;height:100%;background:var(--bronze-2);width:0}
+.wo-main{flex:1;display:flex;flex-direction:column;min-height:0;gap:6px}
+.wo-media{position:relative;flex:1 1 44%;min-height:150px;background:rgba(0,0,0,.18);border-radius:var(--r-m);overflow:hidden;transition:opacity .4s}
+.wo-media.is-dim{opacity:.28}
+#woMedia{position:absolute;inset:0}
+.wo-cues{position:absolute;top:8px;inset-inline-start:10px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;pointer-events:none}
+.wo-cues li{background:rgba(20,22,24,.72);padding:3px 10px;border-radius:6px;font-weight:700;font-size:clamp(.9rem,3.6vw,1.25rem);width:fit-content}
+.wo-tag{position:absolute;bottom:8px;inset-inline-end:10px;background:var(--bronze);color:#fff;font-weight:800;padding:3px 12px;border-radius:6px;font-family:var(--cond);font-size:1.2rem}
+.wo-tag:empty{display:none}
+.wo-cycle{position:absolute;bottom:10px;inset-inline-start:10px;font-size:clamp(1.8rem,9vw,3.4rem);font-weight:900;padding:2px 16px;border-radius:10px;background:rgba(20,22,24,.75)}
+.wo-cycle[data-on="1"]{background:var(--bronze);color:#fff}
+.wo-info{text-align:center;flex:0 0 auto}
+.wo-phase{font-weight:800;color:var(--bronze-2);font-size:clamp(1.1rem,5vw,1.7rem);margin:0}
+#workout[data-phase="rest"] .wo-phase{color:#C9D3AE}
+.wo-name{font-family:var(--cond);font-weight:800;font-size:clamp(2.2rem,11vw,5rem);line-height:.95;text-transform:uppercase;margin:2px 0 0;letter-spacing:.01em;overflow-wrap:anywhere}
+.wo-name-ar{font-size:clamp(1rem,4.6vw,1.5rem);color:#D8D4C9;margin:2px 0 0;font-weight:700}
+.wo-timer{font-family:var(--cond);font-weight:800;font-variant-numeric:tabular-nums;font-size:clamp(4.4rem,27vw,11rem);line-height:.9;margin:4px 0 0;color:#fff}
+#workout[data-phase="work"] .wo-timer{color:var(--bronze-2)}
+.wo-set{font-weight:800;font-size:clamp(1.05rem,5vw,1.6rem);margin:2px 0 0}
+.wo-target{white-space:pre-line;color:#D6D2C7;font-size:clamp(.9rem,3.8vw,1.15rem);margin:4px 0 0;line-height:1.4}
+.wo-next{color:#A9A69C;font-size:clamp(.9rem,3.8vw,1.15rem);margin:4px 0 0;font-family:var(--cond);font-weight:600}
+.wo-ctl{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:8px}
+.btn-pause{background:rgba(255,255,255,.14);color:#fff;font-size:1.25rem;min-height:64px;margin:0}
+.btn-stopsm{background:transparent;color:#C8C4B8;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25);margin:0;width:auto;padding:0 18px}
+.wo-paused{position:absolute;inset:0;background:rgba(24,26,28,.94);display:flex;flex-direction:column;justify-content:center;padding:calc(var(--safe-t) + 20px) 24px calc(var(--safe-b) + 20px);z-index:5}
+.wo-paused h2{font-size:2rem}
+.wo-paused .btn-primary{min-height:72px;font-size:1.4rem;background:var(--bronze)}
+.wo-paused .safety{color:#E7B9A9}
+@media (orientation:landscape) and (max-height:560px){
+  .wo-main{flex-direction:row}
+  .wo-media{flex:1 1 55%}
+  .wo-info{flex:1 1 45%;display:flex;flex-direction:column;justify-content:center}
+  .wo-timer{font-size:clamp(3.6rem,18vh,8rem)}
+  .wo-name{font-size:clamp(1.8rem,9vh,3.6rem)}
+}
+
+/* post / cardio */
+#post,#cardio{position:fixed;inset:0;z-index:55;background:var(--paper);overflow:auto}
+.post-inner{max-width:560px;margin:0 auto;padding:calc(var(--safe-t) + 24px) 20px calc(var(--safe-b) + 30px)}
+.fb-more{margin:0 0 10px}
+.fb-more summary{cursor:pointer;color:var(--olive);font-weight:700;padding:6px 0}
+.cardio-run{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:24px;text-align:center;background:var(--olive);color:#fff}
+.cardio-timer{font-family:var(--cond);font-size:clamp(5rem,30vw,12rem);font-weight:800;line-height:1;margin:10px 0;font-variant-numeric:tabular-nums}
+.cardio-run .muted{color:#D8DCC9}
+.cardio-run .btn-primary{background:var(--ink)}
+
+/* muscle map */
+.mmap svg{width:100%;max-width:340px;display:block;margin:0 auto}
+.mm-base,.mm-n{fill:#D5CFC3}
+.mm-p{fill:var(--bronze)}
+.mm-s{fill:#A7AF8C}
+.mm-lbl{font-size:9px;fill:var(--ink-3);text-anchor:middle;font-family:var(--ui)}
+.mm-legend p{margin:4px 0;font-size:.9rem}
+.mm-dot{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle}
+.mm-dot.mm-p{background:var(--bronze)}.mm-dot.mm-s{background:#A7AF8C}
+
+@media (min-width:700px){ .plan-grid{grid-template-columns:repeat(3,1fr)} }
+@media (prefers-reduced-motion:reduce){ #workout,.wo-media{transition:none} }
+
+</style>
+</head>
+<body>
+<div id="onboard" hidden></div>
+
+<main id="shell" hidden>
+  <section class="tab" id="tab-today"></section>
+  <section class="tab" id="tab-plan" hidden></section>
+  <section class="tab" id="tab-joz" hidden></section>
+  <section class="tab" id="tab-log" hidden></section>
+  <section class="tab" id="tab-settings" hidden></section>
+  <nav class="nav" aria-label="التنقل">
+    <button data-tab="today">اليوم</button>
+    <button data-tab="plan">الخطة</button>
+    <button data-tab="joz">الجوز</button>
+    <button data-tab="log">سجلي</button>
+    <button data-tab="settings">الإعدادات</button>
+  </nav>
+</main>
+
+<section id="workout" hidden aria-live="polite">
+  <header>
+    <div class="wo-top"><span class="wo-title" id="woTitle" dir="auto"></span><span id="woLeft"></span></div>
+    <div class="wo-bar"><i id="woBar"></i></div>
+  </header>
+  <div class="wo-main">
+    <div class="wo-media" id="woMediaWrap">
+      <div id="woMedia"></div>
+      <ul class="wo-cues" id="woCues"></ul>
+      <div class="wo-cycle" id="woCycle" hidden></div>
+      <div class="wo-tag" id="woMediaTag" dir="auto"></div>
+    </div>
+    <div class="wo-info">
+      <p class="wo-phase" id="woPhase"></p>
+      <p class="wo-name" id="woName" dir="ltr"></p>
+      <p class="wo-name-ar" id="woNameAr"></p>
+      <p class="wo-timer" id="woTimer" dir="ltr">00:00</p>
+      <p class="wo-set" id="woSet"></p>
+      <p class="wo-target" id="woTarget"></p>
+      <p class="wo-next" id="woNext" dir="auto"></p>
+    </div>
+  </div>
+  <footer class="wo-ctl">
+    <button class="btn btn-pause" id="woPause">إيقاف مؤقت</button>
+    <button class="btn btn-stopsm" id="woStop">إنهاء</button>
+  </footer>
+  <div class="wo-paused" id="woPausedLayer" hidden>
+    <h2>متوقف</h2>
+    <p id="woPausedWhy"></p>
+    <button class="btn btn-primary" id="woResume">كمل</button>
+    <button class="btn btn-ghost" id="woStop2" style="color:#ddd">إنهاء التمرين</button>
+    <p class="safety">أوقف التمرين إذا حسيت بألم صدر، دوخة شديدة، ضيق نفس غير طبيعي، أو ألم حاد مفاجئ.</p>
+  </div>
+</section>
+
+<section id="post" hidden></section>
+<section id="cardio" hidden></section>
+<div id="modal" hidden><div class="modal-body"></div></div>
+<div id="toast" hidden role="status"></div>
+
+<script>
+/* ============================================================
+   FIGURE ENGINE — locally generated exercise demonstrations
+   Side-view skeleton with two-bone IK, plus a top-view skeleton
+   for prone shoulder-blade work. No external assets.
+   ============================================================ */
+const FIG = (() => {
+  const SEG = { torso: 72, neck: 11, head: 13, ua: 40, fa: 38, th: 50, sh: 48, foot: 13 };
+  const FLOOR = 230;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const d2r = d => d * Math.PI / 180;
+  const dist = (a, b) => Math.hypot(b[0] - a[0], b[1] - a[1]);
+  const add = (a, v) => [a[0] + v[0], a[1] + v[1]];
+  const dir = deg => [Math.cos(d2r(deg)), Math.sin(d2r(deg))];
+  const scale = (v, s) => [v[0] * s, v[1] * s];
+
+  // two-bone IK: returns [jointPoint, endPoint]
+  function ik(a, c, l1, l2, s) {
+    let d = dist(a, c);
+    const th = Math.atan2(c[1] - a[1], c[0] - a[0]);
+    const maxD = l1 + l2 - 0.01, minD = Math.abs(l1 - l2) + 0.01;
+    let end = c;
+    if (d > maxD) { d = maxD; end = [a[0] + Math.cos(th) * d, a[1] + Math.sin(th) * d]; }
+    if (d < minD) d = minD;
+    let cosA = (l1 * l1 + d * d - l2 * l2) / (2 * l1 * d);
+    cosA = Math.max(-1, Math.min(1, cosA));
+    const ang = th + s * Math.acos(cosA);
+    const j = [a[0] + Math.cos(ang) * l1, a[1] + Math.sin(ang) * l1];
+    if (d !== dist(a, c) && d === minD) end = add(j, scale(dir(Math.atan2(c[1] - j[1], c[0] - j[0]) * 180 / Math.PI), l2));
+    return [j, end];
+  }
+
+  // straight body line from ankle at screen angle (0 = right, negative = up)
+  function SB(ax, ay, deg, fromKnee) {
+    const u = dir(deg);
+    const legLen = fromKnee ? SEG.th : SEG.th + SEG.sh;
+    const a = [ax, ay];
+    return { hip: add(a, scale(u, legLen)), sh: add(a, scale(u, legLen + SEG.torso)) };
+  }
+
+  const ease = t => 0.5 - 0.5 * Math.cos(Math.PI * t);
+
+  function lerpVal(a, b, t) {
+    if (Array.isArray(a) && Array.isArray(b)) return a.map((v, i) => v + (b[i] - v) * t);
+    if (typeof a === 'number' && typeof b === 'number') return a + (b - a) * t;
+    return t < 0.5 ? a : b;
+  }
+  function norm(p) {
+    if (p._n) return p;
+    const q = Object.assign({}, p);
+    if (q.hf === undefined) { q.hf = q.hn; if (q.ef === undefined && q.en !== undefined) q.ef = q.en; }
+    if (q.af === undefined) { q.af = q.an; if (q.kf === undefined && q.kn !== undefined) q.kf = q.kn; if (q.ff === undefined) q.ff = q.fn; }
+    if (q.ff === undefined) q.ff = q.fn ?? 0;
+    if (q.fn === undefined) q.fn = 0;
+    if (q.es === undefined) q.es = 1;
+    if (q.ks === undefined) q.ks = -1;
+    if (q.esf === undefined) q.esf = q.es;
+    if (q.ksf === undefined) q.ksf = q.ks;
+    Object.defineProperty(q, '_n', { value: true, enumerable: false });
+    return q;
+  }
+  function lerpPose(p1, p2, t) {
+    p1 = norm(p1); p2 = norm(p2);
+    const out = {};
+    const keys = new Set([...Object.keys(p1), ...Object.keys(p2)]);
+    keys.forEach(k => {
+      if (p1[k] === undefined) out[k] = p2[k];
+      else if (p2[k] === undefined) out[k] = p1[k];
+      else out[k] = lerpVal(p1[k], p2[k], t);
+    });
+    return out;
+  }
+
+  // ---------- SIDE skeleton solve ----------
+  function solveSide(p) {
+    let sh = p.sh, hip = p.hip;
+    if (p.sb) { const r = SB(p.sb[0], p.sb[1], p.sb[2], p.sbk); sh = r.sh; hip = r.hip; }
+    if (p.ll) { const dx = hip[0] - p.an[0], dy = hip[1] - p.an[1], dl = Math.hypot(dx, dy) || 1; hip = [p.an[0] + dx / dl * 97.6, p.an[1] + dy / dl * 97.6]; }
+    const es = p.es ?? 1, ks = p.ks ?? -1;
+    const esf = p.esf ?? es, ksf = p.ksf ?? ks;
+    const hn = p.hn, hf = p.hf ?? p.hn;
+    const an = p.an, af = p.af ?? p.an;
+    const armN = p.en ? [p.en, hn] : ik(sh, hn, SEG.ua, SEG.fa, es);
+    const efx = p.ef ?? (p.hf === undefined ? p.en : undefined);
+    const kfx = p.kf ?? (p.af === undefined ? p.kn : undefined);
+    const armF = efx ? [efx, hf] : ik(sh, hf, SEG.ua, SEG.fa, esf);
+    const legN = p.kn ? [p.kn, an] : ik(hip, an, SEG.th, SEG.sh, ks);
+    const legF = kfx ? [kfx, af] : ik(hip, af, SEG.th, SEG.sh, ksf);
+    const tu = [sh[0] - hip[0], sh[1] - hip[1]];
+    const tl = Math.hypot(tu[0], tu[1]) || 1;
+    let hdir = [tu[0] / tl, tu[1] / tl];
+    if (typeof p.hd === 'number') hdir = dir(p.hd);
+    const neck = add(sh, scale(hdir, SEG.neck));
+    const head = add(neck, scale(hdir, SEG.head));
+    const fn = p.fn ?? 0, ff = p.ff ?? fn;
+    const toeN = add(legN[1], scale(dir(fn), SEG.foot));
+    const toeF = add(legF[1], scale(dir(ff), SEG.foot));
+    return { sh, hip, neck, head, elN: armN[0], hN: armN[1], elF: armF[0], hF: armF[1],
+      knN: legN[0], anN: legN[1], toeN, knF: legF[0], anF: legF[1], toeF, glow: p.g || 0, belly: p.b || 0 };
+  }
+
+  // ---------- TOP skeleton (prone, seen from above, head to the right) ----------
+  function solveTop(p) {
+    const cx = 200, cy = 128;
+    const lift = p.lift || 0;
+    const shN = [cx + 55, cy + 30], shF = [cx + 55, cy - 30];
+    const hipN = [cx - 30, cy + 18], hipF = [cx - 30, cy - 18];
+    const head = [cx + 90 + lift * 4, cy];
+    function arm(sh, sgn) {
+      // angle: 0 = overhead (toward head, +x), 90 = straight out, 180 = by the hips
+      const a = d2r(p.arm);
+      const u = [Math.cos(a), sgn * Math.sin(a)];
+      const el = add(sh, scale(u, 40));
+      const fa = d2r(p.arm - (p.bend || 0));
+      const u2 = [Math.cos(fa), sgn * Math.sin(fa)];
+      const hand = add(el, scale(u2, 38));
+      return [el, hand];
+    }
+    const [elN, hN] = arm(shN, 1), [elF, hF] = arm(shF, -1);
+    return { top: true, head, shN, shF, hipN, hipF, elN, hN, elF, hF,
+      anN: [cx - 128, cy + 14], anF: [cx - 128, cy - 14], lift, thumbs: p.thumbs || 0 };
+  }
+
+  // ---------- SVG building ----------
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  function drawProps(g, props) {
+    (props || []).forEach(pr => {
+      if (pr.t === 'wall') {
+        el('rect', { x: pr.x, y: 8, width: 14, height: FLOOR - 8, class: 'fp-wall' }, g);
+      } else if (pr.t === 'chair') {
+        // seat top at y, spanning x..x+w ; backrest on side 'back' (l / r)
+        const { x, y, w } = pr;
+        el('rect', { x, y, width: w, height: 7, rx: 2, class: 'fp-chair' }, g);
+        el('rect', { x: x + 3, y: y + 7, width: 5, height: FLOOR - y - 7, class: 'fp-chair' }, g);
+        el('rect', { x: x + w - 8, y: y + 7, width: 5, height: FLOOR - y - 7, class: 'fp-chair' }, g);
+        const bx = pr.back === 'l' ? x : x + w - 6;
+        if (pr.back) el('rect', { x: bx, y: y - 52, width: 6, height: 52, rx: 2, class: 'fp-chair' }, g);
+      } else if (pr.t === 'sofa') {
+        const { x, y, w } = pr;
+        el('rect', { x, y, width: w, height: FLOOR - y, rx: 8, class: 'fp-sofa' }, g);
+        const bx = pr.back === 'l' ? x - 2 : x + w - 18;
+        el('rect', { x: bx, y: y - 44, width: 20, height: FLOOR - y + 44, rx: 8, class: 'fp-sofa' }, g);
+      } else if (pr.t === 'mat') {
+        el('rect', { x: pr.x, y: FLOOR - 4, width: pr.w, height: 5, rx: 2, class: 'fp-mat' }, g);
+      }
+    });
+  }
+
+  function build(container, ex) {
+    container.innerHTML = '';
+    const svg = el('svg', { viewBox: '0 0 400 250', class: 'fig-svg', role: 'img', 'aria-label': ex.en });
+    el('line', { x1: 8, y1: FLOOR + 1, x2: 392, y2: FLOOR + 1, class: 'fp-floor' }, svg);
+    const pg = el('g', {}, svg);
+    drawProps(pg, ex.anim.props);
+    const shadow = el('g', { class: 'f-shadow' }, svg);
+    const fig = el('g', { class: 'f-body' }, svg);
+    const mk = (cls, parent) => el('polyline', { class: cls, fill: 'none' }, parent || fig);
+    const parts = {
+      towel: el('polyline', { class: 'f-towel', fill: 'none' }, svg),
+      girdle: el('polyline', { class: 'f-limb', fill: 'none' }, fig),
+      sArmN: mk('f-shadowline', shadow), sArmF: mk('f-shadowline', shadow),
+      armF: mk('f-limb f-far'), legF: mk('f-limb f-far'),
+      torso: mk('f-limb f-torso'), legN: mk('f-limb'), armN: mk('f-limb'),
+      head: el('circle', { r: SEG.head, class: 'f-head' }, fig),
+      belly: el('ellipse', { class: 'f-belly', rx: 0, ry: 0 }, svg),
+      glow: el('circle', { class: 'f-glow', r: 16 }, svg),
+    };
+    fig.insertBefore(parts.armF, fig.firstChild);
+    container.appendChild(svg);
+    return { svg, parts };
+  }
+
+  const pts = arr => arr.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+
+  function render(built, pose, ex) {
+    const P = built.parts;
+    if (ex.anim.view === 'top') {
+      const s = solveTop(pose);
+      P.torso.setAttribute('points', pts([[(s.shN[0] + s.shF[0]) / 2 + 12, s.head[1]], [(s.hipN[0] + s.hipF[0]) / 2, s.head[1]]]));
+      P.torso.setAttribute('class', 'f-limb f-torso f-wide');
+      P.legN.setAttribute('points', pts([s.hipN, s.anN]));
+      P.legF.setAttribute('points', pts([s.hipF, s.anF]));
+      P.legF.setAttribute('class', 'f-limb');
+      P.girdle.setAttribute('points', pts([s.shF, s.shN]));
+      P.armN.setAttribute('points', pts([s.shN, s.elN, s.hN]));
+      P.armF.setAttribute('points', pts([s.shF, s.elF, s.hF]));
+      P.armF.setAttribute('class', 'f-limb');
+      const off = s.lift * 9;
+      P.sArmN.setAttribute('points', pts([[s.shN[0] + off, s.shN[1] + off], [s.elN[0] + off, s.elN[1] + off], [s.hN[0] + off, s.hN[1] + off]]));
+      P.sArmF.setAttribute('points', pts([[s.shF[0] + off, s.shF[1] + off], [s.elF[0] + off, s.elF[1] + off], [s.hF[0] + off, s.hF[1] + off]]));
+      P.sArmN.style.opacity = P.sArmF.style.opacity = (0.15 + s.lift * 0.35).toFixed(2);
+      P.head.setAttribute('cx', s.head[0]); P.head.setAttribute('cy', s.head[1]);
+      built.svg.classList.toggle('f-lifted', s.lift > 0.5);
+      P.glow.style.opacity = 0; P.towel.setAttribute('points', '');
+      return;
+    }
+    const s = solveSide(pose);
+    P.torso.setAttribute('points', pts([s.neck, s.sh, s.hip]));
+    P.legN.setAttribute('points', pts([s.hip, s.knN, s.anN, s.toeN]));
+    P.legF.setAttribute('points', pts([s.hip, s.knF, s.anF, s.toeF]));
+    P.armN.setAttribute('points', pts([s.sh, s.elN, s.hN]));
+    P.armF.setAttribute('points', pts([s.sh, s.elF, s.hF]));
+    P.head.setAttribute('cx', s.head[0].toFixed(1)); P.head.setAttribute('cy', s.head[1].toFixed(1));
+    // pelvic-floor glow
+    if (ex.anim.glow) {
+      const gp = [s.hip[0] + (ex.anim.glowOff?.[0] ?? 0), s.hip[1] + (ex.anim.glowOff?.[1] ?? 4)];
+      P.glow.setAttribute('cx', gp[0]); P.glow.setAttribute('cy', gp[1]);
+      P.glow.style.opacity = (0.12 + s.glow * 0.8).toFixed(2);
+      P.glow.setAttribute('r', (10 + s.glow * 9).toFixed(1));
+    } else P.glow.style.opacity = 0;
+    if (ex.anim.belly) {
+      const m = [(s.sh[0] + s.hip[0]) / 2, (s.sh[1] + s.hip[1]) / 2];
+      const ang = Math.atan2(s.sh[1] - s.hip[1], s.sh[0] - s.hip[0]) * 180 / Math.PI;
+      const nrm = ex.anim.belly; // side of the belly: +1 / -1 perpendicular
+      const off = dir(ang + 90 * nrm);
+      const c = add(m, scale(off, 6 + s.belly * 6));
+      P.belly.setAttribute('cx', c[0]); P.belly.setAttribute('cy', c[1]);
+      P.belly.setAttribute('rx', (18 + s.belly * 4).toFixed(1)); P.belly.setAttribute('ry', (5 + s.belly * 9).toFixed(1));
+      P.belly.setAttribute('transform', `rotate(${ang.toFixed(1)} ${c[0].toFixed(1)} ${c[1].toFixed(1)})`);
+      P.belly.style.opacity = 1;
+    } else P.belly.style.opacity = 0;
+    // towel
+    if (ex.anim.towel) {
+      const map = { hN: s.hN, hF: s.hF, toeN: s.toeN, anN: s.anN, anF: s.anF, toeF: s.toeF };
+      const tw = ex.anim.towel.map(k => Array.isArray(k) ? k : map[k]);
+      P.towel.setAttribute('points', pts(tw));
+    } else if (ex.anim.heelTowel) {
+      P.towel.setAttribute('points', pts([[s.anN[0] - 16, FLOOR - 2], [s.anN[0] + 12, FLOOR - 2]]));
+    } else P.towel.setAttribute('points', '');
+  }
+
+  // --------- animator -----------
+  function poseAt(anim, time) {
+    const keys = anim.keys;
+    if (keys.length === 1) return keys[0].p;
+    const total = keys.reduce((s, k) => s + (k.d || 0) + (k.h || 0), 0);
+    let t = time % total;
+    for (let i = 0; i < keys.length; i++) {
+      const k = keys[i];
+      const prev = keys[(i - 1 + keys.length) % keys.length];
+      if (t < k.d) return lerpPose(prev.p, k.p, ease(t / k.d));
+      t -= k.d;
+      if (t < (k.h || 0)) return k.p;
+      t -= (k.h || 0);
+    }
+    return keys[0].p;
+  }
+
+  // Figure player instance
+  function Player(container) {
+    this.c = container; this.ex = null; this.b = null; this.t0 = 0; this.paused = false; this.pauseAt = 0;
+    this.drive = null; this.driveVal = 0; this.raf = 0;
+  }
+  Player.prototype.load = function (ex) {
+    this.ex = ex; this.b = build(this.c, ex); this.t0 = performance.now(); this.driveVal = 0; this.drive = null;
+    this.frame(performance.now());
+    this.start();
+  };
+  Player.prototype.setDrive = function (fn) { this.drive = fn; };
+  Player.prototype.frame = function (now) {
+    if (!this.ex) return;
+    const a = this.ex.anim;
+    let pose;
+    if (this.drive && a.drive) {
+      const target = this.drive();
+      this.driveVal += (target - this.driveVal) * 0.12;
+      pose = lerpPose(a.drive[0], a.drive[1], this.driveVal);
+    } else {
+      pose = poseAt(a, (now - this.t0) / 1000);
+    }
+    render(this.b, pose, this.ex);
+  };
+  Player.prototype.start = function () {
+    cancelAnimationFrame(this.raf);
+    const loop = now => { if (!this.paused) this.frame(now); this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  };
+  Player.prototype.pause = function () { if (!this.paused) { this.paused = true; this.pauseAt = performance.now(); } };
+  Player.prototype.resume = function () { if (this.paused) { this.t0 += performance.now() - this.pauseAt; this.paused = false; } };
+  Player.prototype.stop = function () { cancelAnimationFrame(this.raf); this.ex = null; this.c.innerHTML = ''; };
+  Player.prototype.renderAt = function (sec) { if (this.ex) render(this.b, poseAt(this.ex.anim, sec), this.ex); };
+
+  return { SEG, FLOOR, SB, Player, poseAt, lerpPose, solveSide, norm };
+})();
+
+/* ============================================================
+   EXERCISE LIBRARY
+   Every exercise: names, cues, setup, muscles, mode, animation.
+   Video file for each exercise: assets/videos/<video>.mp4
+   ============================================================ */
+const LIB = (() => {
+  const SB = FIG.SB;
+  const K = (p, d, h) => ({ p, d, h: h || 0 });
+  const withA = (o, ex) => Object.assign({}, o, ex);
+
+  // ---------- reusable poses ----------
+  const STAND = { sh: [200, 54], hip: [200, 126], hn: [206, 129], an: [200, 224], fn: 0, hd: -90 };
+
+  // push-up family geometry
+  const pu = (ax, ay, deg, hand, fn) => ({ sb: [ax, ay, deg], hn: hand, an: [ax, ay], fn: fn ?? 80, es: 1 });
+  const PU_UP = pu(88, 214, -22, [246, 224]);
+  const PU_DN = pu(88, 214, -4.7, [246, 224]);
+  const WALL_UP = pu(185, 224, -77, [297, 76], 0);
+  const WALL_DN = pu(185, 224, -63, [297, 76], 0);
+  const INC_UP = pu(140, 214, -45, [283, 166]);
+  const INC_DN = pu(140, 214, -27, [283, 166]);
+  const kneePU = deg => ({ sb: [140, 222, deg], sbk: true, hn: [240, 224], kn: [140, 222], an: [96, 200], fn: -150, es: 1 });
+  const KN_UP = kneePU(-36.2), KN_DN = kneePU(-10.4);
+  const DEC_UP = pu(86, 158, -2.7, [252, 224]);
+  const DEC_DN = pu(86, 158, 13.6, [252, 224]);
+
+  // pike
+  const PIKE_UP = { hip: [168, 124], sh: [222, 171], hn: [282, 224], an: [140, 216], fn: 70, es: 1, ks: 1, ll: true };
+  const PIKE_DN = { hip: [214, 153], sh: [276, 193], hn: [282, 224], an: [140, 216], fn: 70, es: 1, ks: 1, ll: true };
+  const IPIKE_UP = { hip: [200, 122], sh: [268, 146], hn: [334, 166], an: [175, 216], fn: 70, es: 1, ks: 1, ll: true };
+  const IPIKE_DN = { hip: [224, 138], sh: [296, 150], hn: [334, 166], an: [175, 216], fn: 70, es: 1, ks: 1, ll: true };
+  const EPIKE_UP = { hip: [170, 85], sh: [199, 151], hn: [232, 224], an: [110, 162], fn: 80, es: 1, ks: 1, ll: true };
+  const EPIKE_DN = { hip: [190, 108], sh: [224, 172], hn: [232, 224], an: [110, 162], fn: 80, es: 1, ks: 1, ll: true };
+
+  // squat
+  const SQ_DN = { sh: [206, 121], hip: [160, 176], hn: [272, 114], an: [200, 224], fn: 0, hd: -62, ks: -1, es: 1 };
+  const SQ_HALF = FIG.lerpPose(STAND, SQ_DN, 0.5);
+  const SQ_STAND_ARMS = withA(STAND, { hn: [262, 70] });
+  const STS_SIT = { sh: [187, 104], hip: [150, 166], hn: [206, 112], an: [206, 224], fn: 0, hd: -75, ks: -1, es: 1 };
+  const STS_UP = { sh: [206, 54], hip: [206, 126], hn: [226, 70], an: [206, 224], fn: 0, hd: -90, es: 1 };
+
+  // split squat
+  const SPLIT_UP = { sh: [186, 66], hip: [186, 138], hn: [199, 132], an: [231, 224], af: [141, 212], fn: 0, ff: 60, ks: -1, es: -1, hd: -90 };
+  const SPLIT_DN = { sh: [186, 110], hip: [186, 182], hn: [199, 176], an: [231, 224], af: [141, 212], fn: 0, ff: 60, ks: -1, es: -1, hd: -90 };
+  const SUP_UP = withA(SPLIT_UP, { hn: [262, 96], hf: [199, 132], es: 1, esf: -1 });
+  const SUP_DN = withA(SPLIT_DN, { hn: [262, 96], hf: [199, 176], es: 1, esf: -1 });
+  const RL_STAND = { sh: [196, 54], hip: [196, 126], hn: [206, 124], an: [200, 224], af: [196, 224], fn: 0, ff: 0, ks: -1, es: -1, hd: -90 };
+  const RL_MID = withA(RL_STAND, { af: [168, 200], ff: 40, hip: [192, 136], sh: [192, 64], hn: [202, 134] });
+  const RL_DN = withA(SPLIT_DN, { an: [236, 224], af: [134, 212], hip: [188, 182], sh: [188, 110], hn: [201, 176] });
+  const BSS_UP = { sh: [190, 70], hip: [188, 142], hn: [200, 138], an: [238, 224], af: [110, 162], fn: 0, ff: 168, ks: -1, es: -1, hd: -90 };
+  const BSS_DN = { sh: [188, 114], hip: [186, 186], hn: [198, 182], an: [238, 224], af: [110, 162], fn: 0, ff: 168, ks: -1, es: -1, hd: -90 };
+
+  // supine family (head right)
+  const BR_DN = { sh: [282, 216], hip: [212, 214], hn: [208, 226], an: [150, 224], fn: 180, ks: 1, es: -1, hd: 0 };
+  const BR_UP = { sh: [282, 216], hip: [222, 176], hn: [208, 226], an: [150, 224], fn: 180, ks: 1, es: -1, hd: 0 };
+  const SLB_DN = withA(BR_DN, { af: [128, 152], ff: 200, ksf: 1 });
+  const SLB_UP = withA(BR_UP, { af: [126, 146], ff: 200, ksf: 1 });
+  const HT_DN = { sh: [272, 170], hip: [215, 214], hn: [312, 168], an: [146, 224], fn: 180, ks: 1, es: 1, hd: -8 };
+  const HT_UP = { sh: [272, 170], hip: [201, 176], hn: [312, 168], an: [146, 224], fn: 180, ks: 1, es: 1, hd: -8 };
+  const SLHT_DN = withA(HT_DN, { af: [168, 150], ff: 200, ksf: 1 });
+  const SLHT_UP = withA(HT_UP, { af: [150, 118], ff: 200, ksf: 1 });
+  const WO_IN = withA(BR_UP, { an: [150, 224], af: [150, 224] });
+  const WO_MID = withA(BR_UP, { an: [134, 224], af: [146, 212], hip: [215, 194] });
+  const WO_OUT = withA(BR_UP, { an: [120, 224], af: [120, 224], hip: [212, 206] });
+  const TC_IN = withA(BR_UP, { an: [152, 224] });
+  const TC_OUT = withA(BR_UP, { an: [118, 224], hip: [213, 205] });
+  const TC_OUT_DOWN = withA(BR_DN, { an: [118, 224], hip: [211, 216] });
+  const TC_IN_DOWN = withA(BR_DN, { an: [152, 224] });
+
+  // calves
+  const CALF_DN = { sh: [235, 54], hip: [235, 126], hn: [281, 92], an: [235, 224], fn: 0, hd: -90, es: 1 };
+  const CALF_UP = { sh: [235, 38], hip: [235, 110], hn: [281, 92], an: [235, 209], fn: 62, hd: -90, es: 1 };
+  const SLC_DN = withA(CALF_DN, { af: [210, 194], ff: 110 });
+  const SLC_UP = withA(CALF_UP, { af: [210, 179], ff: 110 });
+
+  // towel row (seated)
+  const ROW_RELAX = { hip: [140, 212], sh: [132, 140], hn: [210, 178], an: [236, 218], fn: -80, hd: -96, es: 1, ks: -1 };
+  const ROW_PULL = { hip: [140, 212], sh: [138, 139], hn: [184, 168], an: [236, 218], fn: -80, hd: -92, es: 1, ks: -1 };
+
+  // towel curl iso (standing)
+  const CURL_RELAX = withA(STAND, { hn: [231, 121], en: [201, 94] });
+  const CURL_PULL = withA(STAND, { hn: [240, 94], en: [202, 94] });
+
+  // core
+  const DB_BASE = { sh: [262, 216], hip: [190, 216], hn: [264, 141], hf: [262, 141], kn: [190, 166], an: [238, 166], kf: [188, 168], af: [236, 168], fn: -90, ff: -90, hd: 0, es: 1, ks: 1 };
+  const DB_A = withA(DB_BASE, { hn: [336, 202], kf: [143, 208], af: [96, 200], ff: 180 });
+  const DB_B = withA(DB_BASE, { hf: [336, 202], kn: [143, 208], an: [96, 200], fn: 180 });
+  const plankAt = (ax, ex) => ({ sb: [ax, 214, -10.2], en: ex[0], hn: ex[1], ef: ex[0], hf: ex[1], an: [ax, 214], fn: 80 });
+  const PLANK = plankAt(80, [[247, 224], [283, 224]]);
+  const PLANK_B = withA(PLANK, { sb: [80, 214, -10.8] });
+  const SAW_F = withA({ sb: [94, 214, -8] }, { en: [247, 224], hn: [283, 224], ef: [247, 224], hf: [283, 224], an: [94, 214], fn: 80 });
+  const SAW_B = withA({ sb: [66, 214, -12] }, { en: [247, 224], hn: [283, 224], ef: [247, 224], hf: [283, 224], an: [66, 214], fn: 80 });
+  const TAP_BASE = withA(PU_UP, { hf: [242, 224] });
+  const TAP_N = withA(TAP_BASE, { hn: [262, 162] });
+  const TAP_F = withA(TAP_BASE, { hf: [258, 164], hn: [246, 224] });
+
+  // side plank (seen from the front: supporting forearm = far arm, top hand on hip)
+  const SP_BODY = SB(80, 220, -13.6);
+  const SP = withA(SP_BODY, { ef: [245, 224], hf: [281, 224], hn: [SP_BODY.sh[0] + 4, SP_BODY.sh[1] - 76], an: [80, 220], fn: 10, es: -1 });
+  const SP_DIP = withA(SP, { hip: [168, 214] });
+  const KSP_BODY = SB(140, 222, -18.1, true);
+  const KSP = withA(KSP_BODY, { ef: [256, 224], hf: [292, 224], hn: [KSP_BODY.sh[0] + 4, KSP_BODY.sh[1] - 76], kn: [140, 222], an: [98, 204], fn: 200, es: -1 });
+
+  // bird dog
+  const BD_BASE = { sh: [245, 146], hip: [170, 146], hn: [245, 224], hf: [243, 224], kn: [170, 222], an: [120, 222], kf: [168, 222], af: [118, 222], fn: 180, ff: 180, hd: 0, es: 1 };
+  const BD_A = withA(BD_BASE, { hn: [321, 138], kf: [122, 143], af: [74, 140], ff: 180 });
+  const BD_B = withA(BD_BASE, { hf: [321, 138], kn: [122, 143], an: [74, 140], fn: 180 });
+
+  // hook-lying (breathing / pelvic floor)
+  const HOOK = { sh: [272, 216], hip: [200, 216], hn: [232, 200], an: [140, 224], fn: 180, ks: 1, es: 1, hd: 0, g: 0, b: 0 };
+  const SEAT = { sh: [172, 94], hip: [168, 166], hn: [214, 160], an: [228, 224], fn: 0, hd: -90, es: -1, ks: -1, g: 0, b: 0 };
+  const STAND_PF = withA(STAND, { g: 0, hn: [210, 132] });
+  const HFS_A = { sh: [170, 96], hip: [170, 168], hn: [182, 162], an: [238, 224], fn: 0, kf: [140, 222], af: [96, 216], ff: 180, hd: -90, ks: -1, es: -1 };
+  const HFS_B = withA(HFS_A, { sh: [186, 98], hip: [186, 170], hn: [198, 164] });
+
+  // warm-up
+  const MARCH_A = withA(STAND, { an: [226, 172], af: [200, 224], fn: 0, ff: 0, hn: [180, 124], hf: [230, 120] });
+  const MARCH_B = withA(STAND, { af: [226, 172], ff: 0, an: [200, 224], hn: [230, 120], hf: [180, 124] });
+  const circ = a => withA(STAND, { hn: [200 + 74 * Math.cos(a * Math.PI / 180), 54 + 74 * Math.sin(a * Math.PI / 180)], es: -1 });
+  const HINGE = { sh: [242, 100], hip: [178, 130], hn: [190, 128], an: [200, 224], fn: 0, hd: -25, es: -1, ks: -1 };
+  const HINGE_UP = withA(STAND, { hn: [210, 124], es: -1 });
+
+  // top view (prone)
+  const T = (arm, lift, bend) => ({ arm, lift, bend: bend || 0 });
+
+  // ---------- props ----------
+  const WALL_R = { t: 'wall', x: 302 };
+  const CHAIR_R = [{ t: 'chair', x: 265, y: 172, w: 75, back: 'r' }, { t: 'wall', x: 346 }];
+  const CHAIR_FAR = [{ t: 'chair', x: 316, y: 172, w: 66, back: 'r' }, { t: 'wall', x: 386 }];
+  const CHAIR_L = [{ t: 'chair', x: 40, y: 172, w: 66, back: 'l' }, { t: 'wall', x: 22 }];
+  const CHAIR_SIT = [{ t: 'chair', x: 96, y: 172, w: 66, back: 'l' }];
+  const SOFA_L = [{ t: 'sofa', x: 38, y: 170, w: 80, back: 'l' }];
+  const SOFA_R = [{ t: 'sofa', x: 268, y: 176, w: 100, back: 'r' }];
+  const MAT = [{ t: 'mat', x: 60, w: 290 }];
+
+  // ---------- helpers to build anims ----------
+  const rep = (a, b, down, up, holdTop, holdBottom, props, extra) => Object.assign({ view: 'side', props: props || [], keys: [K(a, up, holdTop ?? 0.35), K(b, down, holdBottom ?? 0.1)] }, extra || {});
+  const hold = (a, b, props, extra) => Object.assign({ view: 'side', props: props || [], keys: [K(a, 1.6, 0.2), K(b, 1.6, 0.2)] }, extra || {});
+  const drive = (a, b, props, extra, loopOn, loopOff) => Object.assign({ view: 'side', props: props || [], keys: [K(a, 1, loopOff || 2), K(b, 1, loopOn || 2.5)], drive: [a, b] }, extra || {});
+
+  const PUSH_CUES = ['جسمك خط مستقيم', 'الصدر ينزل بين اليدين', 'لا تفتح المرفقين بقوة'];
+  const CLOSE_CUES = ['اليدين تحت الكتف أو أضيق شوي', 'المرفق لاصق بالجنب', 'جسمك خط مستقيم'];
+  const PIKE_CUES = ['الحوض عالي — شكل مثلث', 'الرأس ينزل قدّام اليدين', 'ادفع الأرض لفوق'];
+  const SQUAT_CUES = ['الكعب ثابت على الأرض', 'الركبة باتجاه أصابع الرجل', 'الصدر مرفوع'];
+  const SPLIT_CUES = ['انزل عموديًا مثل المصعد', 'الركبة الخلفية قريبة من الأرض', 'الجذع مستقيم'];
+  const BRIDGE_CUES = ['ادفع بالكعب', 'اعصر الألوية فوق', 'لا تقوّس أسفل الظهر'];
+
+  const E = [];
+  const add = e => { E.push(e); return e; };
+
+  // ================= PUSH (chest / triceps) =================
+  add({ id: 'wall_pushup', fam: 'push', lvl: 1, en: 'Wall Push-Up', ar: 'ضغط على الجدار', mode: 'reps', target: '10–15 تكرار مضبوط',
+    cues: PUSH_CUES, setup: 'قف خطوة ونص عن الجدار، اليدين على مستوى الكتف.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(WALL_UP, WALL_DN, 1.4, 1.1, 0.3, 0.2, [WALL_R]) });
+  add({ id: 'incline_pushup', fam: 'push', lvl: 2, en: 'Incline Push-Up', ar: 'ضغط مائل على الكرسي', mode: 'reps', target: '8–15 تكرار مضبوط',
+    cues: PUSH_CUES, setup: 'كرسي ثابت بدون عجلات، ظهره ملاصق للجدار. اليدين على طرف المقعد.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(INC_UP, INC_DN, 1.4, 1.1, 0.3, 0.2, CHAIR_R) });
+  add({ id: 'knee_pushup', fam: 'push', lvl: 3, en: 'Knee Push-Up', ar: 'ضغط على الركب', mode: 'reps', target: '8–15 تكرار مضبوط',
+    cues: ['من الركبة للرأس خط مستقيم', 'الصدر ينزل بين اليدين', 'لا تفتح المرفقين بقوة'], setup: 'منشفة مطوية تحت الركب.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(KN_UP, KN_DN, 1.4, 1.1, 0.3, 0.2, MAT) });
+  add({ id: 'pushup', fam: 'push', lvl: 4, en: 'Push-Up', ar: 'ضغط', mode: 'reps', target: '8–15 تكرار مضبوط',
+    cues: PUSH_CUES, setup: 'على الأرض، اليدين أعرض من الكتف بقليل.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(PU_UP, PU_DN, 1.4, 1.1, 0.3, 0.2, MAT) });
+  add({ id: 'tempo_pushup', fam: 'push', lvl: 5, en: 'Tempo Push-Up', ar: 'ضغط بطيء', mode: 'reps', target: '6–10 تكرار — 3 ثوانٍ نزول', workAdd: 10,
+    cues: ['انزل ببطء: 1، 2، 3', 'جسمك خط مستقيم', 'اطلع بقوة'], setup: 'نفس وضعية الضغط. السر في النزول البطيء.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(PU_UP, PU_DN, 3, 1, 0.3, 0.1, MAT) });
+  add({ id: 'paused_pushup', fam: 'push', lvl: 6, en: 'Paused Push-Up', ar: 'ضغط مع توقف', mode: 'reps', target: '6–10 تكرار — توقف ثانيتين تحت', workAdd: 10,
+    cues: ['توقف ثانيتين تحت', 'لا ترتاح على الأرض', 'جسمك خط مستقيم'], setup: 'نفس وضعية الضغط. توقف والصدر قريب من الأرض.',
+    m: { p: ['chest', 'triceps'], s: ['shoulders', 'abs'] }, anim: rep(PU_UP, PU_DN, 1.6, 1, 0.3, 1.8, MAT) });
+  add({ id: 'decline_pushup', fam: 'push', lvl: 7, minWeek: 5, en: 'Decline Push-Up', ar: 'ضغط والرجلين مرفوعة', mode: 'reps', target: '6–12 تكرار مضبوط',
+    cues: ['الرجلين على الكرسي', 'لا ينزل الحوض', 'الصدر ينزل قدّام اليدين'], setup: 'أطراف الأصابع على كرسي ثابت مسنود على الجدار.',
+    m: { p: ['chest', 'shoulders', 'triceps'], s: ['abs'] }, anim: rep(DEC_UP, DEC_DN, 1.5, 1.1, 0.3, 0.2, CHAIR_L) });
+
+  // ================= CLOSE-GRIP (triceps focus) =================
+  add({ id: 'incline_close_pushup', fam: 'armpush', lvl: 1, en: 'Close-Grip Incline Push-Up', ar: 'ضغط ضيق مائل', mode: 'reps', target: '8–15 تكرار مضبوط',
+    cues: CLOSE_CUES, setup: 'نفس الكرسي المسنود على الجدار. اليدين أقرب لبعض.',
+    m: { p: ['triceps', 'chest'], s: ['shoulders'] }, anim: rep(INC_UP, INC_DN, 1.4, 1.1, 0.3, 0.2, CHAIR_R) });
+  add({ id: 'knee_close_pushup', fam: 'armpush', lvl: 2, en: 'Close-Grip Knee Push-Up', ar: 'ضغط ضيق على الركب', mode: 'reps', target: '8–15 تكرار مضبوط',
+    cues: CLOSE_CUES, setup: 'منشفة تحت الركب، اليدين تحت الكتف.',
+    m: { p: ['triceps', 'chest'], s: ['shoulders'] }, anim: rep(KN_UP, KN_DN, 1.4, 1.1, 0.3, 0.2, MAT) });
+  add({ id: 'close_pushup', fam: 'armpush', lvl: 3, en: 'Close-Grip Push-Up', ar: 'ضغط ضيق', mode: 'reps', target: '8–12 تكرار مضبوط',
+    cues: CLOSE_CUES, setup: 'على الأرض، اليدين تحت الكتف.',
+    m: { p: ['triceps', 'chest'], s: ['shoulders', 'abs'] }, anim: rep(PU_UP, PU_DN, 1.4, 1.1, 0.3, 0.2, MAT) });
+  add({ id: 'tempo_close_pushup', fam: 'armpush', lvl: 4, minWeek: 5, en: 'Tempo Close-Grip Push-Up', ar: 'ضغط ضيق بطيء', mode: 'reps', target: '6–10 تكرار — 3 ثوانٍ نزول', workAdd: 10,
+    cues: ['انزل ببطء: 1، 2، 3', 'المرفق لاصق بالجنب', 'جسمك خط مستقيم'], setup: 'على الأرض، اليدين تحت الكتف.',
+    m: { p: ['triceps', 'chest'], s: ['shoulders', 'abs'] }, anim: rep(PU_UP, PU_DN, 3, 1, 0.3, 0.1, MAT) });
+
+  // ================= PIKE (shoulders) =================
+  add({ id: 'incline_pike', fam: 'pike', lvl: 1, en: 'Incline Pike Push-Up', ar: 'ضغط أكتاف مائل', mode: 'reps', target: '8–12 تكرار مضبوط',
+    cues: PIKE_CUES, setup: 'كرسي ثابت مسنود على الجدار. اليدين على المقعد والحوض عالي.',
+    m: { p: ['shoulders', 'triceps'], s: ['chest', 'upperback'] }, anim: rep(IPIKE_UP, IPIKE_DN, 1.4, 1.1, 0.3, 0.2, CHAIR_FAR) });
+  add({ id: 'pike_pushup', fam: 'pike', lvl: 2, en: 'Pike Push-Up', ar: 'ضغط أكتاف', mode: 'reps', target: '6–12 تكرار مضبوط',
+    cues: PIKE_CUES, setup: 'على الأرض. امشِ برجلينك لليدين حتى يرتفع الحوض.',
+    m: { p: ['shoulders', 'triceps'], s: ['chest', 'upperback'] }, anim: rep(PIKE_UP, PIKE_DN, 1.4, 1.1, 0.3, 0.2, MAT) });
+  add({ id: 'tempo_pike', fam: 'pike', lvl: 3, en: 'Tempo Pike Push-Up', ar: 'ضغط أكتاف بطيء', mode: 'reps', target: '6–10 تكرار — 3 ثوانٍ نزول', workAdd: 10,
+    cues: ['انزل ببطء: 1، 2، 3', 'الحوض عالي', 'الرأس قدّام اليدين'], setup: 'نفس ضغط الأكتاف على الأرض.',
+    m: { p: ['shoulders', 'triceps'], s: ['chest', 'upperback'] }, anim: rep(PIKE_UP, PIKE_DN, 3, 1, 0.3, 0.1, MAT) });
+  add({ id: 'elevated_pike', fam: 'pike', lvl: 4, minWeek: 5, en: 'Feet-Elevated Pike Push-Up', ar: 'ضغط أكتاف والرجلين مرفوعة', mode: 'reps', target: '6–10 تكرار مضبوط',
+    cues: ['الرجلين على الكرسي', 'الحوض فوق الكتف تقريبًا', 'انزل بتحكم'], setup: 'أطراف الأصابع على كرسي ثابت مسنود على الجدار.',
+    m: { p: ['shoulders', 'triceps'], s: ['chest', 'upperback'] }, anim: rep(EPIKE_UP, EPIKE_DN, 1.6, 1.1, 0.3, 0.2, CHAIR_L) });
+
+  // ================= SQUAT =================
+  add({ id: 'sit_to_stand', fam: 'squat', lvl: 1, en: 'Sit-to-Stand', ar: 'جلوس ووقوف من الكرسي', mode: 'reps', target: '10–15 تكرار مضبوط',
+    cues: ['اجلس بخفة بدون ما تطيح', 'قم بدفع الكعبين', 'الركبة باتجاه الأصابع'], setup: 'كرسي ثابت خلفك مسنود على الجدار.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'abs'] }, anim: rep(STS_UP, STS_SIT, 1.6, 1.1, 0.3, 0.3, CHAIR_SIT) });
+  add({ id: 'squat', fam: 'squat', lvl: 2, en: 'Bodyweight Squat', ar: 'سكوات', mode: 'reps', target: '10–15 تكرار مضبوط',
+    cues: SQUAT_CUES, setup: 'الرجلين بعرض الكتف، الأصابع للخارج قليلًا.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'abs', 'calves'] }, anim: rep(SQ_STAND_ARMS, SQ_DN, 1.6, 1.1, 0.3, 0.2) });
+  add({ id: 'tempo_squat', fam: 'squat', lvl: 3, en: 'Tempo Squat', ar: 'سكوات بطيء', mode: 'reps', target: '8–12 تكرار — 3 ثوانٍ نزول', workAdd: 10,
+    cues: ['انزل ببطء: 1، 2، 3', 'الكعب ثابت', 'اطلع بقوة'], setup: 'الرجلين بعرض الكتف.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'abs', 'calves'] }, anim: rep(SQ_STAND_ARMS, SQ_DN, 3, 1.1, 0.3, 0.1) });
+  add({ id: 'pause_squat', fam: 'squat', lvl: 4, en: 'Pause Squat', ar: 'سكوات مع توقف', mode: 'reps', target: '8–12 تكرار — توقف ثانيتين', workAdd: 10,
+    cues: ['توقف ثانيتين تحت', 'لا ترتخي في الأسفل', 'الصدر مرفوع'], setup: 'الرجلين بعرض الكتف.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'abs', 'calves'] }, anim: rep(SQ_STAND_ARMS, SQ_DN, 1.6, 1.1, 0.3, 2) });
+  add({ id: 'one_half_squat', fam: 'squat', lvl: 5, minWeek: 5, en: '1½ Squat', ar: 'سكوات ونص', mode: 'reps', target: '6–10 تكرار مضبوط', workAdd: 10,
+    cues: ['تحت ← نص ← تحت ← فوق', 'الكعب ثابت', 'تحكم بالحركة'], setup: 'الرجلين بعرض الكتف.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'abs', 'calves'] },
+    anim: { view: 'side', props: [], keys: [K(SQ_STAND_ARMS, 1.1, 0.3), K(SQ_DN, 1.6, 0.1), K(SQ_HALF, 0.8, 0.1), K(SQ_DN, 0.8, 0.1)] } });
+
+  // ================= LUNGE / SPLIT =================
+  add({ id: 'supported_split_squat', fam: 'lunge', lvl: 1, uni: true, en: 'Supported Split Squat', ar: 'طعن ثابت مع سند', mode: 'reps', target: '8–12 تكرار لكل رجل',
+    cues: SPLIT_CUES, setup: 'قف جنب الجدار ويدك عليه للتوازن. رجل قدّام ورجل ورا.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'calves'] }, anim: rep(SUP_UP, SUP_DN, 1.6, 1.1, 0.3, 0.2, [{ t: 'wall', x: 270 }]) });
+  add({ id: 'split_squat', fam: 'lunge', lvl: 2, uni: true, en: 'Split Squat', ar: 'طعن ثابت', mode: 'reps', target: '8–12 تكرار لكل رجل',
+    cues: SPLIT_CUES, setup: 'رجل قدّام ورجل ورا، مسافة خطوة كبيرة.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'calves'] }, anim: rep(SPLIT_UP, SPLIT_DN, 1.6, 1.1, 0.3, 0.2) });
+  add({ id: 'reverse_lunge', fam: 'lunge', lvl: 3, uni: true, en: 'Reverse Lunge', ar: 'طعن للخلف', mode: 'reps', target: '8–12 تكرار لكل رجل',
+    cues: ['ارجع خطوة للخلف', 'الركبة الخلفية قريبة من الأرض', 'ارجع بدفع الرجل الأمامية'], setup: 'قف والرجلين بعرض الحوض. نفس الرجل ترجع كل مرة.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'calves'] },
+    anim: { view: 'side', props: [], keys: [K(RL_STAND, 0.9, 0.4), K(RL_MID, 0.6), K(RL_DN, 0.8, 0.2), K(RL_MID, 0.8)] } });
+  add({ id: 'bulgarian_split_squat', fam: 'lunge', lvl: 4, minWeek: 4, uni: true, en: 'Rear-Foot-Elevated Split Squat', ar: 'طعن بلغاري', mode: 'reps', target: '6–12 تكرار لكل رجل',
+    cues: ['وجه الرجل الخلفية على الكنب', 'انزل بالرجل الأمامية', 'الجذع ثابت'], setup: 'ظهرك لكنبة ثابتة. قدّم الرجل الأمامية بما يكفي.',
+    m: { p: ['quads', 'glutes'], s: ['hams', 'calves'] }, anim: rep(BSS_UP, BSS_DN, 1.7, 1.2, 0.3, 0.2, SOFA_L) });
+
+  // ================= GLUTES =================
+  add({ id: 'glute_bridge', fam: 'glute', lvl: 1, en: 'Glute Bridge', ar: 'جسر الألوية', mode: 'reps', target: '12–15 تكرار مضبوط',
+    cues: BRIDGE_CUES, setup: 'استلقِ على ظهرك، الركب مثنية والقدمين على الأرض.',
+    m: { p: ['glutes'], s: ['hams', 'abs'] }, anim: rep(BR_DN, BR_UP, 1.2, 1, 0.1, 0.8, MAT) });
+  add({ id: 'pause_bridge', fam: 'glute', lvl: 2, en: 'Paused Glute Bridge', ar: 'جسر مع ثبات', mode: 'reps', target: '10–12 تكرار — ثبات ثانيتين فوق',
+    cues: ['ثبات ثانيتين فوق', 'اعصر الألوية', 'لا تقوّس أسفل الظهر'], setup: 'استلقِ على ظهرك، الركب مثنية.',
+    m: { p: ['glutes'], s: ['hams', 'abs'] }, anim: rep(BR_DN, BR_UP, 1.2, 1, 0.1, 2, MAT) });
+  add({ id: 'hip_thrust', fam: 'glute', lvl: 3, en: 'Shoulder-Elevated Hip Thrust', ar: 'رفع الحوض على الكنب', mode: 'reps', target: '10–15 تكرار مضبوط',
+    cues: ['أعلى الظهر على طرف الكنب', 'الذقن للداخل', 'اعصر الألوية فوق'], setup: 'كنبة ثابتة لا تتحرك. أعلى الظهر على الطرف.',
+    m: { p: ['glutes'], s: ['hams', 'quads'] }, anim: rep(HT_DN, HT_UP, 1.3, 1, 0.1, 1, SOFA_R) });
+  add({ id: 'sl_bridge', fam: 'glute', lvl: 4, uni: true, en: 'Single-Leg Glute Bridge', ar: 'جسر برجل واحدة', mode: 'reps', target: '8–12 تكرار لكل رجل',
+    cues: ['رجل واحدة مرفوعة ومستقيمة', 'الحوض مستوي', 'ادفع بالكعب'], setup: 'استلقِ على ظهرك. ارفع رجل وحدة.',
+    m: { p: ['glutes'], s: ['hams', 'abs'] }, anim: rep(SLB_DN, SLB_UP, 1.2, 1, 0.1, 0.8, MAT) });
+  add({ id: 'sl_hip_thrust', fam: 'glute', lvl: 5, minWeek: 5, uni: true, en: 'Single-Leg Hip Thrust', ar: 'رفع الحوض برجل واحدة', mode: 'reps', target: '8–12 تكرار لكل رجل',
+    cues: ['أعلى الظهر على الكنب', 'الحوض مستوي', 'ادفع بالكعب'], setup: 'كنبة ثابتة. رجل على الأرض والثانية مرفوعة.',
+    m: { p: ['glutes'], s: ['hams', 'quads'] }, anim: rep(SLHT_DN, SLHT_UP, 1.3, 1, 0.1, 1, SOFA_R) });
+
+  // ================= HAMSTRINGS =================
+  add({ id: 'bridge_walkout', fam: 'ham', lvl: 1, en: 'Bridge Walkout', ar: 'مشي الجسر', mode: 'reps', target: '5–8 مرات ذهاب وعودة',
+    cues: ['الحوض يبقى مرفوع', 'خطوات صغيرة للأمام', 'ارجع قبل ما ينزل الحوض'], setup: 'ابدأ من وضعية الجسر.',
+    m: { p: ['hams', 'glutes'], s: ['abs'] },
+    anim: { view: 'side', props: MAT, keys: [K(WO_IN, 1, 0.3), K(WO_MID, 0.9), K(WO_OUT, 0.9, 0.4), K(WO_MID, 0.9)] } });
+  add({ id: 'towel_curl_ecc', fam: 'ham', lvl: 2, minWeek: 3, en: 'Towel Leg Curl — Eccentric', ar: 'سحب المنشفة العكسي', mode: 'reps', target: '5–8 تكرار بطيء',
+    cues: ['الحوض مرفوع وأنت تمد', 'امدد الرجلين ببطء', 'انزل وارجع بدون ضغط'], setup: 'أرضية ناعمة (بلاط أو باركيه) ومنشفة تحت الكعبين. لا تستخدمها على السجاد.',
+    m: { p: ['hams'], s: ['glutes', 'calves'] },
+    anim: { view: 'side', props: MAT, heelTowel: true, keys: [K(TC_IN, 1, 0.3), K(TC_OUT, 3.2, 0.2), K(TC_OUT_DOWN, 0.7), K(TC_IN_DOWN, 1.2, 0.2)] } });
+  add({ id: 'towel_leg_curl', fam: 'ham', lvl: 3, minWeek: 5, en: 'Towel Leg Curl', ar: 'سحب المنشفة بالرجلين', mode: 'reps', target: '6–12 تكرار مضبوط',
+    cues: ['الحوض مرفوع طول الوقت', 'اسحب الكعب لجهة الألوية', 'مد ببطء'], setup: 'أرضية ناعمة ومنشفة تحت الكعبين.',
+    m: { p: ['hams'], s: ['glutes', 'calves'] },
+    anim: { view: 'side', props: MAT, heelTowel: true, keys: [K(TC_IN, 1.2, 0.3), K(TC_OUT, 2, 0.2)] } });
+
+  // ================= CALVES =================
+  add({ id: 'calf_raise', fam: 'calf', lvl: 1, en: 'Calf Raise', ar: 'رفع السمانة', mode: 'reps', target: '12–20 تكرار كامل المدى',
+    cues: ['اطلع لأعلى نقطة', 'ثبات ثانية فوق', 'انزل ببطء'], setup: 'قف جنب الجدار ويدك عليه للتوازن.',
+    m: { p: ['calves'], s: [] }, anim: rep(CALF_DN, CALF_UP, 1.3, 0.9, 0.3, 0.8, [{ t: 'wall', x: 286 }]) });
+  add({ id: 'pause_calf_raise', fam: 'calf', lvl: 2, en: 'Paused Calf Raise', ar: 'رفع السمانة مع ثبات', mode: 'reps', target: '10–15 تكرار — ثبات ثانيتين',
+    cues: ['ثبات ثانيتين فوق', 'انزل ببطء', 'الوزن على أول القدم'], setup: 'قف جنب الجدار ويدك عليه.',
+    m: { p: ['calves'], s: [] }, anim: rep(CALF_DN, CALF_UP, 1.5, 0.9, 0.3, 2, [{ t: 'wall', x: 286 }]) });
+  add({ id: 'sl_calf_raise', fam: 'calf', lvl: 3, uni: true, en: 'Single-Leg Calf Raise', ar: 'رفع السمانة برجل واحدة', mode: 'reps', target: '8–15 تكرار لكل رجل',
+    cues: ['رجل واحدة على الأرض', 'اطلع لأعلى نقطة', 'انزل ببطء'], setup: 'يدك على الجدار للتوازن فقط.',
+    m: { p: ['calves'], s: [] }, anim: rep(SLC_DN, SLC_UP, 1.5, 0.9, 0.3, 1, [{ t: 'wall', x: 286 }]) });
+
+  // ================= UPPER BACK (prone, seen from above) =================
+  add({ id: 'prone_yt', fam: 'back', lvl: 1, en: 'Prone Y-T Raise', ar: 'رفع Y و T على البطن', mode: 'reps', target: '8–12 تكرار — ثبات ثانية فوق',
+    cues: ['الإبهام للسقف', 'اضغط لوحي الكتف لتحت وللداخل', 'الرقبة ممدودة'], setup: 'استلقِ على بطنك. الجبهة على منشفة. (المشهد من فوق)',
+    m: { p: ['upperback'], s: ['shoulders', 'lowerback'] },
+    anim: { view: 'top', props: [], keys: [K(T(40, 0), 0.8, 0.2), K(T(40, 1), 0.9, 1), K(T(40, 0), 0.9, 0.3), K(T(90, 0), 0.8, 0.2), K(T(90, 1), 0.9, 1), K(T(90, 0), 0.9, 0.3)] } });
+  add({ id: 'snow_angel', fam: 'back', lvl: 2, en: 'Reverse Snow Angel', ar: 'ملاك الثلج العكسي', mode: 'reps', target: '6–10 تكرار بطيء',
+    cues: ['الذراعين مرفوعة عن الأرض طول الوقت', 'دوّر من الجنب لفوق الرأس', 'بطيء ومتحكم'], setup: 'استلقِ على بطنك. الجبهة على منشفة. (المشهد من فوق)',
+    m: { p: ['upperback'], s: ['shoulders', 'lowerback'] },
+    anim: { view: 'top', props: [], keys: [K(T(172, 1), 1.8, 0.3), K(T(18, 1), 2.4, 0.4)] } });
+  add({ id: 'prone_ytw', fam: 'back', lvl: 3, en: 'Prone Y-T-W Holds', ar: 'ثبات Y-T-W', mode: 'reps', target: 'دورتين إلى ثلاث — ثبات 3 ثوانٍ لكل حرف',
+    cues: ['Y ← T ← W', 'ثبات 3 ثوانٍ في كل حرف', 'الصدر قريب من الأرض'], setup: 'استلقِ على بطنك. الجبهة على منشفة. (المشهد من فوق)',
+    m: { p: ['upperback'], s: ['shoulders', 'lowerback'] },
+    anim: { view: 'top', props: [], keys: [K(T(40, 1), 0.9, 2.6), K(T(90, 1), 0.9, 2.6), K(T(128, 1, 88), 0.9, 2.6), K(T(128, 0, 88), 0.7, 0.4), K(T(40, 0), 0.8, 0.3)] } });
+
+  // ================= ROW ISOMETRIC =================
+  add({ id: 'towel_row_iso', fam: 'rowiso', lvl: 1, en: 'Towel Row Isometric', ar: 'سحب المنشفة الثابت', mode: 'cycle', cycle: { on: 6, off: 4, onAr: 'اسحب', offAr: 'ارخِ', onEn: 'Pull', offEn: 'Relax' },
+    target: 'اسحب بقوة 6 ثوانٍ، ارخِ 4', cues: ['اسحب المرفقين للخلف', 'اعصر لوحي الكتف', 'تنفّس — لا تكتم نفسك'], setup: 'اجلس والرجلين ممدودة. المنشفة ملفوفة حول باطن القدمين.',
+    m: { p: ['upperback', 'lats'], s: ['biceps'] }, anim: drive(ROW_RELAX, ROW_PULL, [], { towel: ['hN', [246, 206], [247, 222]] }) });
+  add({ id: 'towel_row_iso_long', fam: 'rowiso', lvl: 2, minWeek: 5, en: 'Towel Row Isometric — Long Holds', ar: 'سحب المنشفة — ثبات طويل', mode: 'cycle', cycle: { on: 10, off: 5, onAr: 'اسحب', offAr: 'ارخِ', onEn: 'Pull', offEn: 'Relax' },
+    target: 'اسحب بقوة 10 ثوانٍ، ارخِ 5', cues: ['اسحب المرفقين للخلف', 'اعصر لوحي الكتف', 'تنفّس — لا تكتم نفسك'], setup: 'اجلس والرجلين ممدودة. المنشفة حول باطن القدمين.',
+    m: { p: ['upperback', 'lats'], s: ['biceps'] }, anim: drive(ROW_RELAX, ROW_PULL, [], { towel: ['hN', [246, 206], [247, 222]] }) });
+
+  // ================= BICEPS ISOMETRIC =================
+  add({ id: 'towel_curl_iso', fam: 'curliso', lvl: 1, en: 'Towel Curl Isometric', ar: 'ثبات الباي بالمنشفة', mode: 'cycle', cycle: { on: 6, off: 4, onAr: 'شد', offAr: 'ارخِ', onEn: 'Pull', offEn: 'Relax' },
+    target: 'شد لفوق بقوة 6 ثوانٍ، ارخِ 4', cues: ['المرفق لاصق بالجنب', 'اسحب المنشفة لفوق', 'تنفّس — لا تكتم نفسك'], setup: 'قف على منتصف المنشفة بقدم وحدة. امسك الطرفين.',
+    m: { p: ['biceps'], s: ['upperback'] }, anim: drive(CURL_RELAX, CURL_PULL, [], { towel: ['hN', [204, 229]] }) });
+  add({ id: 'towel_curl_iso_long', fam: 'curliso', lvl: 2, minWeek: 5, en: 'Towel Curl Isometric — Long Holds', ar: 'ثبات الباي — ثبات طويل', mode: 'cycle', cycle: { on: 10, off: 5, onAr: 'شد', offAr: 'ارخِ', onEn: 'Pull', offEn: 'Relax' },
+    target: 'شد بقوة 10 ثوانٍ، ارخِ 5', cues: ['المرفق لاصق بالجنب', 'اسحب المنشفة لفوق', 'تنفّس — لا تكتم نفسك'], setup: 'قف على منتصف المنشفة بقدم وحدة.',
+    m: { p: ['biceps'], s: ['upperback'] }, anim: drive(CURL_RELAX, CURL_PULL, [], { towel: ['hN', [204, 229]] }) });
+
+  // ================= CORE =================
+  add({ id: 'dead_bug', fam: 'core', lvl: 1, en: 'Dead Bug', ar: 'الحشرة الميتة', mode: 'reps', target: '6–10 لكل جهة، بطيء',
+    cues: ['أسفل الظهر لاصق بالأرض', 'يد ورجل عكسية', 'ازفر وأنت تمد'], setup: 'استلقِ على ظهرك، الذراعين للسقف والركب فوق الحوض.',
+    m: { p: ['abs'], s: ['obliques'] },
+    anim: { view: 'side', props: MAT, keys: [K(DB_BASE, 1, 0.3), K(DB_A, 1.4, 0.5), K(DB_BASE, 1.2, 0.3), K(DB_B, 1.4, 0.5)] } });
+  add({ id: 'plank', fam: 'core', lvl: 2, en: 'Forearm Plank', ar: 'بلانك على الساعد', mode: 'hold', target: 'ثبات — وقف قبل ما يطيح الحوض',
+    cues: ['المرفق تحت الكتف', 'اعصر البطن والألوية', 'تنفّس بهدوء'], setup: 'على الساعدين وأطراف الأصابع.',
+    m: { p: ['abs'], s: ['obliques', 'shoulders', 'glutes'] }, anim: hold(PLANK, PLANK_B, MAT) });
+  add({ id: 'shoulder_tap', fam: 'core', lvl: 3, en: 'Plank Shoulder Tap', ar: 'بلانك مع لمس الكتف', mode: 'reps', target: '8–12 لكل جهة، الحوض ثابت',
+    cues: ['الرجلين مفتوحة للثبات', 'الحوض ما يتمايل', 'المس الكتف المعاكس'], setup: 'وضعية الضغط العالية، الرجلين أعرض من الحوض.',
+    m: { p: ['abs', 'obliques'], s: ['shoulders', 'chest'] },
+    anim: { view: 'side', props: MAT, keys: [K(TAP_BASE, 0.7, 0.2), K(TAP_N, 0.6, 0.3), K(TAP_BASE, 0.6, 0.2), K(TAP_F, 0.6, 0.3)] } });
+  add({ id: 'body_saw', fam: 'core', lvl: 4, minWeek: 5, en: 'Plank Body Saw', ar: 'بلانك منشار', mode: 'reps', target: '8–12 تكرار بطيء',
+    cues: ['ادفع جسمك للخلف والأمام', 'حركة صغيرة ومتحكمة', 'الحوض ما ينزل'], setup: 'بلانك على الساعدين.',
+    m: { p: ['abs'], s: ['shoulders', 'obliques'] }, anim: rep(SAW_F, SAW_B, 1.2, 1.2, 0.2, 0.2, MAT) });
+
+  add({ id: 'knee_side_plank', fam: 'side', lvl: 1, uni: true, en: 'Knee Side Plank', ar: 'بلانك جانبي على الركبة', mode: 'hold', target: 'ثبات لكل جهة',
+    cues: ['على جنبك — المرفق تحت الكتف', 'الحوض مرفوع', 'من الركبة للرأس خط'], setup: 'استلقِ على جنبك، الركب مثنية. (المشهد من الأمام)',
+    m: { p: ['obliques'], s: ['abs', 'glutes', 'shoulders'] }, anim: hold(KSP, withA(KSP, { hip: [KSP.hip[0], KSP.hip[1] + 2] }), MAT) });
+  add({ id: 'side_plank', fam: 'side', lvl: 2, uni: true, en: 'Side Plank', ar: 'بلانك جانبي', mode: 'hold', target: 'ثبات لكل جهة',
+    cues: ['على جنبك — المرفق تحت الكتف', 'الحوض مرفوع', 'جسمك خط مستقيم'], setup: 'على جنبك، القدمين فوق بعض. (المشهد من الأمام)',
+    m: { p: ['obliques'], s: ['abs', 'glutes', 'shoulders'] }, anim: hold(SP, withA(SP, { hip: [SP.hip[0], SP.hip[1] + 2] }), MAT) });
+  add({ id: 'side_plank_dip', fam: 'side', lvl: 3, minWeek: 5, uni: true, en: 'Side Plank Hip Dip', ar: 'بلانك جانبي مع نزول الحوض', mode: 'reps', target: '8–12 لكل جهة',
+    cues: ['نزّل الحوض بتحكم', 'ارفعه أعلى من الخط', 'المرفق تحت الكتف'], setup: 'بلانك جانبي على الساعد. (المشهد من الأمام)',
+    m: { p: ['obliques'], s: ['abs', 'glutes'] }, anim: rep(SP, SP_DIP, 1.1, 1, 0.3, 0.1, MAT) });
+
+  // ================= WARM-UP =================
+  add({ id: 'march', fam: 'warm', lvl: 1, en: 'March in Place', ar: 'مشي في المكان', mode: 'warm', target: 'إيقاع هادئ',
+    cues: ['ارفع الركبة', 'حرّك الذراعين', 'تنفّس'], setup: '', m: { p: [], s: ['quads', 'calves'] },
+    anim: { view: 'side', props: [], keys: [K(MARCH_A, 0.45, 0.05), K(STAND, 0.4), K(MARCH_B, 0.45, 0.05), K(STAND, 0.4)] } });
+  add({ id: 'arm_circles', fam: 'warm', lvl: 1, en: 'Arm Circles', ar: 'دوائر الذراعين', mode: 'warm', target: 'دوائر واسعة وهادئة',
+    cues: ['دوائر كبيرة', 'الكتف مرتخي', 'بدّل الاتجاه بالنص'], setup: '', m: { p: [], s: ['shoulders'] },
+    anim: { view: 'side', props: [], keys: [90, 45, 0, -45, -90, -135, 180, 135].map(a => K(circ(a), 0.28)) } });
+  add({ id: 'hip_hinge', fam: 'warm', lvl: 1, en: 'Hip Hinge', ar: 'انحناء من الحوض', mode: 'warm', target: 'ادفع الحوض للخلف بهدوء',
+    cues: ['الحوض للخلف', 'الظهر مستقيم', 'الركب مرتخية'], setup: '', m: { p: [], s: ['hams', 'glutes'] },
+    anim: rep(HINGE_UP, HINGE, 1.3, 1.1, 0.3, 0.3) });
+  add({ id: 'warm_squat', fam: 'warm', lvl: 1, video: 'squat', en: 'Easy Squat', ar: 'سكوات خفيف', mode: 'warm', target: 'نص المدى، بدون جهد',
+    cues: ['حركة سهلة', 'الكعب ثابت', 'زِد العمق تدريجيًا'], setup: '', m: { p: [], s: ['quads', 'glutes'] },
+    anim: rep(SQ_STAND_ARMS, SQ_HALF, 1.2, 1, 0.3, 0.2) });
+
+  // ================= تمارين الجوز =================
+  add({ id: 'breathing', fam: 'joz', lvl: 1, en: 'Diaphragmatic Breathing', ar: 'تنفّس من البطن', mode: 'cycle', cycle: { on: 4, off: 6, onAr: 'شهيق', offAr: 'زفير', onEn: 'Breathe in', offEn: 'Breathe out' },
+    target: 'شهيق 4 ثوانٍ، زفير 6', cues: ['الشهيق يرفع البطن مو الصدر', 'قاع الحوض يرتخي مع الشهيق', 'زفير طويل وهادئ'], setup: 'استلقِ على ظهرك، الركب مثنية، يد على البطن.',
+    m: { p: [], s: ['abs'] }, anim: drive(withA(HOOK, { b: 0 }), withA(HOOK, { b: 1 }), MAT, { belly: -1 }, 3, 4) });
+  add({ id: 'pf_lying', fam: 'jozpf', lvl: 1, en: 'Pelvic Floor Holds — Lying', ar: 'شد قاع الحوض — استلقاء', mode: 'cycle', cycle: { on: 3, off: 6, onAr: 'شد', offAr: 'ارخِ', onEn: 'Squeeze', offEn: 'Relax' },
+    target: 'شد لطيف ثم ارتخاء كامل', cues: ['كأنك تمسك غازات — لداخل ولفوق', 'لا تشد الألوية ولا البطن', 'ارتخاء كامل بعد كل شدة'], setup: 'استلقِ على ظهرك، الركب مثنية. تنفّس طبيعي.',
+    m: { p: ['pelvic'], s: [] }, anim: drive(withA(HOOK, { g: 0 }), withA(HOOK, { g: 1 }), MAT, { glow: true, glowOff: [-10, -4] }) });
+  add({ id: 'pf_seated', fam: 'jozpf', lvl: 2, en: 'Pelvic Floor Holds — Seated', ar: 'شد قاع الحوض — جلوس', mode: 'cycle', cycle: { on: 4, off: 6, onAr: 'شد', offAr: 'ارخِ', onEn: 'Squeeze', offEn: 'Relax' },
+    target: 'شد لطيف ثم ارتخاء كامل', cues: ['كأنك تمسك غازات — لداخل ولفوق', 'الظهر مستقيم والكتف مرتخي', 'ارتخاء كامل بعد كل شدة'], setup: 'اجلس على كرسي، القدمين على الأرض.',
+    m: { p: ['pelvic'], s: [] }, anim: drive(withA(SEAT, { g: 0 }), withA(SEAT, { g: 1 }), CHAIR_SIT, { glow: true, glowOff: [4, 0] }) });
+  add({ id: 'pf_standing', fam: 'jozpf', lvl: 3, en: 'Pelvic Floor Holds — Standing', ar: 'شد قاع الحوض — وقوف', mode: 'cycle', cycle: { on: 5, off: 5, onAr: 'شد', offAr: 'ارخِ', onEn: 'Squeeze', offEn: 'Relax' },
+    target: 'شد لطيف ثم ارتخاء كامل', cues: ['كأنك تمسك غازات — لداخل ولفوق', 'لا تكتم نفسك', 'ارتخاء كامل بعد كل شدة'], setup: 'قف والرجلين بعرض الحوض.',
+    m: { p: ['pelvic'], s: [] }, anim: drive(STAND_PF, withA(STAND_PF, { g: 1 }), [], { glow: true, glowOff: [0, 6] }) });
+  add({ id: 'pf_quick', fam: 'jozq', lvl: 1, en: 'Quick Pelvic Floor Flicks', ar: 'شدّات سريعة', mode: 'cycle', cycle: { on: 1, off: 2, onAr: '', offAr: '', onEn: '', offEn: '' },
+    target: 'شدة سريعة ثم ارتخاء كامل', cues: ['شدة سريعة وقصيرة', 'ارتخاء كامل بينها', 'تنفّس طبيعي'], setup: 'نفس الوضعية السابقة.',
+    m: { p: ['pelvic'], s: [] }, anim: drive(withA(HOOK, { g: 0 }), withA(HOOK, { g: 1 }), MAT, { glow: true, glowOff: [-10, -4] }, 0.6, 1.2) });
+  add({ id: 'pf_bridge', fam: 'jozb', lvl: 1, en: 'Bridge + Exhale Squeeze', ar: 'جسر مع الزفير', mode: 'cycle', cycle: { on: 4, off: 4, onAr: 'ازفر وارفع', offAr: 'شهيق ونزول', onEn: 'Exhale, lift', offEn: 'Inhale, lower' },
+    target: 'زفير + شد لطيف مع الطلوع', cues: ['ازفر وارفع الحوض', 'شد لطيف لقاع الحوض فوق', 'شهيق وارتخاء تحت'], setup: 'استلقِ على ظهرك، الركب مثنية.',
+    m: { p: ['glutes', 'pelvic'], s: ['hams'] }, anim: drive(withA(BR_DN, { g: 0 }), withA(BR_UP, { g: 1 }), MAT, { glow: true, glowOff: [-8, -2] }) });
+  add({ id: 'bird_dog', fam: 'jozbd', lvl: 1, en: 'Bird Dog', ar: 'الطائر والكلب', mode: 'reps', target: 'بالتناوب، ثبات ثانيتين',
+    cues: ['يد ورجل عكسية', 'الظهر مستوي كالطاولة', 'ثبات ثانيتين'], setup: 'على اليدين والركب، اليد تحت الكتف والركبة تحت الحوض.',
+    m: { p: ['abs', 'glutes'], s: ['lowerback', 'shoulders'] },
+    anim: { view: 'side', props: MAT, keys: [K(BD_BASE, 0.8, 0.3), K(BD_A, 1.1, 1.6), K(BD_BASE, 1, 0.3), K(BD_B, 1.1, 1.6)] } });
+  add({ id: 'hip_flexor', fam: 'jozhip', lvl: 1, uni: true, en: 'Kneeling Hip Flexor Stretch', ar: 'إطالة مقدمة الحوض', mode: 'hold', target: 'إطالة هادئة لكل جهة',
+    cues: ['اعصر الألوية للرجل الخلفية', 'ادفع الحوض لقدّام بخفة', 'تنفّس ببطء'], setup: 'ركبة على منشفة، والرجل الثانية قدّام.',
+    m: { p: [], s: ['glutes', 'quads'] }, anim: rep(HFS_A, HFS_B, 1.6, 1.6, 0.6, 1.8, MAT) });
+  add({ id: 'relax_breath', fam: 'joz', lvl: 1, en: 'Full Relaxation Breathing', ar: 'تنفّس وارتخاء كامل', mode: 'cycle', cycle: { on: 4, off: 6, onAr: 'شهيق', offAr: 'زفير', onEn: 'Breathe in', offEn: 'Breathe out' },
+    target: 'بدون أي شد — فقط ارتخاء', cues: ['اترك قاع الحوض يرتخي', 'البطن يطلع مع الشهيق', 'لا شد إطلاقًا'], setup: 'نفس وضعية الاستلقاء.',
+    m: { p: [], s: [] }, anim: drive(withA(HOOK, { b: 0 }), withA(HOOK, { b: 1 }), MAT, { belly: -1 }, 3, 4) });
+
+  const byId = {};
+  E.forEach(e => { byId[e.id] = e; if (!e.video) e.video = e.id; });
+  const fam = f => E.filter(e => e.fam === f).sort((a, b) => a.lvl - b.lvl);
+
+  // video manifest: exercise id -> local relative path
+  const videoManifest = {};
+  E.forEach(e => { videoManifest[e.id] = 'assets/videos/' + e.video + '.mp4'; });
+
+  return { all: E, byId, fam, videoManifest };
+})();
+
+/* ============================================================
+   PROGRAM — phases, sessions, timeline builder, progression
+   ============================================================ */
+const PROG = (() => {
+  const PHASES = [
+    { id: 'return', from: 1, to: 2, ar: 'العودة', en: 'Return', rir: '3',
+      goal: 'نرجّع التكنيك ونجهّز المفاصل والأوتار بدون ألم عضلي مزعج. مجموعتين لأغلب التمارين.' },
+    { id: 'build', from: 3, to: 4, ar: 'البناء', en: 'Build', rir: '2–3',
+      goal: 'نرفع الحجم تدريجيًا لـ 2–3 مجموعات، ونصعّد المستوى إذا الأداء يسمح.' },
+    { id: 'grow', from: 5, to: 6, ar: 'النمو', en: 'Grow', rir: '1–2',
+      goal: 'حجم تدريب فعّال للتضخيم: 3–4 مجموعات. آخر مجموعة في التمارين الآمنة تقترب أكثر من الجهد.' },
+    { id: 'sharpen', from: 7, to: 8, ar: 'الصقل', en: 'Sharpen', rir: '1–2',
+      goal: 'نكمل التضخيم ونضبط التعب. الأسبوع 8 أخف بمجموعة في التمارين الكبيرة — بدون تحديات متهورة.' },
+  ];
+
+  const phaseOf = w => PHASES.find(p => w >= p.from && w <= p.to) || PHASES[3];
+
+  function weekParams(week) {
+    const w = Math.max(1, week > 8 ? 7 : week);
+    const P = {
+      1: { main: 2, acc: 2, small: 2, iso: 2, core: 2, work: 40, hold: 25, sideHold: 20, cyc: 40, rir: 'توقف وعندك تقريبًا 3 تكرارات نظيفة', lastRir: null, reps: 'low' },
+      3: { main: 3, acc: 2, small: 2, iso: 2, core: 2, work: 45, hold: 30, sideHold: 25, cyc: 45, rir: 'توقف وعندك 2–3 تكرارات نظيفة', lastRir: null, reps: 'mid' },
+      4: { main: 3, acc: 3, small: 3, iso: 3, core: 2, work: 45, hold: 30, sideHold: 25, cyc: 45, rir: 'توقف وعندك 2–3 تكرارات نظيفة', lastRir: null, reps: 'mid' },
+      5: { main: 4, acc: 3, small: 3, iso: 3, core: 3, work: 45, hold: 40, sideHold: 30, cyc: 50, rir: 'توقف وعندك تكرارين نظيفة', lastRir: 'آخر مجموعة: 1–2 تكرار احتياط', reps: 'high' },
+      7: { main: 4, acc: 3, small: 3, iso: 3, core: 3, work: 45, hold: 40, sideHold: 30, cyc: 50, rir: 'توقف وعندك تكرارين نظيفة', lastRir: 'آخر مجموعة: 1–2 تكرار احتياط', reps: 'high' },
+      8: { main: 3, acc: 3, small: 3, iso: 3, core: 2, work: 45, hold: 40, sideHold: 30, cyc: 50, rir: 'توقف وعندك 1–2 تكرار نظيف', lastRir: null, reps: 'high' },
+    };
+    const k = w <= 2 ? 1 : w === 3 ? 3 : w === 4 ? 4 : w <= 6 ? 5 : w === 7 ? 7 : 8;
+    return Object.assign({ week: w, realWeek: week }, P[k]);
+  }
+
+  const REST = { main: 90, acc: 75, small: 60, iso: 60, core: 60 };
+  // exercises where the last set may approach 1–2 RIR (never squats / lunges / complex)
+  const SAFE_CLOSE = new Set(['push', 'armpush', 'pike', 'glute', 'calf', 'back', 'core', 'ham']);
+
+  const SESSIONS = {
+    A: { key: 'A', en: 'Full Body A', day: 'السبت', slots: [
+      { fam: 'push', role: 'main' }, { fam: 'squat', role: 'main' }, { fam: 'pike', role: 'acc' },
+      { fam: 'glute', role: 'acc' }, { fam: 'back', role: 'small' }, { fam: 'core', role: 'core' }] },
+    B: { key: 'B', en: 'Full Body B', day: 'الاثنين', slots: [
+      { fam: 'lunge', role: 'main', rest: 75 }, { fam: 'armpush', role: 'main' }, { fam: 'rowiso', role: 'iso' },
+      { fam: 'ham', role: 'acc' }, { fam: 'calf', role: 'small' }, { fam: 'side', role: 'core' }] },
+    C: { key: 'C', en: 'Full Body C', day: 'الأربعاء', slots: [
+      { fam: 'glute', role: 'main' }, { fam: 'push', role: 'main' }, { fam: 'squat', role: 'acc' },
+      { fam: 'pike', role: 'acc' }, { fam: 'back', role: 'small' }, { fam: 'curliso', role: 'iso' }] },
+  };
+  const ORDER = ['A', 'B', 'C'];
+
+  const WEEK_TEMPLATE = [
+    { day: 'السبت', what: 'Full Body A', kind: 'strength' },
+    { day: 'الأحد', what: 'مشي + تمارين الجوز', kind: 'recovery' },
+    { day: 'الاثنين', what: 'Full Body B', kind: 'strength' },
+    { day: 'الثلاثاء', what: 'مشي + تمارين الجوز', kind: 'recovery' },
+    { day: 'الأربعاء', what: 'Full Body C', kind: 'strength' },
+    { day: 'الخميس', what: 'مشي أطول + تمارين الجوز', kind: 'recovery' },
+    { day: 'الجمعة', what: 'راحة', kind: 'rest' },
+  ];
+
+  const FAMS = {
+    push: { ar: 'الضغط', en: 'Push' }, armpush: { ar: 'الترايسبس', en: 'Close-Grip' }, pike: { ar: 'الأكتاف', en: 'Pike' },
+    squat: { ar: 'السكوات', en: 'Squat' }, lunge: { ar: 'الطعن', en: 'Split / Lunge' }, glute: { ar: 'الألوية', en: 'Glutes' },
+    ham: { ar: 'الفخذ الخلفي', en: 'Hamstrings' }, calf: { ar: 'السمانة', en: 'Calves' }, back: { ar: 'أعلى الظهر', en: 'Upper Back' },
+    rowiso: { ar: 'السحب الثابت', en: 'Row Isometric' }, curliso: { ar: 'الباي الثابت', en: 'Curl Isometric' },
+    core: { ar: 'البطن', en: 'Core' }, side: { ar: 'الجوانب', en: 'Side Core' },
+  };
+  const TRAINABLE = Object.keys(FAMS);
+
+  function cardioTarget(week) {
+    const w = week > 8 ? 7 : week;
+    if (w <= 2) return { min: 20, max: 25, times: 3 };
+    if (w <= 4) return { min: 25, max: 30, times: 3 };
+    return { min: 30, max: 40, times: 3 };
+  }
+
+  function defaultLevels() {
+    const o = {};
+    TRAINABLE.forEach(f => { o[f] = { lvl: 1, score: 0 }; });
+    return o;
+  }
+
+  function maxLevelAllowed(fam, week) {
+    const list = LIB.fam(fam);
+    let best = 1;
+    list.forEach(e => { if ((e.minWeek || 1) <= week) best = Math.max(best, e.lvl); });
+    return best;
+  }
+  function exerciseFor(fam, levels, week) {
+    const list = LIB.fam(fam);
+    const stored = (levels[fam] && levels[fam].lvl) || 1;
+    const eff = Math.min(stored, maxLevelAllowed(fam, week), list.length);
+    return list.find(e => e.lvl === eff) || list[0];
+  }
+
+  function repTarget(ex, P) {
+    if (ex.mode !== 'reps') return ex.target;
+    return ex.target;
+  }
+
+  function workSeconds(ex, P, role) {
+    if (ex.mode === 'hold') return ex.uni ? P.sideHold : P.hold;
+    if (ex.mode === 'cycle') return P.cyc;
+    let w = P.work + (ex.workAdd || 0);
+    if (ex.uni) w = Math.max(35, w - 5);
+    return w;
+  }
+
+  // ----------- timeline -------------
+  // step: {k, dur, ex, set, sets, side, note}
+  const WARM = [['march', 45], ['arm_circles', 30], ['hip_hinge', 30], ['warm_squat', 30]];
+
+  function buildStrength(key, levels, week) {
+    const S = SESSIONS[key];
+    const P = weekParams(week);
+    const steps = [];
+    const items = S.slots.map(sl => {
+      const ex = exerciseFor(sl.fam, levels, P.week);
+      const sets = P[sl.role];
+      const rest = sl.rest || REST[sl.role];
+      return { fam: sl.fam, role: sl.role, ex, sets, rest, work: workSeconds(ex, P, sl.role) };
+    });
+    steps.push({ k: 'prep', dur: 10, ex: WARM[0][0], note: 'إحماء خفيف أولًا' });
+    WARM.forEach(([id, d], i) => {
+      steps.push({ k: 'work', dur: d, ex: id, set: 1, sets: 1, warm: true });
+      if (i < WARM.length - 1) steps.push({ k: 'trans', dur: 6, ex: WARM[i + 1][0], warm: true });
+    });
+    steps.push({ k: 'trans', dur: 25, ex: items[0].ex.id, note: items[0].ex.setup, setup: true });
+    items.forEach((it, idx) => {
+      for (let s = 1; s <= it.sets; s++) {
+        const last = s === it.sets;
+        const closeRir = last && P.lastRir && SAFE_CLOSE.has(it.fam) && it.ex.mode === 'reps';
+        const base = { k: 'work', dur: it.work, ex: it.ex.id, set: s, sets: it.sets, fam: it.fam, role: it.role, rir: closeRir ? P.lastRir : P.rir };
+        if (it.ex.uni) {
+          steps.push(Object.assign({}, base, { side: 1 }));
+          steps.push({ k: 'switch', dur: 8, ex: it.ex.id, set: s, sets: it.sets, side: 2 });
+          steps.push(Object.assign({}, base, { side: 2 }));
+        } else steps.push(base);
+        const nextIt = last ? items[idx + 1] : it;
+        if (!nextIt) continue;
+        const nextSet = last ? 1 : s + 1;
+        steps.push({ k: 'rest', dur: last ? Math.max(it.rest, 75) : it.rest, ex: it.ex.id, nextEx: nextIt.ex.id, nextSet, nextSets: nextIt.sets, note: last ? nextIt.ex.setup : '' });
+      }
+    });
+    steps.push({ k: 'done', dur: 0 });
+    return { type: 'strength', key, week, title: S.en, steps, items: items.map(i => ({ id: i.ex.id, fam: i.fam, sets: i.sets, role: i.role })) };
+  }
+
+  function jozLevelFor(week) { return week <= 3 ? 'pf_lying' : week <= 6 ? 'pf_seated' : 'pf_standing'; }
+
+  function buildJoz(week) {
+    const pf = jozLevelFor(week);
+    const steps = [];
+    const seq = [];
+    seq.push(['breathing', 90]);
+    seq.push([pf, 60, 'r1']);
+    seq.push(['REST', 20]);
+    seq.push([pf, 60, 'r2']);
+    if (week >= 3) seq.push(['pf_quick', 30]);
+    seq.push(['pf_bridge', 60]);
+    seq.push(['bird_dog', 60]);
+    seq.push(['hip_flexor', 30]);
+    seq.push(['relax_breath', 60]);
+    steps.push({ k: 'prep', dur: 10, ex: 'breathing', note: 'استلقِ على ظهرك، الركب مثنية.' });
+    seq.forEach((s, i) => {
+      const [id, d] = s;
+      if (id === 'REST') { steps.push({ k: 'rest', dur: d, ex: pf, nextEx: pf, nextSet: 2, nextSets: 2, note: 'ارتخاء كامل — تنفّس طبيعي' }); return; }
+      const ex = LIB.byId[id];
+      const setInfo = s[2] === 'r1' ? { set: 1, sets: 2 } : s[2] === 'r2' ? { set: 2, sets: 2 } : { set: 1, sets: 1 };
+      if (ex.uni) {
+        steps.push(Object.assign({ k: 'work', dur: d, ex: id, side: 1, joz: true }, setInfo));
+        steps.push(Object.assign({ k: 'switch', dur: 8, ex: id, side: 2 }, setInfo));
+        steps.push(Object.assign({ k: 'work', dur: d, ex: id, side: 2, joz: true }, setInfo));
+      } else steps.push(Object.assign({ k: 'work', dur: d, ex: id, joz: true }, setInfo));
+      const nxt = seq[i + 1];
+      if (nxt && nxt[0] !== 'REST' && s[2] !== 'r1') steps.push({ k: 'trans', dur: 12, ex: nxt[0], note: LIB.byId[nxt[0]].setup });
+    });
+    steps.push({ k: 'done', dur: 0 });
+    return { type: 'joz', key: 'J', week, title: 'تمارين الجوز', steps, items: seq.filter(s => s[0] !== 'REST').map(s => ({ id: s[0] })) };
+  }
+
+  const planSeconds = plan => plan.steps.reduce((s, st) => s + (st.dur || 0), 0);
+
+  // cycle state for cycle-mode exercises: returns {on:boolean, idx, remainInPhase}
+  function cycleState(ex, elapsed) {
+    const c = ex.cycle; const per = c.on + c.off;
+    const t = elapsed % per; const idx = Math.floor(elapsed / per);
+    return t < c.on ? { on: true, idx, left: c.on - t } : { on: false, idx, left: per - t };
+  }
+
+  // ----------- progression -------------
+  const DIFF = { easy: 2, ok: 1, hard: 0, vhard: -1 };
+  function applyFeedback(levels, plan, fb, week) {
+    const changes = [];
+    const fams = [...new Set(plan.items.map(i => i.fam).filter(Boolean))];
+    fams.forEach(f => {
+      const L = levels[f] || (levels[f] = { lvl: 1, score: 0 });
+      let d = DIFF[fb.difficulty] ?? 1;
+      if (fb.completion === 'mostly') d = d - 1;
+      if (fb.completion === 'no') d = Math.min(d, 0) - 1;
+      if (fb.easyFams && fb.easyFams.includes(f)) d += 2;
+      if (fb.hardFams && fb.hardFams.includes(f)) d = -2;
+      L.score = Math.max(-3, Math.min(4, (L.score || 0) + d));
+      const list = LIB.fam(f);
+      const maxAllowed = maxLevelAllowed(f, week);
+      const from = Math.min(L.lvl, maxAllowed);
+      if (L.score >= 4 && from < list.length) {
+        if (from + 1 <= maxAllowed) { L.lvl = from + 1; L.score = 0; changes.push({ fam: f, from, to: L.lvl, dir: 'up' }); }
+        else { L.score = 4; }
+      } else if (L.score <= -3 && from > 1) {
+        L.lvl = from - 1; L.score = 0; changes.push({ fam: f, from, to: L.lvl, dir: 'down' });
+      }
+    });
+    return changes;
+  }
+
+  return { PHASES, phaseOf, weekParams, SESSIONS, ORDER, WEEK_TEMPLATE, FAMS, TRAINABLE, cardioTarget, defaultLevels,
+    exerciseFor, maxLevelAllowed, buildStrength, buildJoz, planSeconds, cycleState, applyFeedback, jozLevelFor, WARM };
+})();
+
+/* ============================================================
+   CORE — utils, storage (IndexedDB), audio, speech, wake lock,
+   video manager, hands-free workout engine
+   ============================================================ */
+const SPEED = (() => { const s = Number(new URLSearchParams(location.search).get('speed')); return s > 0 && s <= 200 ? s : 1; })();
+window.__cues = [];
+
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad = n => String(n).padStart(2, '0');
+const fmt = sec => { sec = Math.max(0, Math.ceil(sec)); return pad(Math.floor(sec / 60)) + ':' + pad(sec % 60); };
+const fmtMin = sec => Math.round(sec / 60);
+const dateKey = d => { d = d || new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+const parseKey = k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d); };
+const addDays = (k, n) => { const d = parseKey(k); d.setDate(d.getDate() + n); return dateKey(d); };
+const daysBetween = (a, b) => Math.round((parseKey(b) - parseKey(a)) / 86400000);
+const todayKey = () => dateKey(new Date());
+
+/* ---------------- storage ---------------- */
+const DB = {
+  db: null, mode: 'idb', mem: {},
+  open() {
+    return new Promise(resolve => {
+      let settled = false;
+      const fallback = () => { if (settled) return; settled = true; this.mode = this.lsOk() ? 'ls' : 'mem'; resolve(); };
+      try {
+        if (!('indexedDB' in window)) return fallback();
+        const r = indexedDB.open('malik-coach', 1);
+        r.onupgradeneeded = () => r.result.createObjectStore('kv');
+        r.onsuccess = () => { if (settled) return; settled = true; this.db = r.result; resolve(); };
+        r.onerror = fallback; r.onblocked = fallback;
+        setTimeout(fallback, 3000);
+      } catch (e) { fallback(); }
+    });
+  },
+  lsOk() { try { localStorage.setItem('mc:t', '1'); localStorage.removeItem('mc:t'); return true; } catch (e) { return false; } },
+  get(k) {
+    if (this.mode === 'idb') return new Promise(res => {
+      try { const q = this.db.transaction('kv', 'readonly').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(undefined); } catch (e) { res(undefined); }
+    });
+    if (this.mode === 'ls') { try { const v = localStorage.getItem('mc:' + k); return Promise.resolve(v ? JSON.parse(v) : undefined); } catch (e) { return Promise.resolve(undefined); } }
+    return Promise.resolve(this.mem[k]);
+  },
+  set(k, v) {
+    const val = v === undefined ? null : JSON.parse(JSON.stringify(v));
+    if (this.mode === 'idb') return new Promise(res => {
+      try { const tx = this.db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(val, k); tx.oncomplete = () => res(true); tx.onerror = () => res(false); } catch (e) { res(false); }
+    });
+    if (this.mode === 'ls') { try { localStorage.setItem('mc:' + k, JSON.stringify(val)); } catch (e) { } return Promise.resolve(true); }
+    this.mem[k] = val; return Promise.resolve(true);
+  },
+  clear() {
+    if (this.mode === 'idb') return new Promise(res => { try { const tx = this.db.transaction('kv', 'readwrite'); tx.objectStore('kv').clear(); tx.oncomplete = () => res(true); tx.onerror = () => res(false); } catch (e) { res(false); } });
+    if (this.mode === 'ls') { Object.keys(localStorage).filter(k => k.startsWith('mc:')).forEach(k => localStorage.removeItem(k)); }
+    this.mem = {}; return Promise.resolve(true);
+  },
+};
+
+const S = { profile: null, settings: null, levels: null, log: [], active: null };
+const save = k => DB.set(k, S[k]);
+async function loadAll() {
+  S.profile = (await DB.get('profile')) || { onboarded: false, calibrated: false, startDate: null, name: 'مالك', age: 26, height: 184, weight: 80 };
+  S.settings = Object.assign({ sound: true, voice: true, wedding: null, seenReports: [] }, (await DB.get('settings')) || {});
+  S.levels = Object.assign(PROG.defaultLevels(), (await DB.get('levels')) || {});
+  S.log = (await DB.get('log')) || [];
+  S.active = (await DB.get('active')) || null;
+}
+
+/* ---------------- program calendar ---------------- */
+function weekNum() {
+  if (!S.profile.startDate) return 1;
+  return Math.max(1, Math.floor(daysBetween(S.profile.startDate, todayKey()) / 7) + 1);
+}
+const weekEntries = w => S.log.filter(e => e.week === w);
+function doneKeys(w) {
+  return new Set(weekEntries(w).filter(e => e.type === 'strength' && (e.ratio ?? 1) >= 0.6).map(e => e.key));
+}
+
+/* ---------------- audio (Web Audio API) ---------------- */
+const Sound = {
+  ctx: null,
+  get on() { return S.settings ? S.settings.sound : true; },
+  init() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!this.ctx) this.ctx = new AC();
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      const b = this.ctx.createBuffer(1, 1, 22050), s = this.ctx.createBufferSource();
+      s.buffer = b; s.connect(this.ctx.destination); s.start(0);
+    } catch (e) { this.ctx = null; }
+  },
+  tone(freq, dur, when, type, vol) {
+    if (!this.on || !this.ctx) return;
+    try {
+      const t = this.ctx.currentTime + (when || 0);
+      const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+      o.type = type || 'sine'; o.frequency.setValueAtTime(freq, t);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.28, t + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(this.ctx.destination); o.start(t); o.stop(t + dur + 0.03);
+    } catch (e) { }
+  },
+  cue(name) {
+    window.__cues.push(name);
+    if (name === 'count') this.tone(880, 0.12);
+    else if (name === 'start') { this.tone(1320, 0.5, 0, 'sine', 0.34); }
+    else if (name === 'end') { this.tone(660, 0.18, 0, 'triangle'); this.tone(440, 0.32, 0.2, 'triangle'); }
+    else if (name === 'on') { this.tone(740, 0.12, 0, 'sine', 0.22); this.tone(988, 0.18, 0.13, 'sine', 0.22); }
+    else if (name === 'off') { this.tone(494, 0.3, 0, 'triangle', 0.2); }
+    else if (name === 'done') [523, 659, 784, 1047].forEach((f, i) => this.tone(f, 0.32, i * 0.17));
+    else if (name === 'half') { this.tone(988, 0.15); this.tone(988, 0.15, 0.25); }
+  },
+};
+
+/* ---------------- speech (SpeechSynthesis, optional) ---------------- */
+const Voice = {
+  ar: null, en: null, inited: false,
+  get on() { return S.settings ? S.settings.voice : true; },
+  supported() { return 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window; },
+  init() {
+    if (!this.supported()) return;
+    const pick = () => {
+      const vs = speechSynthesis.getVoices() || [];
+      this.ar = vs.find(v => /^ar/i.test(v.lang)) || null;
+      this.en = vs.find(v => /^en/i.test(v.lang)) || null;
+    };
+    try {
+      pick(); speechSynthesis.onvoiceschanged = pick;
+      if (!this.inited) { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); this.inited = true; }
+    } catch (e) { }
+  },
+  say(ar, en) {
+    window.__cues.push('say:' + (ar || en));
+    if (!this.on || !this.supported()) return;
+    try {
+      const useAr = !!this.ar, text = useAr ? ar : en;
+      if (!text) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      if (useAr) { u.voice = this.ar; u.lang = this.ar.lang; } else { u.lang = 'en-US'; if (this.en) u.voice = this.en; }
+      u.rate = 1; u.volume = 1;
+      speechSynthesis.speak(u);
+    } catch (e) { }
+  },
+  stop() { try { if (this.supported()) speechSynthesis.cancel(); } catch (e) { } },
+};
+
+/* ---------------- wake lock ---------------- */
+const Wake = {
+  sentinel: null, want: false,
+  supported() { return 'wakeLock' in navigator; },
+  async on() {
+    this.want = true; window.__cues.push('wakelock:request');
+    if (!this.supported()) return false;
+    try {
+      this.sentinel = await navigator.wakeLock.request('screen');
+      this.sentinel.addEventListener('release', () => { this.sentinel = null; });
+      return true;
+    } catch (e) { this.sentinel = null; return false; }
+  },
+  off() { this.want = false; try { this.sentinel && this.sentinel.release(); } catch (e) { } this.sentinel = null; },
+};
+
+/* ---------------- video manager ----------------
+   Every exercise maps to a local file in LIB.videoManifest.
+   A file is used only after it has proven it can load; otherwise
+   the animated demonstration is shown. No broken video element
+   is ever displayed. */
+const VID = {
+  ok: {}, pending: {}, pool: {},
+  url(id) { return LIB.videoManifest[id]; },
+  probe(id) {
+    if (id in this.ok) return Promise.resolve(this.ok[id]);
+    if (this.pending[id]) return this.pending[id];
+    this.pending[id] = new Promise(res => {
+      let done = false;
+      const v = document.createElement('video');
+      const fin = ok => {
+        if (done) return; done = true; this.ok[id] = ok; delete this.pending[id];
+        if (ok) this.pool[id] = v; else { try { v.removeAttribute('src'); v.load(); } catch (e) { } }
+        res(ok);
+      };
+      v.muted = true; v.playsInline = true; v.preload = 'metadata';
+      v.addEventListener('loadedmetadata', () => fin(true));
+      v.addEventListener('error', () => fin(false));
+      setTimeout(() => fin(false), 8000);
+      try { v.src = this.url(id); v.load(); } catch (e) { fin(false); }
+    });
+    return this.pending[id];
+  },
+  probeMany(ids) { return Promise.all([...new Set(ids)].map(id => this.probe(id))); },
+  el(id) {
+    let v = this.pool[id];
+    if (!v) { v = document.createElement('video'); v.src = this.url(id); this.pool[id] = v; }
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); v.setAttribute('loop', '');
+    v.preload = 'auto'; v.className = 'demo-video';
+    return v;
+  },
+  preload(id) {
+    if (!id) return;
+    this.probe(id).then(ok => { if (ok) { const v = this.el(id); try { v.preload = 'auto'; v.load(); } catch (e) { } } });
+  },
+};
+
+/* Media slot: shows a video when available, otherwise the animated figure */
+function MediaSlot(root) {
+  this.root = root;
+  root.innerHTML = '<div class="ms-video"></div><div class="ms-fig"></div>';
+  this.vbox = root.querySelector('.ms-video'); this.fbox = root.querySelector('.ms-fig');
+  this.player = new FIG.Player(this.fbox);
+  this.id = null; this.kind = null;
+}
+MediaSlot.prototype.show = function (id, drive) {
+  const same = this.id === id;
+  this.id = id;
+  const ex = LIB.byId[id];
+  if (VID.ok[id] === true) {
+    if (!same || this.kind !== 'video') {
+      this.player.stop();
+      const v = VID.el(id);
+      v.onerror = () => { VID.ok[id] = false; if (this.id === id) { this.kind = null; this.show(id, drive); } };
+      this.vbox.replaceChildren(v); this.root.dataset.kind = 'video'; this.kind = 'video';
+    }
+    const v = this.vbox.firstChild; if (v && v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => { }); }
+  } else {
+    if (!same || this.kind !== 'fig') {
+      this.vbox.replaceChildren(); this.player.load(ex); this.root.dataset.kind = 'fig'; this.kind = 'fig';
+    }
+    this.player.setDrive(drive || null);
+    if (VID.ok[id] === undefined) VID.probe(id).then(ok => { if (ok && this.id === id) this.show(id, drive); });
+  }
+};
+MediaSlot.prototype.pause = function () { this.player.pause(); const v = this.vbox.firstChild; if (v) try { v.pause(); } catch (e) { } };
+MediaSlot.prototype.resume = function () { this.player.resume(); const v = this.vbox.firstChild; if (v) { const p = v.play(); if (p && p.catch) p.catch(() => { }); } };
+MediaSlot.prototype.clear = function () { this.player.stop(); this.vbox.replaceChildren(); this.id = null; this.kind = null; };
+
+/* ---------------- hands-free engine ---------------- */
+const WO = {
+  plan: null, i: 0, endAt: 0, rem: 0, paused: false, iv: null, siv: null, lastSec: -1,
+  elapsed: 0, lastNow: 0, cycOn: null, previewing: false, slot: null, total: 0, startedAt: 0, pauseReason: null,
+
+  begin(plan, resume) {
+    Sound.init(); Voice.init(); Wake.on();              // must run inside the tap
+    this.plan = plan; this.paused = false; this.pauseReason = null;
+    this.total = PROG.planSeconds(plan);
+    this.elapsed = resume ? resume.elapsed || 0 : 0;
+    this.startedAt = resume ? resume.startedAt : Date.now();
+    this.doneWork = resume ? resume.doneWork || 0 : 0;
+    UI.openWorkout(plan);
+    if (!this.slot) this.slot = new MediaSlot($('#woMedia'));
+    VID.probeMany(plan.steps.filter(s => s.ex).map(s => s.ex));
+    this.lastNow = performance.now();
+    this.enter(resume ? resume.i : 0, resume ? resume.remMs : null, !!resume);
+    clearInterval(this.iv); clearInterval(this.siv);
+    this.iv = setInterval(() => this.tick(), 100);
+    this.siv = setInterval(() => this.save(), 3000);
+  },
+
+  step(i) { return this.plan.steps[i ?? this.i]; },
+
+  enter(i, remMs, resumed) {
+    this.i = i;
+    const st = this.step();
+    if (!st || st.k === 'done') return this.finish();
+    this.rem = remMs != null ? remMs : st.dur * 1000;
+    this.endAt = performance.now() + this.rem / SPEED;
+    this.lastSec = Math.ceil(this.rem / 1000);
+    this.cycOn = null; this.previewing = false;
+    UI.woStep(st, this);
+    if (!resumed) this.announce(st);
+    const nx = this.nextWork(); if (nx) VID.preload(nx.ex);
+    this.save();
+  },
+
+  nextWork(from) {
+    for (let j = (from ?? this.i) + 1; j < this.plan.steps.length; j++) { const s = this.plan.steps[j]; if (s.k === 'work') return s; }
+    return null;
+  },
+
+  announce(st) {
+    const ex = st.ex ? LIB.byId[st.ex] : null;
+    if (st.k === 'prep') Voice.say('استعد. ' + ex.ar, 'Get ready. ' + ex.en);
+    else if (st.k === 'work') {
+      Sound.cue('start');
+      setTimeout(() => {
+        if (this.paused) return;
+        if (st.side === 2 || ex.mode === 'cycle') return;
+        if (st.set > 1) Voice.say('المجموعة ' + st.set, 'Set ' + st.set);
+        else Voice.say(ex.ar, ex.en);
+      }, 420);
+    } else if (st.k === 'rest') { Sound.cue('end'); Voice.say('راحة', 'Rest'); }
+    else if (st.k === 'switch') { Sound.cue('end'); Voice.say('بدّل الجهة', 'Switch sides'); }
+    else if (st.k === 'trans') {
+      const prev = this.plan.steps[this.i - 1];
+      if (prev && prev.k === 'work') Sound.cue('end');
+      Voice.say('التالي: ' + ex.ar, 'Next: ' + ex.en);
+    }
+  },
+
+  tick() {
+    if (!this.plan) return;
+    const now = performance.now();
+    const dt = (now - this.lastNow) * SPEED; this.lastNow = now;
+    if (this.paused) return;
+    this.elapsed += dt / 1000;
+    const st = this.step();
+    this.rem = Math.max(0, (this.endAt - now) * SPEED);
+    const sec = Math.ceil(this.rem / 1000);
+    if (sec !== this.lastSec) {
+      for (let s2 = Math.min(this.lastSec - 1, st.dur); s2 >= sec; s2--) this.onSecond(st, s2);
+      this.lastSec = sec;
+    }
+    if (st.k === 'work' && st.ex && LIB.byId[st.ex].mode === 'cycle') this.cycle(st);
+    if (st.k === 'rest' && !this.previewing && this.rem <= 12000) { this.previewing = true; UI.woPreviewNext(st, this); }
+    UI.woTime(st, this);
+    if (this.rem <= 0) {
+      if (st.k === 'work') this.doneWork++;
+      this.enter(this.i + 1);
+    }
+  },
+
+  onSecond(st, sec) {
+    const next = this.plan.steps[this.i + 1];
+    if (st.k !== 'work' && next && next.k === 'work' && sec >= 1 && sec <= 3) Sound.cue('count');
+    if (st.k === 'rest' && sec === 12) {
+      const nx = LIB.byId[st.nextEx];
+      if (st.nextEx !== st.ex) Voice.say('التالي: ' + nx.ar, 'Next: ' + nx.en);
+      else Voice.say('استعد للمجموعة ' + st.nextSet, 'Get ready for set ' + st.nextSet);
+    }
+  },
+
+  cycle(st) {
+    const ex = LIB.byId[st.ex];
+    const elapsed = st.dur - this.rem / 1000;
+    const cs = PROG.cycleState(ex, Math.max(0, elapsed));
+    if (cs.on !== this.cycOn) {
+      this.cycOn = cs.on;
+      Sound.cue(cs.on ? 'on' : 'off');
+      if (ex.cycle.on >= 3 && (cs.idx < 3 || ex.fam === 'joz')) Voice.say(cs.on ? ex.cycle.onAr : ex.cycle.offAr, cs.on ? ex.cycle.onEn : ex.cycle.offEn);
+    }
+    UI.woCycle(ex, cs);
+  },
+
+  pause(reason) {
+    if (!this.plan || this.paused) return;
+    this.paused = true; this.pauseReason = reason || 'user';
+    this.rem = Math.max(0, (this.endAt - performance.now()) * SPEED);
+    this.slot && this.slot.pause(); Voice.stop();
+    window.__cues.push('pause');
+    UI.woPaused(true, this.pauseReason); this.save();
+  },
+  resume() {
+    if (!this.plan || !this.paused) return;
+    Sound.init(); Wake.on();
+    this.paused = false; this.pauseReason = null; this.lastNow = performance.now();
+    this.endAt = performance.now() + this.rem / SPEED;
+    this.slot && this.slot.resume();
+    window.__cues.push('resume');
+    UI.woPaused(false);
+  },
+
+  snapshot() {
+    return { plan: this.plan, i: this.i, remMs: Math.round(this.paused ? this.rem : Math.max(0, (this.endAt - performance.now()) * SPEED)),
+      elapsed: Math.round(this.elapsed), startedAt: this.startedAt, savedAt: Date.now(), doneWork: this.doneWork };
+  },
+  save() { if (!this.plan) return; S.active = this.snapshot(); save('active'); },
+
+  workCount() { return this.plan.steps.filter(s => s.k === 'work').length; },
+
+  teardown() {
+    clearInterval(this.iv); clearInterval(this.siv); this.iv = this.siv = null;
+    this.slot && this.slot.clear(); Voice.stop(); Wake.off();
+  },
+
+  finish() {
+    const plan = this.plan;
+    const result = { plan, elapsed: Math.round(this.elapsed), ratio: 1, doneWork: this.workCount(), completed: true };
+    this.teardown(); this.plan = null;
+    S.active = null; save('active');
+    Sound.cue('done'); Voice.say('انتهى التمرين', 'Workout complete');
+    window.__cues.push('finished');
+    UI.openPost(result);
+  },
+
+  stop() {
+    const plan = this.plan;
+    const total = this.workCount();
+    const ratio = total ? Math.min(1, this.doneWork / total) : 0;
+    const result = { plan, elapsed: Math.round(this.elapsed), ratio, doneWork: this.doneWork, completed: false };
+    this.teardown(); this.plan = null;
+    S.active = null; save('active');
+    window.__cues.push('stopped');
+    if (result.elapsed >= 120 && this.doneWork > 0) UI.openPost(result); else UI.closeWorkout();
+  },
+};
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    if (WO.plan && !WO.paused) WO.pause('hidden');
+    else if (WO.plan) WO.save();
+  } else if (Wake.want && !Wake.sentinel) Wake.on();
+});
+window.addEventListener('pagehide', () => { if (WO.plan) WO.save(); });
+
+/* ============================================================
+   UI
+   ============================================================ */
+const MUSCLE_AR = { chest: 'الصدر', shoulders: 'الأكتاف', triceps: 'الترايسبس', biceps: 'الباي', upperback: 'أعلى الظهر', lats: 'الظهر العريض',
+  abs: 'البطن', obliques: 'الجوانب', quads: 'الفخذ الأمامي', glutes: 'الألوية', hams: 'الفخذ الخلفي', calves: 'السمانة', lowerback: 'أسفل الظهر', pelvic: 'قاع الحوض' };
+
+function muscleMap(p, s) {
+  const P = new Set(p || []), Q = new Set(s || []);
+  const c = k => P.has(k) ? 'mm-p' : Q.has(k) ? 'mm-s' : 'mm-n';
+  const front = `
+    <g transform="translate(10,0)">
+      <circle cx="50" cy="16" r="11" class="mm-base"/>
+      <rect x="44" y="26" width="12" height="8" class="mm-base"/>
+      <ellipse cx="27" cy="44" rx="9" ry="8" class="${c('shoulders')}"/><ellipse cx="73" cy="44" rx="9" ry="8" class="${c('shoulders')}"/>
+      <rect x="35" y="36" width="14" height="20" rx="5" class="${c('chest')}"/><rect x="51" y="36" width="14" height="20" rx="5" class="${c('chest')}"/>
+      <rect x="18" y="54" width="10" height="24" rx="5" class="${c('biceps')}"/><rect x="72" y="54" width="10" height="24" rx="5" class="${c('biceps')}"/>
+      <rect x="16" y="80" width="9" height="26" rx="4" class="mm-base"/><rect x="75" y="80" width="9" height="26" rx="4" class="mm-base"/>
+      <rect x="42" y="58" width="16" height="40" rx="5" class="${c('abs')}"/>
+      <rect x="33" y="60" width="8" height="34" rx="4" class="${c('obliques')}"/><rect x="59" y="60" width="8" height="34" rx="4" class="${c('obliques')}"/>
+      <ellipse cx="50" cy="104" rx="10" ry="6" class="${c('pelvic')}"/>
+      <rect x="33" y="108" width="15" height="46" rx="7" class="${c('quads')}"/><rect x="52" y="108" width="15" height="46" rx="7" class="${c('quads')}"/>
+      <rect x="35" y="158" width="11" height="40" rx="5" class="mm-base"/><rect x="54" y="158" width="11" height="40" rx="5" class="mm-base"/>
+    </g>`;
+  const back = `
+    <g transform="translate(130,0)">
+      <circle cx="50" cy="16" r="11" class="mm-base"/>
+      <rect x="44" y="26" width="12" height="8" class="mm-base"/>
+      <ellipse cx="27" cy="44" rx="9" ry="8" class="${c('shoulders')}"/><ellipse cx="73" cy="44" rx="9" ry="8" class="${c('shoulders')}"/>
+      <path d="M36 36 L64 36 L60 58 L40 58 Z" class="${c('upperback')}"/>
+      <path d="M34 50 L41 60 L44 86 L36 80 Z" class="${c('lats')}"/><path d="M66 50 L59 60 L56 86 L64 80 Z" class="${c('lats')}"/>
+      <rect x="18" y="54" width="10" height="24" rx="5" class="${c('triceps')}"/><rect x="72" y="54" width="10" height="24" rx="5" class="${c('triceps')}"/>
+      <rect x="16" y="80" width="9" height="26" rx="4" class="mm-base"/><rect x="75" y="80" width="9" height="26" rx="4" class="mm-base"/>
+      <rect x="44" y="62" width="12" height="30" rx="4" class="${c('lowerback')}"/>
+      <rect x="34" y="94" width="15" height="20" rx="8" class="${c('glutes')}"/><rect x="51" y="94" width="15" height="20" rx="8" class="${c('glutes')}"/>
+      <rect x="33" y="116" width="15" height="38" rx="7" class="${c('hams')}"/><rect x="52" y="116" width="15" height="38" rx="7" class="${c('hams')}"/>
+      <rect x="35" y="158" width="11" height="40" rx="5" class="${c('calves')}"/><rect x="54" y="158" width="11" height="40" rx="5" class="${c('calves')}"/>
+    </g>`;
+  const names = arr => arr.map(k => MUSCLE_AR[k]).filter(Boolean).join('، ');
+  return `<div class="mmap"><svg viewBox="0 0 250 206" role="img" aria-label="العضلات المستهدفة">${front}${back}
+    <text x="60" y="205" class="mm-lbl">أمام</text><text x="180" y="205" class="mm-lbl">خلف</text></svg>
+    <div class="mm-legend">${P.size ? `<p><i class="mm-dot mm-p"></i> تركيز رئيسي: ${names([...P])}</p>` : ''}${Q.size ? `<p><i class="mm-dot mm-s"></i> مساعد: ${names([...Q].filter(k => !P.has(k)))}</p>` : ''}</div></div>`;
+}
+function musclesOf(plan) {
+  const p = new Set(), s = new Set();
+  plan.items.forEach(it => { const e = LIB.byId[it.id]; if (!e) return; e.m.p.forEach(m => p.add(m)); e.m.s.forEach(m => s.add(m)); });
+  return { p: [...p], s: [...s].filter(m => !p.has(m)) };
+}
+
+const setsAr = (n, uni) => (n === 1 ? 'مجموعة' : n === 2 ? 'مجموعتين' : n + ' مجموعات') + (uni ? ' لكل جهة' : '');
+const UI = {
+  tab: 'today',
+
+  /* ---------- boot ---------- */
+  async boot() {
+    await DB.open();
+    await loadAll();
+    this.bindGlobal();
+    if (!S.profile.onboarded) this.openOnboard(0);
+    else { this.showShell(); this.checkResume(); }
+    if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('service-worker.js').catch(() => { });
+    document.documentElement.dataset.ready = '1';
+  },
+
+  bindGlobal() {
+    $$('.nav button').forEach(b => b.addEventListener('click', () => this.go(b.dataset.tab)));
+    $('#woPause').addEventListener('click', () => WO.pause('user'));
+    $('#woResume').addEventListener('click', () => WO.resume());
+    $('#woStop').addEventListener('click', () => this.confirmStop());
+    $('#woStop2').addEventListener('click', () => this.confirmStop());
+    document.addEventListener('click', e => {
+      const t = e.target.closest('[data-act]'); if (!t) return;
+      const a = t.dataset.act, v = t.dataset.v;
+      if (this.acts[a]) this.acts[a].call(this, v, t, e);
+    });
+  },
+
+  showShell() { $('#onboard').hidden = true; $('#shell').hidden = false; this.go(this.tab); },
+  go(tab) {
+    this.tab = tab;
+    $$('.nav button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === tab ? 'page' : 'false'));
+    $$('.tab').forEach(t => t.hidden = t.id !== 'tab-' + tab);
+    this['r_' + tab]();
+    window.scrollTo(0, 0);
+  },
+  refresh() { if (!$('#shell').hidden) this['r_' + this.tab](); },
+
+  /* ---------- modal ---------- */
+  modal(html, opts) {
+    const m = $('#modal');
+    m.querySelector('.modal-body').innerHTML = html;
+    m.hidden = false; m.dataset.kind = (opts && opts.kind) || '';
+    if (opts && opts.onOpen) opts.onOpen(m);
+    return m;
+  },
+  closeModal() {
+    const m = $('#modal'); m.hidden = true;
+    if (this.modalPlayer) { this.modalPlayer.clear(); this.modalPlayer = null; }
+    m.querySelector('.modal-body').innerHTML = '';
+  },
+
+  /* ================= ONBOARDING ================= */
+  obStep: 0, calib: {},
+  openOnboard(step) {
+    this.obStep = step; $('#shell').hidden = true; const o = $('#onboard'); o.hidden = false;
+    const w = S.settings.wedding || '';
+    const screens = [
+      `<div class="ob ob-intro">
+        <h1 class="ob-name" dir="ltr">MALIK</h1>
+        <dl class="ob-stats"><div><dt>العمر</dt><dd>26</dd></div><div><dt>الطول</dt><dd>184</dd></div><div><dt>الوزن</dt><dd>80</dd></div></dl>
+        <p class="ob-back" dir="ltr">BACK TO WORK.</p>
+        <p class="ob-line">رجعنا. لكن هالمرة بخطة.</p>
+        <p class="ob-sub">8 أسابيع بوزن الجسم، 3 جلسات أسبوعيًا، والجوال يشغّل التمرين كامل وأنت تتمرن.</p>
+        <button class="btn btn-primary" data-act="ob" data-v="1">التالي</button></div>`,
+      `<div class="ob">
+        <h2>كم باقي على الزواج؟</h2>
+        <p class="ob-sub">اختياري. يظهر عدّاد هادئ في الرئيسية، ويبقى في جوالك فقط.</p>
+        <label class="field"><span>تاريخ الزواج</span><input type="date" id="obWedding" value="${esc(w)}"></label>
+        <div class="row"><button class="btn btn-primary" data-act="obWedding">التالي</button><button class="btn btn-ghost" data-act="ob" data-v="2">تخطَّ</button></div></div>`,
+      `<div class="ob">
+        <h2>فحص البداية</h2>
+        <p class="ob-sub">خمس دقائق تقريبًا. ما فيه اختبار أقصى ولا تحدي — فقط نختار منه المستوى المناسب لكل حركة.</p>
+        <ul class="plain"><li>ضغط مائل بهدوء</li><li>جودة السكوات</li><li>راحة البلانك</li><li>التوازن في الطعن</li></ul>
+        <button class="btn btn-primary" data-act="calStart">ابدأ الفحص</button>
+        <button class="btn btn-ghost" data-act="calSkip">تخطَّ وابدأ من المستويات الأسهل</button></div>`,
+    ];
+    o.innerHTML = screens[step];
+  },
+
+  CALQ: [
+    { id: 'pain', demo: null, q: 'هل عندك ألم حالي في الكتف أو الركبة أو أسفل الظهر؟', opts: [['no', 'لا'], ['yes', 'نعم']] },
+    { id: 'push', demo: 'incline_pushup', q: 'سوِّ ضغط مائل على كرسي ثابت مسنود على الجدار، ببطء. وقف لما تحس إن باقي لك 2–3 تكرارات نظيفة. كم تكرار سويت؟', opts: [['lt8', 'أقل من 8'], ['8to15', '8 إلى 15'], ['gt15', 'أكثر من 15']] },
+    { id: 'floor', demo: 'pushup', q: 'جرّب ضغط عادي على الأرض بنفس الطريقة. كم تكرار نظيف قبل ما تبقى 2–3؟', opts: [['lt6', 'أقل من 6'], ['6to12', '6 إلى 12'], ['gt12', 'أكثر من 12']], when: a => a.push === 'gt15' },
+    { id: 'squat', demo: 'squat', q: 'سوِّ 10 سكوات ببطء. كيف كانت؟', opts: [['hard', 'صعبة أو فيها ألم أو عدم توازن'], ['ok', 'مريحة'], ['easy', 'سهلة جدًا والكعب ثابت']] },
+    { id: 'plank', demo: 'plank', q: 'جرّب بلانك على الساعد 20 ثانية. كيف كان؟', opts: [['no', 'ما قدرت أو ألم أسفل الظهر'], ['hard', 'قدرت بصعوبة'], ['easy', 'سهل']] },
+    { id: 'split', demo: 'split_squat', q: 'قف بوضعية الطعن (رجل قدّام ورجل ورا) وانزل شوي. هل توازنك مريح؟', opts: [['no', 'لا، أحتاج سند'], ['yes', 'نعم']] },
+  ],
+  calIdx: 0,
+  calNext() {
+    const Q = this.CALQ;
+    while (this.calIdx < Q.length && Q[this.calIdx].when && !Q[this.calIdx].when(this.calib)) this.calIdx++;
+    if (this.calIdx >= Q.length) return this.calFinish();
+    const q = Q[this.calIdx];
+    const o = $('#onboard');
+    o.innerHTML = `<div class="ob">
+      <p class="ob-count">فحص البداية — ${this.calIdx + 1} / ${Q.length}</p>
+      ${q.demo ? `<div class="demo-box" id="calDemo"></div><p class="demo-name" dir="ltr">${esc(LIB.byId[q.demo].en)}</p><ul class="cues">${LIB.byId[q.demo].cues.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
+      <h2 class="cal-q">${esc(q.q)}</h2>
+      <div class="opts">${q.opts.map(([v, l]) => `<button class="btn btn-opt" data-act="calAns" data-v="${v}">${esc(l)}</button>`).join('')}</div></div>`;
+    if (q.demo) { this.calSlot && this.calSlot.clear(); this.calSlot = new MediaSlot($('#calDemo')); this.calSlot.show(q.demo); }
+  },
+  calFinish() {
+    const a = this.calib, L = PROG.defaultLevels();
+    const set = (f, l, sc) => { L[f] = { lvl: l, score: sc || 0 }; };
+    if (a.push === 'lt8') { set('push', 1); set('armpush', 1); }
+    else if (a.push === '8to15') { set('push', 2); set('armpush', 1); }
+    else if (a.push === 'gt15') {
+      if (a.floor === 'gt12') { set('push', 4); set('armpush', 2); }
+      else if (a.floor === '6to12') { set('push', 3, 1); set('armpush', 2); }
+      else { set('push', 3); set('armpush', 1); }
+    }
+    set('pike', (L.push.lvl >= 4) ? 2 : 1);
+    if (a.squat === 'hard') set('squat', 1); else if (a.squat === 'easy') set('squat', 2, 1); else set('squat', 2);
+    set('lunge', a.split === 'yes' && a.squat !== 'hard' ? 2 : 1);
+    if (a.plank === 'easy') { set('core', 2); set('side', 2); } else if (a.plank === 'hard') { set('core', 1, 1); set('side', 1); } else { set('core', 1); set('side', 1); }
+    if (a.pain === 'yes') Object.keys(L).forEach(f => { L[f] = { lvl: 1, score: 0 }; });
+    S.levels = L; save('levels');
+    S.profile.calibrated = true; save('profile');
+    this.calSlot && this.calSlot.clear();
+    const rows = ['push', 'armpush', 'pike', 'squat', 'lunge', 'core', 'side'].map(f => {
+      const e = LIB.fam(f).find(x => x.lvl === L[f].lvl);
+      return `<li><span>${esc(PROG.FAMS[f].ar)}</span><b dir="ltr">${esc(e.en)}</b></li>`;
+    }).join('');
+    $('#onboard').innerHTML = `<div class="ob">
+      <h2>نقطة البداية</h2>
+      ${a.pain === 'yes' ? '<p class="note">بدأنا كل الحركات من المستوى الأسهل. أي تمرين يسبب ألم حاد: وقفه، وإذا استمر الألم راجع مختص.</p>' : ''}
+      <ul class="lvl-list">${rows}</ul>
+      <p class="ob-sub">التطبيق يرفع المستوى تلقائيًا لما تقييمك بعد التمارين يقول إنك جاهز.</p>
+      <button class="btn btn-primary" data-act="journey">ابدأ الرحلة</button></div>`;
+  },
+
+  /* ================= RESUME ================= */
+  checkResume() {
+    const a = S.active;
+    if (!a || !a.plan) return;
+    if (Date.now() - a.savedAt > 24 * 3600 * 1000) { S.active = null; save('active'); return; }
+    const st = a.plan.steps[a.i] || {};
+    const exId = st.k === 'rest' ? st.nextEx : st.ex;
+    const ex = exId ? LIB.byId[exId] : null;
+    const remaining = a.plan.steps.slice(a.i + 1).reduce((s, x) => s + x.dur, 0) + a.remMs / 1000;
+    this.modal(`<h2>تكمل من وين وقفت؟</h2>
+      <dl class="kv"><div><dt>الجلسة</dt><dd dir="auto">${esc(a.plan.title)}</dd></div>
+      ${ex ? `<div><dt>التمرين</dt><dd dir="ltr">${esc(ex.en)}</dd></div>` : ''}
+      ${st.sets ? `<div><dt>المجموعة</dt><dd>${st.set} / ${st.sets}</dd></div>` : ''}
+      <div><dt>المتبقي من الجلسة</dt><dd>${fmtMin(remaining)} دقيقة</dd></div></dl>
+      <button class="btn btn-primary" data-act="resumeGo">كمل</button>
+      <button class="btn btn-ghost" data-act="resumeRestart">ابدأ الجلسة من جديد</button>
+      <button class="btn btn-ghost" data-act="resumeDrop">احذف الجلسة المحفوظة</button>`, { kind: 'resume' });
+  },
+
+  /* ================= TODAY ================= */
+  todayState() {
+    const w = weekNum(), dk = doneKeys(w), t = todayKey(), y = addDays(t, -1);
+    const strengthToday = S.log.find(e => e.type === 'strength' && e.dateKey === t);
+    const strengthYesterday = S.log.some(e => e.type === 'strength' && e.dateKey === y);
+    const nextKey = PROG.ORDER.find(k => !dk.has(k)) || null;
+    const jozWeek = weekEntries(w).filter(e => e.type === 'joz').length;
+    const jozToday = S.log.some(e => e.type === 'joz' && e.dateKey === t);
+    const cardioWeek = weekEntries(w).filter(e => e.type === 'cardio');
+    const cardioToday = S.log.some(e => e.type === 'cardio' && e.dateKey === t);
+    return { w, dk, strengthToday, strengthYesterday, nextKey, jozWeek, jozToday, cardioWeek, cardioToday };
+  },
+
+  sessionCard(key, primary) {
+    const plan = PROG.buildStrength(key, S.levels, weekNum());
+    const mins = Math.round(PROG.planSeconds(plan) / 60);
+    const areas = ['الصدر', 'الظهر', 'الأرجل', 'الأكتاف', 'البطن'];
+    return `<article class="session ${primary ? 'session-primary' : ''}">
+      <div class="session-head"><span class="session-letter" dir="ltr">${key}</span>
+        <div><h3 dir="ltr">${esc(plan.title)}</h3><p>${mins} دقيقة تقريبًا</p><p class="areas">${areas.join('، ')}</p></div></div>
+      <ol class="ex-list">${plan.items.map(it => { const e = LIB.byId[it.id]; return `<li><span dir="ltr">${esc(e.en)}</span><small>${setsAr(it.sets, e.uni)}</small></li>`; }).join('')}</ol>
+      ${primary ? `<div class="sound-row">
+        <button class="chip" data-act="toggleSound" aria-pressed="${S.settings.sound}">${S.settings.sound ? 'التنبيهات الصوتية: تعمل' : 'التنبيهات الصوتية: مطفأة'}</button>
+        <button class="chip" data-act="toggleVoice" aria-pressed="${S.settings.voice}">${S.settings.voice ? 'الصوت المنطوق: يعمل' : 'الصوت المنطوق: مطفأ'}</button></div>
+        <button class="btn btn-primary btn-start" data-act="startStrength" data-v="${key}">ابدأ التمرين</button>
+        <button class="btn btn-link" data-act="preview" data-v="${key}">عرض تفاصيل الجلسة</button>` :
+        `<button class="btn btn-secondary" data-act="startStrength" data-v="${key}">ابدأ Full Body ${key}</button>`}
+    </article>`;
+  },
+
+  weddingStrip() {
+    const wd = S.settings.wedding; if (!wd) return '';
+    const d = daysBetween(todayKey(), wd);
+    if (d < 0) return `<section class="wedding"><p class="wed-main">ألف مبروك يا مالك.</p><p class="wed-sub">الاستمرار بعد الزواج أسهل من البداية من جديد.</p></section>`;
+    if (d === 0) return `<section class="wedding"><p class="wed-main">اليوم يومك. ألف مبروك.</p></section>`;
+    const wk = Math.floor(d / 7), dd = d % 7;
+    const txt = wk ? `${wk} ${wk === 1 ? 'أسبوع' : wk === 2 ? 'أسبوعين' : wk <= 10 ? 'أسابيع' : 'أسبوعًا'}${dd ? ` و${dd} ${dd === 1 ? 'يوم' : dd === 2 ? 'يومين' : 'أيام'}` : ''}` : `${dd} ${dd === 1 ? 'يوم' : dd === 2 ? 'يومين' : 'أيام'}`;
+    return `<section class="wedding"><p class="wed-label">الزواج بعد</p><p class="wed-main">${txt}</p><p class="wed-sub">كل أسبوع له قيمة.</p></section>`;
+  },
+
+  weekReport(w, compact) {
+    const E = weekEntries(w);
+    const str = E.filter(e => e.type === 'strength'), car = E.filter(e => e.type === 'cardio'), joz = E.filter(e => e.type === 'joz');
+    const mins = Math.round(E.reduce((s, e) => s + (e.durSec || 0), 0) / 60);
+    const ch = []; str.forEach(e => (e.changes || []).forEach(c => ch.push(c)));
+    const done = new Set(str.filter(e => (e.ratio ?? 1) >= 0.6).map(e => e.key)).size;
+    const msg = done >= 3 ? 'أسبوع جيد. كمل.' : done === 2 ? 'أسبوع مقبول. الأسبوع الجاي نكمّل الثلاث.' : E.length ? 'أسبوع خفيف. نرجع للإيقاع — جلسة وحدة تكفي للبداية.' : 'ما فيه تمارين مسجلة هذا الأسبوع.';
+    const diffAr = { easy: 'سهل', ok: 'مناسب', hard: 'صعب', vhard: 'صعب جدًا' };
+    return `<article class="report">
+      <h3>أسبوع مالك — الأسبوع ${w}</h3>
+      <dl class="report-grid"><div><dt>جلسات القوة</dt><dd>${done} / 3</dd></div><div><dt>مشي</dt><dd>${car.length} <small>(${Math.round(car.reduce((s, e) => s + e.durSec, 0) / 60)} د)</small></dd></div>
+      <div><dt>تمارين الجوز</dt><dd>${joz.length}</dd></div><div><dt>وقت التمرين</dt><dd>${mins} <small>دقيقة</small></dd></div></dl>
+      ${ch.length ? `<ul class="changes">${ch.map(c => { const a = LIB.fam(c.fam).find(x => x.lvl === c.from), b = LIB.fam(c.fam).find(x => x.lvl === c.to); return `<li>${esc(PROG.FAMS[c.fam].ar)}: <span dir="ltr">${esc(a.en)} → ${esc(b.en)}</span></li>`; }).join('')}</ul>` : ''}
+      <p class="report-msg">${msg}</p>
+      ${compact ? '' : `<details><summary>تفاصيل الجلسات</summary><ul class="entries">${E.slice().sort((x, y) => x.ts - y.ts).map(e => `<li><span>${esc(e.dateKey)}</span><span dir="auto">${esc(e.title)}</span><span>${Math.round(e.durSec / 60)} د</span><span>${e.difficulty ? diffAr[e.difficulty] : ''}${e.ratio != null && e.ratio < 1 ? ` — ${Math.round(e.ratio * 100)}%` : ''}</span></li>`).join('') || '<li>لا يوجد</li>'}</ul></details>`}
+    </article>`;
+  },
+
+  r_today() {
+    const T = this.todayState();
+    const ph = PROG.phaseOf(Math.min(T.w, 8));
+    const ct = PROG.cardioTarget(T.w);
+    let hero = '';
+    if (T.strengthToday) {
+      hero = `<article class="session session-done"><h3>تمرين اليوم تم</h3><p dir="auto">${esc(T.strengthToday.title)} — ${Math.round(T.strengthToday.durSec / 60)} دقيقة</p>
+        <p>الباقي لليوم: أكل كافي، نوم كويس. وإذا تبغى: تمارين الجوز ${T.jozToday ? '(تمت اليوم)' : 'بعد ساعات أو بكرة'}.</p></article>`;
+    } else if (T.nextKey && !T.strengthYesterday) hero = this.sessionCard(T.nextKey, true);
+    else if (T.nextKey && T.strengthYesterday) {
+      hero = `<article class="session session-recovery"><h3>اليوم استشفاء</h3><p>تمرنت أمس. العضلة تكبر وقت الراحة: مشي خفيف + تمارين الجوز.</p>
+        <button class="btn btn-primary" data-act="cardio">ابدأ المشي</button></article>` + this.sessionCard(T.nextKey, false);
+    } else hero = `<article class="session session-done"><h3>خلصت جلسات القوة لهالأسبوع</h3><p>باقي المشي وتمارين الجوز، والراحة جزء من الخطة.</p></article>`;
+
+    let report = '';
+    if (T.w > 1 && !S.settings.seenReports.includes(T.w - 1) && weekEntries(T.w - 1).length) {
+      report = `<section class="report-banner">${this.weekReport(T.w - 1, true)}<button class="btn btn-ghost" data-act="seenReport" data-v="${T.w - 1}">تم</button></section>`;
+    }
+
+    const weekDots = PROG.ORDER.map(k => `<li class="${T.dk.has(k) ? 'is-done' : ''}"><span dir="ltr">${k}</span></li>`).join('');
+    const recent = S.log.slice(-3).reverse();
+    $('#tab-today').innerHTML = `
+      <header class="page-head"><p class="kicker">الأسبوع ${T.w > 8 ? `${T.w} — استمرار` : `${T.w} من 8`} — مرحلة ${ph.ar}</p><h1>وش علي اليوم؟</h1></header>
+      ${report}
+      ${hero}
+      ${this.weddingStrip()}
+      <section class="block"><h2>هذا الأسبوع</h2>
+        <ul class="week-dots">${weekDots}</ul>
+        <dl class="mini"><div><dt>مشي</dt><dd>${T.cardioWeek.length} / ${ct.times}</dd></div><div><dt>تمارين الجوز</dt><dd>${T.jozWeek} / 3–4</dd></div></dl></section>
+      ${!T.jozToday ? `<section class="block joz-card"><h2>تمارين الجوز</h2><p>9 دقائق تقريبًا. تشتغل لحالها من أول ضغطة.</p><button class="btn btn-secondary" data-act="go" data-v="joz">افتح تمارين الجوز</button></section>` : ''}
+      ${!T.cardioToday ? `<section class="block"><h2>المشي</h2><p>هذه المرحلة: ${ct.min}–${ct.max} دقيقة مشي سريع، ${ct.times} مرات أسبوعيًا. سرعة تقدر تتكلم فيها لكن ما تقدر تغني.</p>
+        <div class="row"><button class="btn btn-secondary" data-act="cardio">ابدأ مؤقت المشي</button><button class="btn btn-ghost" data-act="cardioLog">سجّل مشي سويته</button></div></section>` : ''}
+      <section class="block"><h2>آخر التقدم</h2>${recent.length ? `<ul class="entries">${recent.map(e => `<li><span>${esc(e.dateKey)}</span><span dir="auto">${esc(e.title)}</span><span>${Math.round(e.durSec / 60)} د</span></li>`).join('')}</ul>` : '<p class="muted">أول جلسة تسجّل هنا. ابدأ بها.</p>'}</section>`;
+  },
+
+  /* ================= PLAN ================= */
+  r_plan() {
+    const w = weekNum(), P = PROG.weekParams(w);
+    const phases = PROG.PHASES.map(p => `<li class="${w >= p.from && w <= p.to ? 'is-now' : ''}"><p class="ph-weeks">الأسابيع ${p.from}–${p.to}</p><h3>${p.ar} <span dir="ltr">${p.en}</span></h3><p>${p.goal}</p><p class="ph-rir">RIR ${p.rir}</p></li>`).join('');
+    const tmpl = PROG.WEEK_TEMPLATE.map(d => `<li class="k-${d.kind}"><span>${d.day}</span><span dir="auto">${d.what}</span></li>`).join('');
+    const sess = PROG.ORDER.map(k => {
+      const plan = PROG.buildStrength(k, S.levels, w);
+      return `<article class="plan-sess"><h3 dir="ltr">${plan.title}</h3><p>${Math.round(PROG.planSeconds(plan) / 60)} دقيقة — ${PROG.SESSIONS[k].day}</p>
+        <ul>${plan.items.map(it => { const e = LIB.byId[it.id]; return `<li><button class="linkish" data-act="exInfo" data-v="${e.id}" dir="ltr">${esc(e.en)}</button><small>${setsAr(it.sets, e.uni)}</small></li>`; }).join('')}</ul>
+        <button class="btn btn-ghost" data-act="preview" data-v="${k}">معاينة وبدء</button></article>`;
+    }).join('');
+    const fams = PROG.TRAINABLE.map(f => {
+      const cur = PROG.exerciseFor(f, S.levels, w);
+      return `<details class="fam"><summary><span>${PROG.FAMS[f].ar}</span><span dir="ltr">${esc(cur.en)}</span></summary>
+        <ol>${LIB.fam(f).map(e => `<li class="${e.id === cur.id ? 'is-cur' : ''}"><button class="linkish" data-act="exInfo" data-v="${e.id}"><span dir="ltr">L${e.lvl} ${esc(e.en)}</span> <small>${esc(e.ar)}</small></button>${e.minWeek && e.minWeek > 1 ? `<small class="gate">من الأسبوع ${e.minWeek}</small>` : ''}</li>`).join('')}</ol></details>`;
+    }).join('');
+    $('#tab-plan').innerHTML = `
+      <header class="page-head"><p class="kicker">8 أسابيع</p><h1>الخطة</h1></header>
+      <section class="block"><h2>المراحل</h2><ol class="phases">${phases}</ol></section>
+      <section class="block"><h2>أسبوعك المعتاد</h2><ul class="week-tmpl">${tmpl}</ul>
+        <p class="muted">فاتك يوم؟ الرئيسية تعرض الجلسة التالية اللي ما سويتها، وتنصحك بيوم راحة بين جلسات القوة.</p></section>
+      <section class="block"><h2>جلسات هذا الأسبوع</h2><p class="muted">العمل ${P.work} ثانية للمجموعة. ${esc(P.rir)}.</p><div class="plan-grid">${sess}</div></section>
+      <section class="block"><h2>مستويات التمارين</h2><p class="muted">التطبيق ينقلك للمستوى التالي لما تقييمك بعد الجلسات يدل على الجاهزية. المستويات الصعبة مقفلة حتى أسبوعها.</p>${fams}</section>
+      <section class="block basics"><h2>أساسيات العضل</h2>
+        <p>العضلة الظاهرة تعتمد على شيئين: <b>حجم العضلة</b> و<b>نسبة الدهون</b>. بطولك ووزنك ما تحتاج تنزيل كبير في الوزن؛ التركيز على البناء.</p>
+        <ul class="plain">
+          <li><b>البروتين:</b> الأبحاث تدعم حوالي 1.6 جم لكل كجم يوميًا (تقريبًا 130 جم لوزن 80 كجم)، موزعة على 3–4 وجبات.</li>
+          <li><b>السعرات:</b> لا تسوي تنشيف قاسي. أكل كافي — أو فائض بسيط — يساعد البناء.</li>
+          <li><b>النوم:</b> 7–9 ساعات. الاستشفاء جزء من التمرين.</li>
+          <li><b>الماء:</b> اشرب بانتظام، خصوصًا مع الحر والمشي.</li>
+          <li><b>الاستمرار:</b> 3 جلسات أسبوعيًا لمدة 8 أسابيع أهم من أي جلسة بطولية.</li></ul>
+        <p class="muted">هذه أساسيات عامة وليست خطة غذائية طبية.</p></section>
+      <section class="block note"><h2>عن السحب والظهر</h2><p>بدون أدوات، السحب هو أصعب شيء نطوره. استخدمنا أفضل البدائل الآمنة (رفعات الظهر وتمارين المنشفة الثابتة). على المدى الطويل، عقلة باب مثبتة جيدًا أو حبل مقاومة يوسّع خيارات الظهر والباي كثير — لكن ما تحتاجها لتبدأ.</p></section>`;
+  },
+
+  /* ================= JOZ ================= */
+  r_joz() {
+    const w = weekNum();
+    const plan = PROG.buildJoz(w);
+    const n = weekEntries(w).filter(e => e.type === 'joz').length;
+    const done = S.log.some(e => e.type === 'joz' && e.dateKey === todayKey());
+    $('#tab-joz').innerHTML = `
+      <header class="page-head joz-head"><p class="kicker">قاع الحوض، التنفس، التحكم بالحوض</p><h1>تمارين الجوز</h1>
+        <p class="joz-tag">جلسة هادئة، بدون مبالغات وبدون وعود.</p></header>
+      <article class="session session-primary">
+        <div class="session-head"><span class="session-letter">ج</span><div><h3>جلسة اليوم</h3><p>${Math.round(PROG.planSeconds(plan) / 60)} دقائق تقريبًا — هذا الأسبوع: ${n} / 3–4</p>${done ? '<p class="areas">تمت اليوم ✓</p>' : ''}</div></div>
+        <ol class="ex-list">${plan.items.map(it => { const e = LIB.byId[it.id]; return `<li><span>${esc(e.ar)}</span><small dir="ltr">${esc(e.en)}</small></li>`; }).join('')}</ol>
+        <button class="btn btn-primary btn-start" data-act="startJoz">ابدأ</button>
+      </article>
+      <section class="block"><h2>كيف تعرف العضلة؟</h2>
+        <p>تخيل أنك تريد إيقاف خروج الغازات، وارفع عضلات قاع الحوض للداخل وللأعلى بلطف. الألوية والبطن والفخذ تبقى مرتخية، والتنفس طبيعي.</p>
+        <p class="note">لا تستخدم إيقاف البول في منتصفه كتمرين. ممكن تجربها مرة واحدة للتعرف على الإحساس فقط؛ تكرارها قد يخرّب عادة التفريغ الطبيعي.</p>
+        <p>الارتخاء الكامل بعد كل شدة مهم بنفس درجة الشد. الكمية المعقولة كافية — لا تسوي مئات الشدات يوميًا.</p></section>
+      <section class="block evidence"><h2>وش يقول العلم؟</h2>
+        <dl>
+          <div><dt>دليل مباشر أقوى</dt><dd>التمارين الهوائية المنتظمة (المشي السريع مثلًا) ارتبطت بتحسن الانتصاب، خصوصًا عند الرجال اللي عندهم صعوبات. لهذا المشي موجود في أسبوعك.</dd></div>
+          <div><dt>دليل داعم، غير محسوم</dt><dd>تدريب عضلات قاع الحوض أظهر فائدة في بعض التجارب لضعف الانتصاب وسرعة القذف، لكن الدراسات صغيرة ونتائجها متفاوتة.</dd></div>
+          <div><dt>تهيئة عامة</dt><dd>الجسر، الطائر والكلب، التنفس، ومرونة الحوض تدعم التحكم بالحوض واللياقة العامة. ما فيه دليل إنها بحد ذاتها تحسن الأداء الجنسي.</dd></div>
+        </dl>
+        <p class="muted">ما نعد بحجم، ولا انتصاب مضمون، ولا تحمّل مضمون. وإذا فيه مشكلة مستمرة، الطبيب هو الخطوة الصح — أحيانًا تكون إشارة مبكرة لصحة القلب والأوعية.</p></section>
+      <section class="block"><h2>التوقيت</h2><p>3–4 مرات أسبوعيًا، والأنسب في أيام المشي (الأحد، الثلاثاء، الخميس). الوضعية تتقدم مع الأسابيع: استلقاء ← جلوس ← وقوف.</p></section>`;
+  },
+
+  /* ================= LOG ================= */
+  r_log() {
+    const w = weekNum();
+    const total = S.log.length, str = S.log.filter(e => e.type === 'strength').length;
+    const mins = Math.round(S.log.reduce((s, e) => s + (e.durSec || 0), 0) / 60);
+    let streak = 0; for (let k = w - 1; k >= 1; k--) { if (doneKeys(k).size >= 3) streak++; else break; }
+    if (doneKeys(w).size >= 3) streak++;
+    const weeks = []; for (let k = w; k >= 1; k--) weeks.push(k);
+    const lv = PROG.TRAINABLE.map(f => { const e = PROG.exerciseFor(f, S.levels, w); return `<li><span>${PROG.FAMS[f].ar}</span><span dir="ltr">L${e.lvl} ${esc(e.en)}</span></li>`; }).join('');
+    $('#tab-log').innerHTML = `
+      <header class="page-head"><p class="kicker">بيانات حقيقية من جلساتك فقط</p><h1>سجلي</h1></header>
+      <dl class="stats"><div><dt>جلسات القوة</dt><dd>${str}</dd></div><div><dt>كل الجلسات</dt><dd>${total}</dd></div><div><dt>وقت التمرين</dt><dd>${mins}<small> د</small></dd></div><div><dt>أسابيع مكتملة متتالية</dt><dd>${streak}</dd></div></dl>
+      <section class="block"><h2>المستوى الحالي</h2><ul class="lvl-list">${lv}</ul></section>
+      <section class="block"><h2>الأسابيع</h2>${weeks.map(k => this.weekReport(k, false)).join('')}</section>`;
+  },
+
+  /* ================= SETTINGS ================= */
+  r_settings() {
+    const w = weekNum();
+    const vids = LIB.all.filter((e, i, a) => a.findIndex(x => x.video === e.video) === i);
+    $('#tab-settings').innerHTML = `
+      <header class="page-head"><p class="kicker">كل شيء محفوظ في جوالك فقط</p><h1>الإعدادات</h1></header>
+      <section class="block"><h2>الصوت</h2>
+        <label class="switch"><input type="checkbox" data-act="setSound" ${S.settings.sound ? 'checked' : ''}><span>التنبيهات الصوتية (عد تنازلي، بداية، نهاية)</span></label>
+        <label class="switch"><input type="checkbox" data-act="setVoice" ${S.settings.voice ? 'checked' : ''}><span>الصوت المنطوق ${Voice.supported() ? '' : '(غير مدعوم في هذا المتصفح)'}</span></label>
+        <button class="btn btn-ghost" data-act="testSound">جرّب الصوت</button>
+        <p class="muted">في الآيفون: إذا زر الصامت شغال، أصوات المتصفح ممكن ما تطلع. خلّ الجوال على الوضع العادي وقت التمرين.</p></section>
+      <section class="block"><h2>الزواج</h2>
+        <label class="field"><span>تاريخ الزواج</span><input type="date" id="setWedding" value="${esc(S.settings.wedding || '')}"></label>
+        <div class="row"><button class="btn btn-secondary" data-act="saveWedding">حفظ التاريخ</button>${S.settings.wedding ? '<button class="btn btn-ghost" data-act="clearWedding">إخفاء العداد</button>' : ''}</div></section>
+      <section class="block"><h2>البرنامج</h2>
+        <p>بدأ البرنامج: ${esc(S.profile.startDate || '—')} — الأسبوع الحالي: ${w}</p>
+        <div class="row"><button class="btn btn-ghost" data-act="repeatWeek">كرّر هذا الأسبوع</button><button class="btn btn-ghost" data-act="recal">أعد فحص البداية</button></div>
+        <p class="muted">"كرّر هذا الأسبوع" يؤخر البرنامج أسبوعًا — مفيد بعد سفر أو مرض.</p></section>
+      <section class="block"><h2>ملفات الفيديو</h2>
+        <p>كل تمرين له عرض متحرك مدمج. إذا أضفت فيديو حقيقي بالاسم المطلوب داخل <code dir="ltr">assets/videos/</code>، يظهر بدل العرض المتحرك تلقائيًا.</p>
+        <button class="btn btn-ghost" data-act="checkVideos">افحص الملفات</button>
+        <ul class="vid-list" id="vidList">${vids.map(e => `<li data-vid="${e.id}"><code dir="ltr">${esc(LIB.videoManifest[e.id])}</code><span class="vs">${VID.ok[e.id] === true ? 'موجود' : VID.ok[e.id] === false ? 'غير موجود — يظهر العرض المتحرك' : '—'}</span></li>`).join('')}</ul></section>
+      <section class="block"><h2>النسخة الاحتياطية</h2>
+        <div class="row"><button class="btn btn-secondary" data-act="export">تصدير نسخة احتياطية</button><label class="btn btn-ghost file-btn">استيراد نسخة<input type="file" accept="application/json,.json" id="importFile" data-act="importPick"></label></div>
+        <p class="muted">التخزين: ${DB.mode === 'idb' ? 'IndexedDB' : DB.mode === 'ls' ? 'localStorage (احتياطي)' : 'مؤقت — لن يُحفظ'}</p></section>
+      <section class="block"><h2>السلامة</h2><p>أوقف التمرين فورًا إذا حسيت بألم في الصدر، دوخة شديدة، ضيق نفس غير طبيعي، أو ألم حاد مفاجئ. إذا تكرر أي من ذلك، راجع طبيب قبل ما تكمل.</p></section>
+      <section class="block"><h2>لماذا تنجح هذه الخطة</h2>
+        <ul class="plain">
+          <li><b>الحجم:</b> العلاقة بين عدد المجموعات الأسبوعية والتضخيم واضحة؛ نوصل تدريجيًا لحوالي 10 مجموعات أسبوعيًا للعضلة الكبيرة.</li>
+          <li><b>التكرار:</b> تدريب العضلة مرتين أو أكثر أسبوعيًا يوزّع الحجم بشكل أفضل — لهذا 3 جلسات للجسم كامل.</li>
+          <li><b>الوزن الخفيف يكفي:</b> التضخيم يحصل بأوزان خفيفة إذا المجموعة قريبة من الجهد؛ والضغط حقق تضخيمًا مقاربًا للبنش برس في دراسات مقارنة.</li>
+          <li><b>بدون فشل كامل:</b> الاقتراب من الفشل (1–3 تكرار احتياط) يعطي نتائج مقاربة بتعب أقل.</li>
+          <li><b>الراحة:</b> 60–120 ثانية تحافظ على جودة المجموعات.</li>
+          <li><b>الثابت (Isometric):</b> الشد الثابت القوي يبني عضلًا، لكنه أضعف من الحركة الكاملة بالأوزان — لذلك وضعناه كبديل للسحب فقط.</li></ul>
+        <details><summary>المراجع</summary><ol class="refs">
+          <li>American College of Sports Medicine. Progression models in resistance training for healthy adults. Med Sci Sports Exerc. 2009;41(3):687–708.</li>
+          <li>Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and increases in muscle mass: a systematic review and meta-analysis. J Sports Sci. 2017;35(11):1073–1082.</li>
+          <li>Schoenfeld BJ, Ogborn D, Krieger JW. Effects of resistance training frequency on measures of muscle hypertrophy: a systematic review and meta-analysis. Sports Med. 2016;46(11):1689–1697.</li>
+          <li>Refalo MC, Helms ER, Trexler ET, Hamilton DL, Fyfe JJ. Influence of resistance training proximity-to-failure on skeletal muscle hypertrophy: a systematic review with meta-analysis. Sports Med. 2023;53(3):649–665.</li>
+          <li>Grgic J, Schoenfeld BJ, Orazem J, Sabol F. Effects of resistance training performed to repetition failure or non-failure on muscular strength and hypertrophy: a systematic review and meta-analysis. J Sport Health Sci. 2022;11(2):202–211.</li>
+          <li>Schoenfeld BJ, Pope ZK, Benik FM, et al. Longer interset rest periods enhance muscle strength and hypertrophy in resistance-trained men. J Strength Cond Res. 2016;30(7):1805–1812.</li>
+          <li>Kikuchi N, Nakazato K. Low-load bench press and push-up induce similar muscle hypertrophy and strength gain. J Exerc Sci Fit. 2017;15(1):37–42.</li>
+          <li>Calatayud J, Borreani S, Colado JC, et al. Bench press and push-up at comparable levels of muscle activity results in similar strength gains. J Strength Cond Res. 2015;29(1):246–253.</li>
+          <li>Oranchuk DJ, Storey AG, Nelson AR, Cronin JB. Isometric training and long-term adaptations: effects of muscle length, intensity, and intent: a systematic review. Scand J Med Sci Sports. 2019;29(4):484–503.</li>
+          <li>Morton RW, Murphy KT, McKellar SR, et al. A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults. Br J Sports Med. 2018;52(6):376–384.</li>
+          <li>Gerbild H, Larsen CM, Graugaard C, Areskoug Josefsson K. Physical activity to improve erectile function: a systematic review of intervention studies. Sex Med. 2018;6(2):75–89.</li>
+          <li>Silva AB, Sousa N, Azevedo LF, Martins C. Physical activity and exercise for erectile dysfunction: systematic review and meta-analysis. Br J Sports Med. 2017;51(19):1419–1424.</li>
+          <li>Dorey G, Speakman M, Feneley R, Swinkels A, Dunn C, Ewings P. Randomised controlled trial of pelvic floor muscle exercises and manometric biofeedback for erectile dysfunction. Br J Gen Pract. 2004;54(508):819–825.</li>
+          <li>Myers C, Smith M. Pelvic floor muscle training improves erectile dysfunction and premature ejaculation: a systematic review. Physiotherapy. 2019;105(2):235–243.</li>
+        </ol></details></section>
+      <section class="block danger"><h2>إعادة الضبط</h2><p>يمسح كل البيانات من هذا الجهاز. صدّر نسخة احتياطية قبلها إذا تبغى.</p><button class="btn btn-danger" data-act="reset">امسح كل البيانات</button></section>
+      <p class="muted center">صُمم لمالك.</p>`;
+  },
+
+  /* ================= PREVIEW ================= */
+  openPreview(key) {
+    const w = weekNum();
+    const plan = key === 'J' ? PROG.buildJoz(w) : PROG.buildStrength(key, S.levels, w);
+    VID.probeMany(plan.items.map(i => i.id));
+    const P = PROG.weekParams(w);
+    this.modal(`<h2 dir="auto">${esc(plan.title)}</h2>
+      <p class="muted">${Math.round(PROG.planSeconds(plan) / 60)} دقيقة تقريبًا — الأسبوع ${w} — ${key === 'J' ? 'يشتغل لحاله' : esc(P.rir)}</p>
+      <ol class="prev-list">${plan.items.map((it, i) => { const e = LIB.byId[it.id]; return `<li><div class="thumb" data-thumb="${e.id}"></div><div><p class="pl-en" dir="ltr">${esc(e.en)}</p><p class="pl-ar">${esc(e.ar)}</p><p class="pl-meta">${it.sets ? `${setsAr(it.sets, e.uni)} — ` : ''}${esc(e.target)}</p></div></li>`; }).join('')}</ol>
+      <div class="sound-row"><button class="chip" data-act="toggleSound" aria-pressed="${S.settings.sound}">${S.settings.sound ? 'التنبيهات الصوتية: تعمل' : 'التنبيهات الصوتية: مطفأة'}</button>
+      <button class="chip" data-act="toggleVoice" aria-pressed="${S.settings.voice}">${S.settings.voice ? 'الصوت المنطوق: يعمل' : 'الصوت المنطوق: مطفأ'}</button></div>
+      <p class="muted">${Wake.supported() ? 'الشاشة تبقى مضاءة أثناء التمرين.' : 'متصفحك ما يدعم إبقاء الشاشة مضاءة — خلّ قفل الشاشة التلقائي على "أبدًا" وقت التمرين.'}</p>
+      <p class="safety">أوقف فورًا إذا حسيت بألم صدر، دوخة شديدة، ضيق نفس غير طبيعي، أو ألم حاد.</p>
+      <button class="btn btn-primary btn-start" data-act="${key === 'J' ? 'startJoz' : 'startStrength'}" data-v="${key}">${key === 'J' ? 'ابدأ' : 'ابدأ التمرين'}</button>
+      <button class="btn btn-ghost" data-act="closeModal">رجوع</button>`, { kind: 'preview' });
+    $$('#modal [data-thumb]').forEach(el => { const p = new FIG.Player(el); p.load(LIB.byId[el.dataset.thumb]); cancelAnimationFrame(p.raf); p.renderAt(0.9); });
+  },
+
+  exInfo(id) {
+    const e = LIB.byId[id];
+    this.modal(`<div class="demo-box" id="exDemo"></div>
+      <h2 dir="ltr" class="ex-en">${esc(e.en)}</h2><p class="ex-ar">${esc(e.ar)}</p>
+      ${e.setup ? `<p><b>التجهيز:</b> ${esc(e.setup)}</p>` : ''}
+      <ul class="cues">${e.cues.map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+      <p><b>الهدف:</b> ${esc(e.target)}</p>
+      ${e.m.p.length ? `<p class="muted">يركز على: ${e.m.p.map(m => MUSCLE_AR[m]).join('، ')}</p>` : ''}
+      <p class="muted">الفيديو: <code dir="ltr">${esc(LIB.videoManifest[id])}</code></p>
+      <button class="btn btn-ghost" data-act="closeModal">إغلاق</button>`, { kind: 'ex' });
+    this.modalPlayer = new MediaSlot($('#exDemo')); this.modalPlayer.show(id);
+  },
+
+  /* ================= WORKOUT SCREEN ================= */
+  openWorkout(plan) {
+    this.closeModal();
+    const w = $('#workout'); w.hidden = false; w.dataset.paused = '0';
+    document.body.classList.add('wo-open');
+    $('#woTitle').textContent = plan.title;
+    $('#woPausedLayer').hidden = true;
+  },
+  closeWorkout() {
+    $('#workout').hidden = true; document.body.classList.remove('wo-open');
+    if (!$('#shell').hidden || S.profile.onboarded) this.showShell();
+  },
+
+  woStep(st, E) {
+    const w = $('#workout');
+    w.dataset.phase = st.k === 'work' && st.warm ? 'warm' : st.k;
+    const showId = st.k === 'rest' ? st.ex : st.ex;
+    const ex = LIB.byId[showId];
+    const nxt = st.k === 'rest' ? LIB.byId[st.nextEx] : null;
+    const phaseAr = { prep: 'استعد', work: st.warm ? 'إحماء' : 'الآن', rest: 'راحة', switch: 'بدّل الجهة', trans: st.setup ? 'جهّز المكان' : 'التالي' }[st.k];
+    $('#woPhase').textContent = phaseAr;
+    let setTxt = '';
+    if (st.k === 'work' && st.sets && !st.warm) setTxt = `المجموعة ${st.set} / ${st.sets}${st.side ? ` — الجهة ${st.side === 1 ? 'الأولى' : 'الثانية'}` : ''}`;
+    else if (st.k === 'switch') setTxt = 'الجهة الثانية';
+    else if (st.k === 'rest') setTxt = 'التالي: ' + nxt.en;
+    $('#woSet').textContent = setTxt;
+    if (st.k === 'rest') {
+      $('#woName').textContent = 'REST';
+      $('#woNameAr').textContent = '';
+    } else { $('#woName').textContent = ex.en; $('#woNameAr').textContent = ex.ar; }
+    let target = '';
+    if (st.k === 'work' && !st.warm) {
+      target = ex.mode === 'hold' ? 'ثبات بجودة — وقف قبل ما ينهار الشكل' : ex.target;
+      if (st.rir && ex.mode === 'reps') target += `\n${st.rir}`;
+    } else if (st.k === 'work' && st.warm) target = ex.target;
+    else if (st.note) target = st.note;
+    else if (st.k === 'prep') target = ex.setup || '';
+    $('#woTarget').textContent = target;
+    // next line
+    let nextTxt = '';
+    if (st.k === 'rest') nextTxt = `المجموعة ${st.nextSet} / ${st.nextSets}`;
+    else { const n = E.nextWork(); if (n && n.ex !== st.ex) nextTxt = 'بعده: ' + LIB.byId[n.ex].en; else if (!n) nextTxt = 'آخر تمرين'; }
+    $('#woNext').textContent = nextTxt;
+    // cues
+    $('#woCues').innerHTML = (st.k === 'rest' ? [] : ex.cues).map(c => `<li>${esc(c)}</li>`).join('');
+    $('#woCycle').hidden = true;
+    $('#woMediaTag').textContent = st.k === 'rest' ? '' : (st.k === 'work' ? '' : 'شاهد الحركة');
+    // media
+    const drive = st.k === 'work' && ex.mode === 'cycle' && ex.anim.drive ? () => (E.cycOn ? 1 : 0) : null;
+    E.slot.show(showId, drive);
+    $('#woMedia').classList.toggle('is-dim', st.k === 'rest');
+    this.woTime(st, E);
+  },
+  woPreviewNext(st, E) {
+    const nx = LIB.byId[st.nextEx];
+    E.slot.show(st.nextEx, null);
+    $('#woMedia').classList.remove('is-dim');
+    $('#woMediaTag').textContent = 'جاي: ' + nx.en;
+    $('#woCues').innerHTML = nx.cues.map(c => `<li>${esc(c)}</li>`).join('');
+    window.__cues.push('preview:' + st.nextEx);
+  },
+  woTime(st, E) {
+    $('#woTimer').textContent = fmt(E.rem / 1000);
+    const before = E.plan.steps.slice(0, E.i).reduce((s, x) => s + x.dur, 0);
+    const done = before + (st.dur - E.rem / 1000);
+    $('#woBar').style.width = Math.min(100, (done / E.total) * 100).toFixed(2) + '%';
+    $('#woLeft').textContent = 'المتبقي ' + fmt(E.total - done);
+  },
+  woCycle(ex, cs) {
+    const el = $('#woCycle'); el.hidden = false;
+    const lbl = cs.on ? ex.cycle.onAr : ex.cycle.offAr;
+    el.dataset.on = cs.on ? '1' : '0';
+    el.textContent = lbl ? `${lbl} ${Math.ceil(cs.left)}` : (cs.on ? '●' : '○');
+  },
+  woPaused(p, reason) {
+    $('#woPausedLayer').hidden = !p; $('#workout').dataset.paused = p ? '1' : '0';
+    $('#woPausedWhy').textContent = reason === 'hidden' ? 'توقف التمرين لأنك طلعت من الصفحة. كل شيء محفوظ.' : 'التمرين متوقف مؤقتًا.';
+  },
+  confirmStop() {
+    if (!WO.paused) WO.pause('user');
+    this.modal(`<h2>تنهي التمرين؟</h2><p>ينحفظ اللي سويته إذا تمرنت أكثر من دقيقتين.</p>
+      <button class="btn btn-danger" data-act="stopYes">إنهاء التمرين</button><button class="btn btn-ghost" data-act="closeModal">رجوع</button>`, { kind: 'confirm' });
+  },
+
+  /* ================= POST ================= */
+  post: null,
+  openPost(result) {
+    this.closeModal();
+    $('#workout').hidden = true; document.body.classList.remove('wo-open');
+    this.post = { result, difficulty: null, completion: null, easyFams: [], hardFams: [] };
+    const plan = result.plan, isStr = plan.type === 'strength';
+    const fams = isStr ? plan.items.map(i => i.fam) : [];
+    const p = $('#post'); p.hidden = false;
+    p.innerHTML = `<div class="post-inner">
+      <p class="kicker">${result.completed ? 'انتهت الجلسة' : 'انتهت الجلسة مبكرًا'} — ${Math.round(result.elapsed / 60)} دقيقة</p>
+      <h1>كيف كان التمرين؟</h1>
+      <div class="opts opts-4">${[['easy', 'سهل'], ['ok', 'مناسب'], ['hard', 'صعب'], ['vhard', 'صعب جدًا']].map(([v, l]) => `<button class="btn btn-opt" data-act="fbDiff" data-v="${v}">${l}</button>`).join('')}</div>
+      ${isStr ? `<h2>هل أكملت أغلب المجموعات بالشكل المطلوب؟</h2>
+      <div class="opts">${[['yes', 'نعم'], ['mostly', 'غالبًا'], ['no', 'لا']].map(([v, l]) => `<button class="btn btn-opt" data-act="fbComp" data-v="${v}">${l}</button>`).join('')}</div>
+      <details class="fb-more"><summary>تفصيل اختياري لكل تمرين</summary>
+        <p class="muted">كان سهل بزيادة:</p><div class="chips">${fams.map(f => `<button class="chip" data-act="fbEasy" data-v="${f}" aria-pressed="false" dir="ltr">${esc(PROG.exerciseFor(f, S.levels, weekNum()).en)}</button>`).join('')}</div>
+        <p class="muted">كان صعب جدًا أو أزعج مفصل:</p><div class="chips">${fams.map(f => `<button class="chip" data-act="fbHard" data-v="${f}" aria-pressed="false" dir="ltr">${esc(PROG.exerciseFor(f, S.levels, weekNum()).en)}</button>`).join('')}</div>
+      </details>` : ''}
+      <button class="btn btn-primary" data-act="fbSave" id="fbSave" disabled>حفظ</button></div>`;
+  },
+
+  savePost() {
+    const { result, difficulty, completion, easyFams, hardFams } = this.post;
+    const plan = result.plan, w = plan.week || weekNum();
+    let changes = [];
+    if (plan.type === 'strength') {
+      changes = PROG.applyFeedback(S.levels, plan, { difficulty, completion: completion || 'yes', easyFams, hardFams }, w);
+      save('levels');
+    }
+    const mus = musclesOf(plan);
+    const entry = { id: Date.now(), type: plan.type, key: plan.key, title: plan.title, dateKey: todayKey(), ts: Date.now(), week: weekNum(),
+      durSec: result.elapsed, ratio: Math.round(result.ratio * 100) / 100, difficulty, completion, changes, exercises: plan.items.map(i => i.id), muscles: mus };
+    S.log.push(entry); save('log');
+    this.openSummary(entry);
+  },
+
+  openSummary(entry) {
+    const p = $('#post');
+    const ch = entry.changes || [];
+    const next = PROG.ORDER.find(k => !doneKeys(weekNum()).has(k));
+    p.innerHTML = `<div class="post-inner">
+      <p class="kicker">${esc(entry.title)}</p><h1>تم.</h1>
+      <dl class="report-grid"><div><dt>المدة</dt><dd>${Math.round(entry.durSec / 60)} <small>دقيقة</small></dd></div><div><dt>المنجز</dt><dd>${Math.round((entry.ratio ?? 1) * 100)}%</dd></div></dl>
+      <h2>العضلات المستهدفة</h2>${muscleMap(entry.muscles.p, entry.muscles.s)}
+      ${ch.length ? `<h2>تغيير المستوى</h2><ul class="changes">${ch.map(c => { const a = LIB.fam(c.fam).find(x => x.lvl === c.from), b = LIB.fam(c.fam).find(x => x.lvl === c.to); return `<li>${esc(PROG.FAMS[c.fam].ar)}: <span dir="ltr">${esc(a.en)} → ${esc(b.en)}</span></li>`; }).join('')}</ul>` : ''}
+      <p>${entry.type === 'strength' ? (next ? `الجلسة الجاية: Full Body ${next} — بعد يوم راحة.` : 'خلصت جلسات القوة لهالأسبوع.') : 'ممتاز. الاستمرار أهم من الكمية.'}</p>
+      <button class="btn btn-primary" data-act="postDone">رجوع للرئيسية</button></div>`;
+  },
+
+  /* ================= CARDIO ================= */
+  cardio: null,
+  openCardio() {
+    const ct = PROG.cardioTarget(weekNum());
+    const c = $('#cardio'); c.hidden = false; document.body.classList.add('wo-open');
+    c.innerHTML = `<div class="post-inner"><p class="kicker">مشي سريع</p><h1>كم دقيقة؟</h1>
+      <p>هذه المرحلة: ${ct.min}–${ct.max} دقيقة. سرعة تقدر تتكلم فيها لكن ما تقدر تغني.</p>
+      <div class="opts opts-4">${[20, 25, 30, 40].map(m => `<button class="btn btn-opt ${m >= ct.min && m <= ct.max ? 'is-rec' : ''}" data-act="cardioGo" data-v="${m}">${m} د</button>`).join('')}</div>
+      <button class="btn btn-ghost" data-act="cardioClose">رجوع</button></div>`;
+  },
+  cardioStart(min) {
+    Sound.init(); Voice.init(); Wake.on();
+    this.cardio = { min, start: Date.now(), half: false, iv: null };
+    const c = $('#cardio');
+    c.innerHTML = `<div class="cardio-run"><p class="kicker">مشي سريع — ${min} دقيقة</p><p class="cardio-timer" id="cdT">${fmt(min * 60)}</p>
+      <p class="muted">يكمل العد حتى لو قفلت الشاشة ورجعت.</p>
+      <button class="btn btn-primary" data-act="cardioStop">إنهاء وحفظ</button></div>`;
+    Voice.say('يلا نمشي', 'Let\'s walk');
+    this.cardio.iv = setInterval(() => {
+      const el = (Date.now() - this.cardio.start) / 1000 * SPEED, left = min * 60 - el;
+      const t = $('#cdT'); if (t) t.textContent = fmt(left);
+      if (!this.cardio.half && el >= min * 30) { this.cardio.half = true; Sound.cue('half'); Voice.say('نص الوقت', 'Halfway'); }
+      if (left <= 0) this.cardioEnd(true);
+    }, 250);
+  },
+  cardioEnd(full) {
+    const c = this.cardio; if (!c) return;
+    clearInterval(c.iv); Wake.off();
+    const sec = Math.min(c.min * 60, Math.round((Date.now() - c.start) / 1000 * SPEED));
+    this.cardio = null;
+    if (full) { Sound.cue('done'); Voice.say('خلصت المشي', 'Walk complete'); }
+    if (sec >= 300) this.logCardio(sec); else this.closeCardio();
+  },
+  logCardio(sec) {
+    S.log.push({ id: Date.now(), type: 'cardio', key: null, title: 'مشي سريع', dateKey: todayKey(), ts: Date.now(), week: weekNum(), durSec: sec, ratio: 1, exercises: [], muscles: { p: [], s: [] } });
+    save('log');
+    const c = $('#cardio'); c.hidden = false;
+    c.innerHTML = `<div class="post-inner"><h1>تم.</h1><p>${Math.round(sec / 60)} دقيقة مشي انحفظت.</p><button class="btn btn-primary" data-act="cardioClose">رجوع</button></div>`;
+  },
+  closeCardio() { $('#cardio').hidden = true; document.body.classList.remove('wo-open'); this.refresh(); },
+
+  /* ================= actions ================= */
+  acts: {
+    go(v) { this.closeModal(); this.go(v); },
+    ob(v) { this.openOnboard(Number(v)); },
+    obWedding() { const v = $('#obWedding').value; S.settings.wedding = v || null; save('settings'); this.openOnboard(2); },
+    calStart() { this.calib = {}; this.calIdx = 0; this.calNext(); },
+    calSkip() { S.levels = PROG.defaultLevels(); save('levels'); this.acts.journey.call(this); },
+    calAns(v) { this.calib[this.CALQ[this.calIdx].id] = v; this.calIdx++; this.calNext(); },
+    journey() {
+      S.profile.onboarded = true; if (!S.profile.startDate) S.profile.startDate = todayKey(); save('profile');
+      this.calSlot && this.calSlot.clear(); this.tab = 'today'; this.showShell();
+    },
+    closeModal() { this.closeModal(); if (WO.plan && WO.paused) { /* stay paused */ } },
+    preview(v) { this.openPreview(v); },
+    exInfo(v) { this.exInfo(v); },
+    startStrength(v) { const plan = PROG.buildStrength(v, S.levels, weekNum()); WO.begin(plan); },
+    startJoz() { const plan = PROG.buildJoz(weekNum()); WO.begin(plan); },
+    toggleSound(v, t) { S.settings.sound = !S.settings.sound; save('settings'); t.setAttribute('aria-pressed', S.settings.sound); t.textContent = S.settings.sound ? 'التنبيهات الصوتية: تعمل' : 'التنبيهات الصوتية: مطفأة'; },
+    toggleVoice(v, t) { S.settings.voice = !S.settings.voice; save('settings'); t.setAttribute('aria-pressed', S.settings.voice); t.textContent = S.settings.voice ? 'الصوت المنطوق: يعمل' : 'الصوت المنطوق: مطفأ'; },
+    setSound(v, t) { S.settings.sound = t.checked; save('settings'); },
+    setVoice(v, t) { S.settings.voice = t.checked; save('settings'); },
+    testSound() { Sound.init(); Voice.init(); Sound.cue('count'); setTimeout(() => Sound.cue('start'), 400); setTimeout(() => Voice.say('جاهز. ابدأ.', 'Ready. Go.'), 1000); },
+    saveWedding() { S.settings.wedding = $('#setWedding').value || null; save('settings'); this.refresh(); this.toast('انحفظ التاريخ'); },
+    clearWedding() { S.settings.wedding = null; save('settings'); this.refresh(); },
+    repeatWeek() { S.profile.startDate = addDays(S.profile.startDate || todayKey(), 7); save('profile'); this.refresh(); this.toast('تأجل البرنامج أسبوعًا'); },
+    recal() { this.calib = {}; this.calIdx = 0; $('#shell').hidden = true; $('#onboard').hidden = false; this.calNext(); },
+    checkVideos() {
+      const ids = LIB.all.filter((e, i, a) => a.findIndex(x => x.video === e.video) === i).map(e => e.id);
+      ids.forEach(id => { delete VID.ok[id]; });
+      $$('#vidList .vs').forEach(s => s.textContent = 'يفحص…');
+      ids.forEach(id => VID.probe(id).then(ok => { const li = $(`#vidList [data-vid="${id}"] .vs`); if (li) li.textContent = ok ? 'موجود' : 'غير موجود — يظهر العرض المتحرك'; }));
+    },
+    export() {
+      const data = { app: 'malik-coach', version: 1, exportedAt: new Date().toISOString(), data: { profile: S.profile, settings: S.settings, levels: S.levels, log: S.log } };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `malik-backup-${todayKey()}.json`;
+      document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      window.__cues.push('export'); this.toast('تم تجهيز الملف');
+    },
+    importPick(v, t, e) {
+      if (e.type !== 'click') return;
+      t.onchange = async () => {
+        const f = t.files && t.files[0]; if (!f) return;
+        try {
+          const j = JSON.parse(await f.text());
+          if (j.app !== 'malik-coach' || !j.data || !Array.isArray(j.data.log)) throw new Error('bad');
+          this.pendingImport = j.data;
+          this.modal(`<h2>استيراد النسخة؟</h2><p>فيها ${j.data.log.length} جلسة. البيانات الحالية تُستبدل.</p>
+            <button class="btn btn-primary" data-act="importYes">استيراد</button><button class="btn btn-ghost" data-act="closeModal">إلغاء</button>`);
+        } catch (err) { this.toast('الملف غير صالح. اختر ملف نسخة احتياطية من هذا التطبيق.'); }
+        t.value = '';
+      };
+    },
+    async importYes() {
+      const d = this.pendingImport; if (!d) return;
+      S.profile = Object.assign(S.profile, d.profile || {}); S.settings = Object.assign(S.settings, d.settings || {});
+      S.levels = Object.assign(PROG.defaultLevels(), d.levels || {}); S.log = d.log || [];
+      await Promise.all(['profile', 'settings', 'levels', 'log'].map(save));
+      this.pendingImport = null; this.closeModal(); window.__cues.push('import'); this.toast('تم الاستيراد'); this.refresh();
+    },
+    reset() {
+      this.modal(`<h2>تمسح كل البيانات؟</h2><p>الجلسات، المستويات، الإعدادات، وتاريخ الزواج. ما فيه تراجع.</p>
+        <button class="btn btn-danger" data-act="resetYes">امسح نهائيًا</button><button class="btn btn-ghost" data-act="closeModal">إلغاء</button>`);
+    },
+    async resetYes() { await DB.clear(); window.__cues.push('reset'); location.reload(); },
+    resumeGo() { const a = S.active; this.closeModal(); WO.begin(a.plan, a); },
+    resumeRestart() { const a = S.active; this.closeModal(); const plan = a.plan.type === 'joz' ? PROG.buildJoz(weekNum()) : PROG.buildStrength(a.plan.key, S.levels, weekNum()); WO.begin(plan); },
+    resumeDrop() { S.active = null; save('active'); this.closeModal(); },
+    stopYes() { this.closeModal(); WO.stop(); },
+    fbDiff(v, t) { this.post.difficulty = v; $$('#post [data-act="fbDiff"]').forEach(b => b.setAttribute('aria-pressed', b === t)); this.fbCheck(); },
+    fbComp(v, t) { this.post.completion = v; $$('#post [data-act="fbComp"]').forEach(b => b.setAttribute('aria-pressed', b === t)); this.fbCheck(); },
+    fbEasy(v, t) { const a = this.post.easyFams; const i = a.indexOf(v); i < 0 ? a.push(v) : a.splice(i, 1); t.setAttribute('aria-pressed', i < 0); },
+    fbHard(v, t) { const a = this.post.hardFams; const i = a.indexOf(v); i < 0 ? a.push(v) : a.splice(i, 1); t.setAttribute('aria-pressed', i < 0); },
+    fbSave() { this.savePost(); },
+    postDone() { $('#post').hidden = true; this.tab = 'today'; this.showShell(); },
+    seenReport(v) { S.settings.seenReports.push(Number(v)); save('settings'); this.refresh(); },
+    cardio() { this.openCardio(); },
+    cardioGo(v) { this.cardioStart(Number(v)); },
+    cardioStop() { this.cardioEnd(false); },
+    cardioClose() { this.closeCardio(); },
+    cardioLog() {
+      this.modal(`<h2>سجّل مشي سويته</h2><div class="opts opts-4">${[15, 20, 30, 40].map(m => `<button class="btn btn-opt" data-act="cardioLogYes" data-v="${m}">${m} د</button>`).join('')}</div><button class="btn btn-ghost" data-act="closeModal">إلغاء</button>`);
+    },
+    cardioLogYes(v) { this.closeModal(); this.logCardio(Number(v) * 60); },
+  },
+  fbCheck() {
+    const isStr = this.post.result.plan.type === 'strength';
+    $('#fbSave').disabled = !(this.post.difficulty && (!isStr || this.post.completion));
+  },
+  toast(msg) {
+    const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(this.tt);
+    this.tt = setTimeout(() => { t.hidden = true; }, 2600);
+  },
+};
+
+document.addEventListener('DOMContentLoaded', () => UI.boot());
+
+</script>
+</body>
+</html>
